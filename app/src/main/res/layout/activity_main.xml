@@ -75,17 +75,17 @@
         </LinearLayout>
 
         <Button
-            android:visibility="gone"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/white"
-            android:layout_marginBottom="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/btnStart"
-            android:background="@drawable/indicator_circle_black"
-            android:layout_width="200dp"
-            android:layout_height="40dp"
-            android:text="@string/get_started"
-            android:textAllCaps="false"/>
+            android:background="@drawable/getstarted"
+            android:visibility="gone"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="500dp"
+            />
+
+
 
     </RelativeLayout>
 

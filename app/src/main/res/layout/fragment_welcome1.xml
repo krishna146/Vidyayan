@@ -4,6 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.WelcomeFragment1"
-    android:background="@drawable/intro_one">
+    android:background="@drawable/slider1">
 
 </RelativeLayout>

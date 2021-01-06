@@ -4,6 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.WelcomeFragment3"
-    android:background="@drawable/intro_three">
+    android:background="@drawable/sleder3">
 
 </RelativeLayout>
