@@ -7,10 +7,21 @@
     tools:context=".activity.HomeActivity"
     android:orientation="vertical"
     android:background="@drawable/loginpage">
+
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="310dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/great_to_see_you_again"
+        android:textColor="@android:color/background_dark"
+        android:textStyle="italic"
+        android:textSize="15sp"
+        android:layout_above="@+id/l1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"/>
     <LinearLayout
         android:layout_marginTop="10dp"
         android:id="@+id/l1"
@@ -21,8 +32,9 @@
 
         <TextView
             android:id="@+id/txtCountryCode"
-            android:text="+91"
+            android:text="@string/_91"
             android:textSize="18sp"
+            android:padding="10dp"
             android:layout_marginStart="10dp"
             android:textColor="@android:color/black"
             android:layout_width="wrap_content"
@@ -57,6 +69,16 @@
         android:background="#ffffff"
         android:layout_centerHorizontal="true"
         />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnNext"
+        android:text="@string/you_will_get_an_otp"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/darker_gray"
+        android:layout_centerHorizontal="true"
+        android:shadowColor="@android:color/white"/>
     <ImageButton
         android:id="@+id/btnRegister"
         android:layout_width="wrap_content"
