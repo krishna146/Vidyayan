@@ -13,6 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="310dp"
         android:layout_marginLeft="20dp"
+        android:hint="mobile number"
+        android:inputType="numberPassword"
         android:layout_marginRight="20dp"
         android:layout_centerHorizontal="true"/>
     <ImageButton
@@ -21,7 +23,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/nextbtn"
         android:background="#ffffff"
-        android:layout_marginTop="450dp"
+        android:layout_marginTop="370dp"
         android:layout_centerHorizontal="true"/>
       <ImageButton
           android:id="@+id/btn_register"
