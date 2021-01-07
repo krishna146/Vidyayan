@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.HomeActivity"
+    android:orientation="vertical"
+    android:background="@drawable/loginpage">
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="310dp"/>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:id="@+id/l1"
+        android:layout_below="@+id/view"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txtCountryCode"
+            android:text="+91"
+            android:textSize="18sp"
+            android:layout_marginStart="10dp"
+            android:textColor="@android:color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:textSize="16.5sp"
+            android:inputType="phone"
+            android:maxLength="10"
+            android:layout_marginStart="5dp"
+            android:background="@android:color/white"
+            android:padding="8dp"
+            android:id="@+id/etMobileNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <ImageView
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/img"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_below="@+id/l1"
+        android:background="@drawable/straight_background"/>
+
+    <ImageButton
+        android:id="@+id/btnNext"
+        android:layout_below="@+id/img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/nextbtn"
+        android:background="#ffffff"
+        android:layout_centerHorizontal="true"
+        />
+    <ImageButton
+        android:id="@+id/btnRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:src="@drawable/register"
+        android:layout_marginBottom="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true" />
+</RelativeLayout>
