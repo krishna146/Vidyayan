@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.RegistrationActivity"
+    android:background="@drawable/registrationpage"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="6"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4.2"
+            android:layout_marginTop="240dp"
+            >
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/et_user_name"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_centerHorizontal="true"
+                android:hint="Name"
+
+                />
+            <LinearLayout
+                android:id="@id/LL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_user_name"
+                android:layout_marginTop="10dp"
+                android:weightSum="5.0">
+
+                <com.hbb20.CountryCodePicker
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1.5"
+                    android:gravity="center"
+                    app:ccp_autoDetectCountry="true"
+                    app:ccp_showNameCode="true"
+                    app:ccp_textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/etinput_mob_num"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3.5"
+                    android:drawablePadding="5dp"
+                    android:layout_marginRight="20dp"
+                    android:hint="Mobile Number "
+                    android:inputType="phone"
+                    android:maxLength="10" />
+            </LinearLayout>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/et_user_email"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_centerHorizontal="true"
+                android:hint="Email"
+                android:layout_below="@id/LL"
+                android:layout_marginTop="8dp"
+
+                />
+            <LinearLayout
+                android:id="@+id/lin_lout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_user_email"
+                android:layout_marginTop="10dp"
+                android:weightSum="5.0"
+                >
+
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1.5"
+                    android:gravity="center"
+                    android:src="@drawable/location"
+                    android:background="#ffffff"/>
+                <EditText
+                    android:id="@+id/et_user_address"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3.5"
+                    android:drawablePadding="5dp"
+                    android:layout_marginRight="20dp"
+                    android:hint="Address "
+                    android:inputType="phone"
+                    android:maxLength="10" />
+            </LinearLayout>
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/registerbtn"
+                android:background="#ffffff"
+                android:layout_below="@+id/lin_lout"
+                android:layout_marginTop="15dp"
+                android:layout_centerHorizontal="true"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+         <ImageButton
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:src="@drawable/loginn"
+             android:background="#ffffff"
+             android:layout_alignParentBottom="true"
+             android:layout_centerHorizontal="true"
+             android:layout_marginBottom="42dp"/>
+
+
+</RelativeLayout>
