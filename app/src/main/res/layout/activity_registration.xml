@@ -65,6 +65,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_centerHorizontal="true"
                 android:hint="Email"
+                android:inputType="textEmailAddress"
                 android:layout_below="@id/LL"
                 android:layout_marginTop="8dp"
 
@@ -95,8 +96,8 @@
                     android:drawablePadding="5dp"
                     android:layout_marginRight="20dp"
                     android:hint="Address "
-                    android:inputType="phone"
-                    android:maxLength="10" />
+
+                     />
             </LinearLayout>
             <ImageButton
                 android:layout_width="wrap_content"
