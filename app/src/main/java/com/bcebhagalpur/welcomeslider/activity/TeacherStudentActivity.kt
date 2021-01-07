@@ -16,7 +16,7 @@ class TeacherStudentActivity : AppCompatActivity() {
         window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         setContentView(R.layout.activity_teacher_student)
         btnstudent.setOnClickListener {
-            startActivity(Intent(this@TeacherStudentActivity,HomeActivity::class.java))
+            startActivity(Intent(this@TeacherStudentActivity,ChooseClassActivity::class.java))
         }
     }
 }

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/loginpagenew"
+    tools:context=".activity.LoginActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/LL"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginBottom="60dp"
+        android:gravity="center"
+        android:text="Great to See You again"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="italic" />
+
+    <LinearLayout
+        android:id="@id/LL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:weightSum="5.0">
+
+        <com.hbb20.CountryCodePicker
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1.5"
+            android:gravity="center"
+            app:ccp_autoDetectCountry="true"
+            app:ccp_showNameCode="true"
+            app:ccp_textSize="15sp" />
+
+        <EditText
+            android:id="@+id/etinput_mob_num"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3.5"
+            android:drawablePadding="5dp"
+            android:layout_marginRight="20dp"
+            android:hint="Mobile Number "
+            android:inputType="phone"
+            android:maxLength="10" />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btn_get_otp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LL"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:background="#ffffff"
+        android:src="@drawable/nextbtn" />
+
+    <TextView
+        android:id="@+id/txtGetOtp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_get_otp"
+        android:layout_marginHorizontal="20dp"
+        android:gravity="center"
+        android:text="You will get an otp" />
+
+    <ImageButton
+        android:id="@+id/btn_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtGetOtp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:background="#ffffff"
+        android:src="@drawable/register" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_register"
+        android:layout_marginHorizontal="20dp"
+        android:gravity="center"
+        android:text="Create a new account" />
+
+
+</RelativeLayout>
