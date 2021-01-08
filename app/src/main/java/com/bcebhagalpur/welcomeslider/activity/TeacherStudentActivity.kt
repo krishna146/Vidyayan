@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
+import android.widget.Toast
 import com.bcebhagalpur.welcomeslider.R
 import kotlinx.android.synthetic.main.activity_teacher_student.*
 
@@ -17,6 +18,11 @@ class TeacherStudentActivity : AppCompatActivity() {
         setContentView(R.layout.activity_teacher_student)
         btnstudent.setOnClickListener {
             startActivity(Intent(this@TeacherStudentActivity,ChooseClassActivity::class.java))
+        }
+        btnteacher.setOnClickListener(){
+            startActivity(Intent(this@TeacherStudentActivity, RegistrationActivity::class.java))
+            Toast.makeText(this@TeacherStudentActivity, "Auto Detecting location", Toast.LENGTH_LONG)
+                .show()
         }
     }
 }
