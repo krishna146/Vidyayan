@@ -4,12 +4,10 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import androidx.fragment.app.FragmentTransaction
 import com.bcebhagalpur.welcomeslider.R
 import com.bcebhagalpur.welcomeslider.bodyfragment.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class HomeActivity : AppCompatActivity() {
 
@@ -25,8 +23,6 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        window.requestFeature(Window.FEATURE_NO_TITLE)
-//        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         setContentView(R.layout.activity_home)
 
         bottomNavigationView=findViewById(R.id.bottomNavigationView)
@@ -87,19 +83,18 @@ class HomeActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.frameLayout, exploreFragment)
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).commit()
-        supportActionBar?.title ="Play"
         supportActionBar?.show()
     }
 
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        val id = item.itemId
-//
-//        if (id == android.R.id.home){
-//
-//        }
-//
-//        return super.onOptionsItemSelected(item)
-//    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+
+        if (id!= android.R.id.home){
+            exploreFragment()
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
 
     override fun onBackPressed() {
         when(supportFragmentManager.findFragmentById(R.id.frameLayout)){
@@ -110,9 +105,6 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun slideUpDownBottomSheet() {
-
-    }
 
 //    private fun draw(i:Int){
 //        bottomNavigationView.firstCurveStartPoint.set(bottomNavigationView.navigationBarWidth/i-bottomNavigationView.radius

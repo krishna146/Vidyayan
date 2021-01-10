@@ -22,7 +22,8 @@
         android:layout_alignParentBottom="true"
         android:background="@color/colorAccent"
         app:itemIconTint="@android:color/white"
-        app:itemTextColor="@android:color/white"/>
+        app:itemTextColor="@android:color/white"
+        app:labelVisibilityMode="labeled"/>
 
 </RelativeLayout>
 
