@@ -4,27 +4,38 @@ import android.Manifest
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.bcebhagalpur.welcomeslider.R
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_registration.*
 import java.util.*
 
 class RegistrationActivity : AppCompatActivity() {
     private var lm:LocationManager?=null
     private var loc:Location?=null
+
+    private lateinit var imgBtnRegister:ImageButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.requestFeature(Window.FEATURE_NO_TITLE)
         window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         setContentView(R.layout.activity_registration)
 
+        imgBtnRegister=findViewById(R.id.imgBtnRegister)
+
+        imgBtnRegister.setOnClickListener {
+            startActivity(Intent(this,HomeActivity::class.java))
+        }
 
         if(ActivityCompat.checkSelfPermission(this, ACCESS_COARSE_LOCATION)!=PackageManager.PERMISSION_GRANTED
             && ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)!=PackageManager.PERMISSION_GRANTED)
@@ -78,7 +89,7 @@ class RegistrationActivity : AppCompatActivity() {
         when (requestCode) {
             111 -> {
                 if (grantResults.isNotEmpty() && grantResults[0] ==
-                    PackageManager.PERMISSION_GRANTED) {
+                    PackageManager.PERMISSION_GRANTED ) {
                     if(ActivityCompat.checkSelfPermission(this, ACCESS_COARSE_LOCATION)==PackageManager.PERMISSION_GRANTED
                         && ActivityCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED)
                     {
