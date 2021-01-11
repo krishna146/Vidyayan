@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/colorAccent"
+    tools:context=".activity.MainActivity">
+
+    <FrameLayout
+        android:layout_above="@+id/bottomNavigationView"
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/bottom_navigation"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorAccent"
+        app:itemIconTint="@android:color/white"
+        app:itemTextColor="@android:color/white"
+        app:labelVisibilityMode="labeled"/>
+
+</RelativeLayout>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:background="@color/colorAccent"-->
+<!--    tools:context=".activity.HomeActivity"-->
+<!--    >-->
+
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+
+<!--        <com.bcebhagalpur.welcomeslider.helper.CurvedBottomNavigationView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="72dp"-->
+<!--            android:background="@android:color/white"-->
+<!--            android:id="@+id/bottomNav"-->
+<!--            android:layout_alignParentBottom="true"/>-->
+<!--    </RelativeLayout>-->
+
+<!--    <RelativeLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="bottom|center"-->
+<!--        android:layout_margin="40dp"-->
+<!--        android:background="@drawable/oval_background"-->
+<!--        android:id="@+id/line">-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/explore"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:layout_margin="12dp"-->
+<!--            android:layout_width="45dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:src="@drawable/ic_action_explore"/>-->
+
+<!--        <ImageView-->
+<!--            android:visibility="gone"-->
+<!--            android:id="@+id/search"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:layout_margin="12dp"-->
+<!--            android:layout_width="45dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:src="@drawable/ic_action_search"/>-->
+
+<!--        <ImageView-->
+<!--            android:visibility="gone"-->
+<!--            android:id="@+id/student"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:layout_margin="12dp"-->
+<!--            android:layout_width="45dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:src="@drawable/ic_action_student"/>-->
+
+<!--        <ImageView-->
+<!--            android:visibility="gone"-->
+<!--            android:id="@+id/teacher"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:layout_margin="12dp"-->
+<!--            android:layout_width="45dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:src="@drawable/ic_action_teacher"/>-->
+<!--        <ImageView-->
+<!--            android:visibility="gone"-->
+<!--            android:id="@+id/more"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:layout_margin="12dp"-->
+<!--            android:layout_width="45dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:src="@drawable/ic_action_more"/>-->
+
+
+<!--    </RelativeLayout>-->
+
+<!--</androidx.coordinatorlayout.widget.CoordinatorLayout>-->
