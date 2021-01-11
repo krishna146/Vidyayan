@@ -70,13 +70,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/et_user_email"
-                android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="10dp"
-                android:drawableLeft="@drawable/ic_location_searching"
-                android:drawablePadding="7dp"
                 android:hint="Address "
-                android:inputType="text" />
-
+                android:inputType="text"
+                android:layout_marginHorizontal="20dp"
+                />
+            <ImageButton
+                android:id="@+id/btn_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_user_email"
+                android:src="@drawable/location"
+                android:background="#ffffff"
+                android:layout_marginTop="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="25dp"
+                />
 
             <ImageButton
                 android:id="@+id/imgBtnRegister"
