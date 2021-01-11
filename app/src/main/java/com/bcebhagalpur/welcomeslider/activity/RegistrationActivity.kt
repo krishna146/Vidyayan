@@ -34,7 +34,7 @@ class RegistrationActivity : AppCompatActivity() {
         imgBtnRegister=findViewById(R.id.imgBtnRegister)
 
         imgBtnRegister.setOnClickListener {
-            startActivity(Intent(this,HomeActivity::class.java))
+            startActivity(Intent(this@RegistrationActivity,HomeActivity::class.java))
         }
 
         if(ActivityCompat.checkSelfPermission(this, ACCESS_COARSE_LOCATION)!=PackageManager.PERMISSION_GRANTED
