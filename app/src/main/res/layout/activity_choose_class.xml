@@ -236,6 +236,7 @@
                 android:textSize="25sp" />
         </LinearLayout>
         <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/CL"
             android:layout_below="@+id/LL4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -245,6 +246,19 @@
             android:layout_height="wrap_content"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <Button
+            android:id="@+id/btnStartLearning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/startlearningbackground"
+            android:layout_marginTop="10dp"
+            android:text="Start Learning"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="70dp"
+            android:layout_below="@+id/CL"
+            />
+
+
     </RelativeLayout>
 
 

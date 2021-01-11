@@ -6,12 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
+import android.widget.Toast
 import com.bcebhagalpur.welcomeslider.R
 import com.bcebhagalpur.welcomeslider.fragment.Claas6thTo10thFragment
-import com.bcebhagalpur.welcomeslider.fragment.Class11thFragment
-import com.bcebhagalpur.welcomeslider.fragment.Class12thFragment
 import com.bcebhagalpur.welcomeslider.fragment.Class13thFragment
+import com.bcebhagalpur.welcomeslider.fragment.Class12thor11thFragment
 import kotlinx.android.synthetic.main.activity_choose_class.*
+
 
 class ChooseClassActivity : AppCompatActivity() {
 
@@ -25,6 +26,19 @@ class ChooseClassActivity : AppCompatActivity() {
         )
         setContentView(R.layout.activity_choose_class)
         txt13th.setOnClickListener() {
+            txt13th.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
+            txt12th.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
+            txt11th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt10th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt9th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt8th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt7th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt6th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt5th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt4th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt3rd . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt2nd . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt1st . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
 
             val transaction =
                 supportFragmentManager.beginTransaction().replace(R.id.frame, Class13thFragment())
@@ -34,76 +48,234 @@ class ChooseClassActivity : AppCompatActivity() {
         }
         txt12th.setOnClickListener() {
             txt12th.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
-            val transaction =
-                supportFragmentManager.beginTransaction().replace(R.id.frame, Class12thFragment())
+            txt13th.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
+            txt11th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt10th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt9th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt8th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt7th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt6th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt5th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt4th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt3rd . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt2nd . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt1st . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            val transaction = supportFragmentManager.beginTransaction().replace(R.id.frame, Class12thor11thFragment())
             transaction.commit()
         }
         txt11th.setOnClickListener() {
             txt11th.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
+            txt12th.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
+            txt13th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt10th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt9th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt8th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt7th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt6th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt5th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt4th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt3rd . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt2nd . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt1st . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
             val transaction =
-                supportFragmentManager.beginTransaction().replace(R.id.frame, Class11thFragment())
+                supportFragmentManager.beginTransaction().replace(R.id.frame, Class12thor11thFragment())
             transaction.commit()
         }
-        txt10th.setOnClickListener(){
+        txt10th.setOnClickListener() {
             txt10th.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
+            txt12th.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
+            txt11th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt13th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt9th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt8th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt7th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt6th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt5th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt4th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt3rd . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt2nd . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt1st . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
             val transaction =
-            supportFragmentManager.beginTransaction().replace(R.id.frame, Claas6thTo10thFragment())
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.frame, Claas6thTo10thFragment())
             transaction.commit()
         }
-           txt9th.setOnClickListener(){
-               txt9th.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
+        txt9th.setOnClickListener() {
+            txt9th.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
+            txt12th.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
+            txt11th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt10th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt13th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt8th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt7th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt6th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt5th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt4th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt3rd . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt2nd . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt1st . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
             val transaction =
-            supportFragmentManager.beginTransaction().replace(R.id.frame, Claas6thTo10thFragment())
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.frame, Claas6thTo10thFragment())
             transaction.commit()
         }
-        txt8th.setOnClickListener(){
+        txt8th.setOnClickListener() {
             txt8th.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
+            txt12th.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
+            txt11th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt10th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt9th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt13th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt7th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt6th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt5th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt4th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt3rd . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt2nd . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt1st . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
             val transaction =
-                supportFragmentManager.beginTransaction().replace(R.id.frame, Claas6thTo10thFragment())
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.frame, Claas6thTo10thFragment())
             transaction.commit()
         }
-        txt7th.setOnClickListener(){
+        txt7th.setOnClickListener() {
             txt7th.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
+            txt12th.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
+            txt11th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt10th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt9th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt8th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt13th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt6th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt5th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt4th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt3rd . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt2nd . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt1st . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
             val transaction =
-                supportFragmentManager.beginTransaction().replace(R.id.frame, Claas6thTo10thFragment())
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.frame, Claas6thTo10thFragment())
             transaction.commit()
         }
-        txt6th.setOnClickListener(){
+        txt6th.setOnClickListener() {
             txt6th.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
+            txt12th.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
+            txt11th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt10th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt9th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt8th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt7th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt13th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt5th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt4th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt3rd . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt2nd . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt1st . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
             val transaction =
-                supportFragmentManager.beginTransaction().replace(R.id.frame, Claas6thTo10thFragment())
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.frame, Claas6thTo10thFragment())
             transaction.commit()
         }
-        txt5th.setOnClickListener(){
+        txt5th.setOnClickListener() {
             txt5th.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
+            txt12th.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
+            txt11th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt10th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt9th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt8th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt7th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt6th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt13th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt4th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt3rd . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt2nd . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt1st . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
             val transaction =
-                supportFragmentManager.beginTransaction().replace(R.id.frame, Claas6thTo10thFragment())
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.frame, Claas6thTo10thFragment())
             transaction.commit()
         }
-        txt4th.setOnClickListener(){
+        txt4th.setOnClickListener() {
             txt4th.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
+            txt12th.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
+            txt11th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt10th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt9th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt8th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt7th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt6th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt5th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt13th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt3rd . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt2nd . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt1st . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
             val transaction =
-                supportFragmentManager.beginTransaction().replace(R.id.frame, Claas6thTo10thFragment())
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.frame, Claas6thTo10thFragment())
             transaction.commit()
         }
-        txt3rd.setOnClickListener(){
+        txt3rd.setOnClickListener() {
             txt3rd.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
+            txt12th.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
+            txt11th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt10th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt9th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt8th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt7th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt6th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt5th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt4th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt13th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt2nd . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt1st . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
             val transaction =
-                supportFragmentManager.beginTransaction().replace(R.id.frame, Claas6thTo10thFragment())
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.frame, Claas6thTo10thFragment())
             transaction.commit()
         }
-        txt2nd.setOnClickListener(){
+        txt2nd.setOnClickListener() {
             txt2nd.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
+            txt12th.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
+            txt11th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt10th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt9th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt8th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt7th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt6th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt5th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt4th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt3rd . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt13th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt1st . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
             val transaction =
-                supportFragmentManager.beginTransaction().replace(R.id.frame, Claas6thTo10thFragment())
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.frame, Claas6thTo10thFragment())
             transaction.commit()
         }
-        txt1st.setOnClickListener(){
+        txt1st.setOnClickListener() {
             txt1st.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
+            txt12th.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
+            txt11th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt10th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt9th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt8th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt7th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt6th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt5th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt4th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt3rd . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt2nd . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
+            txt13th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
             val transaction =
-                supportFragmentManager.beginTransaction().replace(R.id.frame, Claas6thTo10thFragment())
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.frame, Claas6thTo10thFragment())
             transaction.commit()
         }
+        btnStartLearning.setOnClickListener(){
+            startActivity(Intent(this@ChooseClassActivity, RegistrationActivity::class.java))
+            Toast.makeText(this@ChooseClassActivity, "Auto detecting Location ", Toast.LENGTH_LONG).show()
+        }
+
 
 
     }
