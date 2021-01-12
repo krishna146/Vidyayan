@@ -1,5 +1,4 @@
 package com.bcebhagalpur.welcomeslider.bodyfragment
-
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -57,7 +56,7 @@ class ExploreFragment : Fragment() {
         recyclerViewCourse=view.findViewById(R.id.recyclerCourses)
 
         val collegeObject=TeacherListModel(R.drawable.slider1,"Aashutosh rana","Android development kotlin",
-        "i have more than 3 year experience in android development and 15 year experience in programming")
+            "i have more than 3 year experience in android development and 15 year experience in programming")
         val collegeObject1=TeacherListModel(R.drawable.slider1,"Aashutosh rana","Android development kotlin",
             "i have more than 3 year experience in android development and 15 year experience in programming")
         val collegeObject2=TeacherListModel(R.drawable.slider1,"Aashutosh rana","Android development kotlin",

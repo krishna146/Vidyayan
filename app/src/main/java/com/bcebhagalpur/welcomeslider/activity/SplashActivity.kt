@@ -30,11 +30,7 @@ class SplashActivity : AppCompatActivity() {
         )
 
         sharedPreferences=getSharedPreferences(getString(R.string.preference_file_name), Context.MODE_PRIVATE)
-        setContentView(R.layout.activity_splash)
-        Handler().postDelayed({
-            startActivity(Intent(this@SplashActivity,
-                MainActivity::class.java))
-        }, 1500)
+
         if (ActivityCompat.checkSelfPermission(
                 this,
                 Manifest.permission.ACCESS_COARSE_LOCATION
@@ -53,11 +49,17 @@ class SplashActivity : AppCompatActivity() {
                 ),
                 111
             )
-        }
+        }else{
         // getLocation()
         // btn_teacher_location.setOnClickListener {
         getLocation()
+        }
         // }
+        setContentView(R.layout.activity_splash)
+        Handler().postDelayed({
+            startActivity(Intent(this@SplashActivity,
+                MainActivity::class.java))
+        }, 1500)
     }
     val ll = object : LocationListener {
         override fun onLocationChanged(location: Location?) {
@@ -106,8 +108,9 @@ class SplashActivity : AppCompatActivity() {
         requestCode: Int, permissions: Array<String>,
         grantResults: IntArray
     ) {
-        when (requestCode) {
-            111 -> {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if(requestCode==111) {
+
                 if (grantResults.isNotEmpty() && grantResults[0] ==
                     PackageManager.PERMISSION_GRANTED
                 ) {
@@ -128,6 +131,7 @@ class SplashActivity : AppCompatActivity() {
                     } else {
                         Toast.makeText(this, "some error occurred",
                             Toast.LENGTH_SHORT).show()
+                        return
                         // btn_teacher_location.setOnClickListener(null)
                     }
                     Toast.makeText(this, "permission allowed",
@@ -135,11 +139,12 @@ class SplashActivity : AppCompatActivity() {
                 } else {
                     Toast.makeText(this, "Permission Denied",
                         Toast.LENGTH_SHORT).show()
+                    return
                     // btn_teacher_location.setOnClickListener(null)
                 }
-                return
+
             }
-        }
+
     }
     override fun onPause() {
         super.onPause()

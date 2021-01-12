@@ -4,10 +4,15 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.widget.Toast
 import androidx.fragment.app.FragmentTransaction
 import com.bcebhagalpur.welcomeslider.R
 import com.bcebhagalpur.welcomeslider.bodyfragment.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
 
@@ -19,15 +24,29 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var studentFragment: StudentFragment
     private lateinit var teacherFragment: TeacherFragment
     private var previousMenuItem: MenuItem? = null
-
+    private val rotateOpen: Animation by lazy{ AnimationUtils.loadAnimation(this,R.anim.rotate_open_anims)}
+    private val rotateClose: Animation by lazy{ AnimationUtils.loadAnimation(this,R.anim.rotate_close_anims)}
+    private val fromButton: Animation by lazy{ AnimationUtils.loadAnimation(this,R.anim.from_button_anims)}
+    private val toButton: Animation by lazy{ AnimationUtils.loadAnimation(this,R.anim.to_button_anims)}
+    private var clicked=false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
         bottomNavigationView=findViewById(R.id.bottomNavigationView)
-        exploreFragment()
+
         bottom()
+        floatingActionButton.setOnClickListener {
+            onAddButtonClicked()
+        }
+        floatingActionButton2.setOnClickListener {
+            Toast.makeText(this,"hy",Toast.LENGTH_SHORT).show()
+        }
+        floatingActionButton3.setOnClickListener {
+            Toast.makeText(this,"by",Toast.LENGTH_SHORT).show()
+        }
+        exploreFragment()
     }
 
     private fun bottom(){
@@ -153,5 +172,48 @@ class HomeActivity : AppCompatActivity() {
 //        bottomNavigationView.firstCurveControlPoint2.set(bottomNavigationView.secondCurveEndPoint.x-(bottomNavigationView.radius
 //                +bottomNavigationView.radius/4),bottomNavigationView.secondCurveEndPoint.y)
 //    }
+private fun onAddButtonClicked()
+{
+    setVisibility(clicked)
+    setAnimation(clicked)
+    setClickable(clicked)
+    clicked = !clicked
+
+}
+    private fun setVisibility(clicked:Boolean)
+    {
+        if(!clicked)
+        {
+            floatingActionButton2.visibility= View.VISIBLE
+            floatingActionButton3.visibility= View.VISIBLE
+        }else{
+            floatingActionButton2.visibility= View.INVISIBLE
+            floatingActionButton3.visibility= View.INVISIBLE
+        }
+    }
+    private fun setAnimation(clicked: Boolean)
+    {
+        if(!clicked)
+        {
+            floatingActionButton2.startAnimation(fromButton)
+            floatingActionButton3.startAnimation(fromButton)
+            floatingActionButton.startAnimation(rotateOpen)
+        }else{
+            floatingActionButton2.startAnimation(toButton)
+            floatingActionButton3.startAnimation(toButton)
+            floatingActionButton.startAnimation(rotateClose)
+        }
+    }
+    private fun setClickable(clicked: Boolean)
+    {
+        if(!clicked){
+            floatingActionButton2.isClickable=true
+            floatingActionButton3.isClickable=true
+        }else{
+            floatingActionButton2.isClickable=false
+            floatingActionButton3.isClickable=false
+        }
+    }
+
 
 }

@@ -24,6 +24,7 @@ class RegistrationActivity : AppCompatActivity() {
     private var lm: LocationManager? = null
     private var loc: Location? = null
     lateinit var sharedPreferences: SharedPreferences
+    var location:String?=" "
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,29 +37,30 @@ class RegistrationActivity : AppCompatActivity() {
             startActivity(Intent(this@RegistrationActivity,HomeActivity::class.java))
         }
 
-        val locaton=sharedPreferences.getString("location"," ")
-        et_user_address.setText(locaton)
+        location=sharedPreferences.getString("location"," ")
+        et_user_address.setText(location)
         //Runtime permissions
-        if (ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_COARSE_LOCATION
-            )!=
-            PackageManager.PERMISSION_GRANTED&&ActivityCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION)
-            != PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(
-                    Manifest.permission.ACCESS_COARSE_LOCATION,
-                    Manifest.permission.ACCESS_FINE_LOCATION
-                ),
-                111
-            )
-        }
+       
         // getLocation()
         btn_location.setOnClickListener {
-            getLocation()
+            if (ActivityCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                )!=
+                PackageManager.PERMISSION_GRANTED&&ActivityCompat.checkSelfPermission(this,
+                    Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED
+            ) {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(
+                        Manifest.permission.ACCESS_COARSE_LOCATION,
+                        Manifest.permission.ACCESS_FINE_LOCATION
+                    ),
+                    111
+                )
+            }else{
+            getLocation()}
         }
     }
     val ll = object : LocationListener {
@@ -124,18 +126,21 @@ class RegistrationActivity : AppCompatActivity() {
                        // LocationManager
                         //loc =
                        // lm?.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+                        //et_user_address.setText(location)
                         getLocation()
                     } else {
                         Toast.makeText(this, "some error occurred",
                             Toast.LENGTH_SHORT).show()
-                        btn_location.setOnClickListener(null)
+                       // btn_location.setOnClickListener(null)
+                       // return
                     }
                     Toast.makeText(this, "permission allowed",
                         Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(this, "Permission Denied",
                         Toast.LENGTH_SHORT).show()
-                    btn_location.setOnClickListener(null)
+                  //  btn_location.setOnClickListener(null)
+                   // return
                 }
                 return
             }
