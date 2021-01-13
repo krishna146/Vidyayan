@@ -15,4 +15,5 @@
     <string name="student">Student</string>
     <string name="more">More</string>
     <string name="preference_file_name">Location Preference</string>
+    <string name="neutral">Neutral</string>
 </resources>

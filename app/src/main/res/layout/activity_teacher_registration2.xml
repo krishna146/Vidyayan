@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/registrationpagebackground"
+    tools:context=".activity.RegistrationActivity">
+
+
+         <ScrollView
+             android:id="@+id/sv"
+             android:layout_width="match_parent"
+             android:layout_height="280dp"
+             android:layout_marginTop="180dp">
+
+         <RelativeLayout
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/et_teacher_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginHorizontal="20dp"
+                android:hint="Name" />
+
+            <LinearLayout
+                android:id="@id/LL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_teacher_name"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:weightSum="5.0">
+
+                <com.hbb20.CountryCodePicker
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5"
+                    android:gravity="center"
+                    app:ccp_autoDetectCountry="true"
+                    app:ccp_showNameCode="true"
+                    app:ccp_textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/et_teacher_num"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3.5"
+                    android:hint="Mobile Number "
+                    android:inputType="phone"
+                    android:maxLength="10" />
+            </LinearLayout>
+
+            <Spinner
+                android:id="@+id/spi_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/LL"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp" />
+
+            <Spinner
+                android:id="@+id/spi_qualification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spi_gender"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp" />
+
+            <EditText
+                android:id="@+id/et_teacher_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spi_qualification"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:hint="Email"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/et_teacher_age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_teacher_email"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:hint="DD/MM/YYYY "
+                android:inputType="text" />
+
+            <ImageButton
+                android:id="@+id/btn_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_teacher_email"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="25dp"
+                android:background="@color/colorAccent"
+                android:src="@drawable/ic_date_picker"
+                android:tint="#ffffff" />
+
+
+            <EditText
+                android:id="@+id/et_teacher_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_teacher_age"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="10dp"
+                android:hint="Address "
+                android:inputType="text" />
+
+            <ImageButton
+                android:id="@+id/btn_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/et_teacher_age"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="25dp"
+                android:background="#ffffff"
+                android:src="@drawable/location" />
+         </RelativeLayout>
+         </ScrollView>
+            <ImageButton
+                android:id="@+id/imgBtnTeacherRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sv"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15dp"
+                android:background="#ffffff"
+                android:src="@drawable/registerbtn" />
+
+
+
+
+
+    <ImageButton
+        android:id="@+id/imgBtnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgBtnTeacherRegister"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:background="#ffffff"
+        android:src="@drawable/loginn" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgBtnLogin"
+        android:gravity="center"
+        android:text="Already registered ?" />
+</RelativeLayout>
+
+

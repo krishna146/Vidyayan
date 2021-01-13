@@ -20,7 +20,7 @@ class TeacherStudentActivity : AppCompatActivity() {
             startActivity(Intent(this@TeacherStudentActivity,ChooseClassActivity::class.java))
         }
         btnteacher.setOnClickListener(){
-            startActivity(Intent(this@TeacherStudentActivity, RegistrationActivity::class.java))
+            startActivity(Intent(this@TeacherStudentActivity, TeacherRegistrationActivity2::class.java))
             Toast.makeText(this@TeacherStudentActivity, "Auto Detecting location", Toast.LENGTH_LONG)
                 .show()
         }
