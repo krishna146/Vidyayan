@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
@@ -32,6 +34,11 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+      /*  window.requestFeature(Window.FEATURE_NO_TITLE)
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        )*/
         setContentView(R.layout.activity_home)
 
         bottomNavigationView=findViewById(R.id.bottomNavigationView)
@@ -72,13 +79,7 @@ class HomeActivity : AppCompatActivity() {
                     supportActionBar?.hide()
 //                    draw(2)
                 }
-                R.id.student->{
-                    studentFragment= StudentFragment()
-                    supportFragmentManager.beginTransaction().replace(R.id.frameLayout,studentFragment)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).commit()
-                    supportActionBar?.hide()
-//                    draw()
-                }
+
                 R.id.teacher->{
                     teacherFragment= TeacherFragment()
                     supportFragmentManager.beginTransaction().replace(R.id.frameLayout,teacherFragment)

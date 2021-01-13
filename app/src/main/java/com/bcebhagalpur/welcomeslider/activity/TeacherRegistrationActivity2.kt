@@ -65,7 +65,7 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
 
         }
         imgBtnTeacherRegister.setOnClickListener {
-            startActivity(Intent(this@TeacherRegistrationActivity2,HomeActivity::class.java))
+            startActivity(Intent(this@TeacherRegistrationActivity2,HomeTeacher::class.java))
         }
 
         btn_age.setOnClickListener {
