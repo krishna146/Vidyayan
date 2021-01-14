@@ -10,16 +10,19 @@ import android.location.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.view.Window
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.bcebhagalpur.welcomeslider.R
+import com.google.android.gms.location.*
 import java.util.*
 
 class SplashActivity : AppCompatActivity() {
-    private var lm: LocationManager? = null
-    private var loc: Location? = null
+    /*  private var lm: LocationManager? = null
+    private var loc: Location? = null*/
+
     lateinit var sharedPreferences: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,9 +32,84 @@ class SplashActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
 
-        sharedPreferences=getSharedPreferences(getString(R.string.preference_file_name), Context.MODE_PRIVATE)
+        sharedPreferences =
+            getSharedPreferences(getString(R.string.preference_file_name), Context.MODE_PRIVATE)
+        setContentView(R.layout.activity_splash)
+        Handler().postDelayed({
+            startActivity(
+                Intent(
+                    this@SplashActivity,
+                    MainActivity::class.java
+                )
+            )
+        }, 1500)
+       // requestPermission()
+    }
+
+
+  /*  fun requestPermission() {
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+        locationRequest = LocationRequest()
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+        locationRequest.setFastestInterval(2000)
+        locationRequest.setInterval(4000)
+        locationCallback = object : LocationCallback() {
+            @SuppressLint("SetTextI18n")
+            override fun onLocationResult(p0: LocationResult?) {
+                super.onLocationResult(p0)
+                LocationServices.getFusedLocationProviderClient(this@SplashActivity)
+                    .removeLocationUpdates(this)
+                if (p0 != null && p0.locations.size > 0) {
+                    var latestLocationIndex = p0.locations.size - 1
+                    var latitude = p0.locations.get(latestLocationIndex).latitude
+                    var longitude = p0.locations.get(latestLocationIndex).longitude
+                    val gc = Geocoder(this@SplashActivity, Locale.getDefault())
+                    val addresses: List<Address> = gc.getFromLocation(
+                        latitude,
+                        longitude, 1
+                    )
+                    val address: Address = addresses[0]
+                    sharedPreferences.edit().putString("location","${address.getAddressLine(0)},${address.locality}").apply()
+                    // txt_location.text =
+                    // " ${latitude}  ${longitude}  ${address.getAddressLine(0)},${address.locality}"
+                }
+            }
+        }
 
         if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+                ),
+                111
+            )
+            return
+        }
+        fusedLocationProviderClient.requestLocationUpdates(
+            locationRequest,
+            locationCallback,
+            Looper.getMainLooper()
+        )
+
+    }*/
+}
+       /* if (ActivityCompat.checkSelfPermission(
                 this,
                 Manifest.permission.ACCESS_COARSE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED &&
@@ -55,12 +133,7 @@ class SplashActivity : AppCompatActivity() {
         getLocation()
         }
         // }
-        setContentView(R.layout.activity_splash)
-        Handler().postDelayed({
-            startActivity(Intent(this@SplashActivity,
-                MainActivity::class.java))
-        }, 1500)
-    }
+
     val ll = object : LocationListener {
         override fun onLocationChanged(location: Location?) {
             reverseGeocode(location)
@@ -150,4 +223,4 @@ class SplashActivity : AppCompatActivity() {
         super.onPause()
         finish()
     }
-}
+}*/
