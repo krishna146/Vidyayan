@@ -252,6 +252,7 @@ class ChooseClassActivity : AppCompatActivity() {
                     .replace(R.id.frame, Claas6thTo10thFragment())
             transaction.commit()
         }
+
         txt1st.setOnClickListener() {
             txt1st.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
             txt12th.setBackgroundResource(R.drawable.rounded_corners_imagebutton)

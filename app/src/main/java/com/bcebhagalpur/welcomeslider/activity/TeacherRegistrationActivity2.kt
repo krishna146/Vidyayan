@@ -2,9 +2,11 @@ package com.bcebhagalpur.welcomeslider.activity
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Typeface.BOLD
 import android.location.Address
 import android.location.Geocoder
 import android.os.Build
@@ -39,50 +41,31 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
         )
 
         setContentView(R.layout.activity_teacher_registration2)
-        val gender= arrayOf("Gender","Male","Female","Neutral")
-        val qualification=arrayOf("Qualification","Btech","Mtech","Phd")
-         val arrayAdapter=ArrayAdapter(this,android.R.layout.simple_list_item_1,gender)
-        val arrayAdapter1=ArrayAdapter(this,android.R.layout.simple_list_item_1,qualification)
-        spi_gender.adapter=arrayAdapter
-        spi_qualification.adapter=arrayAdapter1
-        spi_gender.onItemSelectedListener=object :AdapterView.OnItemSelectedListener{
-            override fun onNothingSelected(parent: AdapterView<*>?) {
 
+        et_teacher_gender.setOnClickListener {
+            val gender = arrayOf("Male", "Female", "Neutral")
+            val mAlertDialogBuilder = AlertDialog.Builder(this)
+            mAlertDialogBuilder.setTitle("Select gender")
+            mAlertDialogBuilder.setItems(gender) { _, which ->
+                when (which) {
+                    which -> {
+                       et_teacher_gender.setText(gender[which])
+                        et_teacher_gender.setTypeface(null, BOLD)
+                    }
+                }
             }
-
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                Toast.makeText(this@TeacherRegistrationActivity2,gender.get(position).toString(),Toast.LENGTH_SHORT).show()
-            }
-
+            val mAlertDialog = mAlertDialogBuilder.create()
+            mAlertDialog.show()
         }
-        spi_qualification.onItemSelectedListener=object :AdapterView.OnItemSelectedListener{
-            override fun onNothingSelected(parent: AdapterView<*>?) {
 
-            }
-
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                Toast.makeText(this@TeacherRegistrationActivity2,qualification.get(position).toString(),Toast.LENGTH_SHORT).show()
-            }
-
-        }
         imgBtnTeacherRegister.setOnClickListener {
             startActivity(Intent(this@TeacherRegistrationActivity2,HomeTeacher::class.java))
         }
-        btn_location_teacher.setOnClickListener {
+        et_teacher_address.setOnClickListener {
             requestPermission()
         }
 
-        btn_age.setOnClickListener {
+        btnDob.setOnClickListener {
             val now=Calendar.getInstance()
             val datePicker=DatePickerDialog(this,DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
              val selectedDate=Calendar.getInstance()
@@ -90,7 +73,7 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
                 selectedDate.set(Calendar.MONTH,month)
                 selectedDate.set(Calendar.DAY_OF_MONTH,dayOfMonth)
                 val date=formate.format(selectedDate.time)
-                et_teacher_age.setText(date)
+               et_teacher_dob.setText(date)
             },
                 now.get(Calendar.YEAR),now.get(Calendar.MONTH),now.get(Calendar.DAY_OF_MONTH))
             datePicker.show()

@@ -1,45 +1,74 @@
 package com.bcebhagalpur.welcomeslider.activity
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import android.view.MenuItem
-import android.view.View
-import android.view.Window
-import android.view.WindowManager
+import android.view.*
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.core.view.get
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.drawerlayout.widget.DrawerLayout.SimpleDrawerListener
 import androidx.fragment.app.FragmentTransaction
 import com.bcebhagalpur.welcomeslider.R
 import com.bcebhagalpur.welcomeslider.bodyfragment.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_home.*
 
-class HomeActivity : AppCompatActivity() {
 
+class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navigationView: NavigationView
+    private lateinit var menuIcon: ImageView
+    private lateinit var contentView: LinearLayout
 
     private lateinit var bottomNavigationView:BottomNavigationView
     private lateinit var exploreFragment: ExploreFragment
-    private lateinit var moreFragment: MoreFragment
+//    private lateinit var moreFragment: MoreFragment
     private lateinit var searchFragment:SearchFragment
     private lateinit var studentFragment: StudentFragment
     private lateinit var teacherFragment: TeacherFragment
     private var previousMenuItem: MenuItem? = null
-    private val rotateOpen: Animation by lazy{ AnimationUtils.loadAnimation(this,R.anim.rotate_open_anims)}
-    private val rotateClose: Animation by lazy{ AnimationUtils.loadAnimation(this,R.anim.rotate_close_anims)}
-    private val fromButton: Animation by lazy{ AnimationUtils.loadAnimation(this,R.anim.from_button_anims)}
-    private val toButton: Animation by lazy{ AnimationUtils.loadAnimation(this,R.anim.to_button_anims)}
+    private val rotateOpen: Animation by lazy{ AnimationUtils.loadAnimation(
+        this,
+        R.anim.rotate_open_anims
+    )}
+    private val rotateClose: Animation by lazy{ AnimationUtils.loadAnimation(
+        this,
+        R.anim.rotate_close_anims
+    )}
+    private val fromButton: Animation by lazy{ AnimationUtils.loadAnimation(
+        this,
+        R.anim.from_button_anims
+    )}
+    private val toButton: Animation by lazy{ AnimationUtils.loadAnimation(
+        this,
+        R.anim.to_button_anims
+    )}
     private var clicked=false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-      /*  window.requestFeature(Window.FEATURE_NO_TITLE)
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-        )*/
+//        window.requestFeature(Window.FEATURE_NO_TITLE)
+//        window.setFlags(
+//            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+//            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+//        )
         setContentView(R.layout.activity_home)
+
+        drawerLayout = findViewById(R.id.drawer_layout)
+        navigationView = findViewById(R.id.navigation_view)
+        menuIcon = findViewById(R.id.menu_icon)
+        contentView = findViewById(R.id.content)
+
+         navigationDrawer()
 
         bottomNavigationView=findViewById(R.id.bottomNavigationView)
 
@@ -48,10 +77,10 @@ class HomeActivity : AppCompatActivity() {
             onAddButtonClicked()
         }
         floatingActionButton2.setOnClickListener {
-            Toast.makeText(this,"hy",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "hy", Toast.LENGTH_SHORT).show()
         }
         floatingActionButton3.setOnClickListener {
-            Toast.makeText(this,"by",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "by", Toast.LENGTH_SHORT).show()
         }
         exploreFragment()
     }
@@ -68,30 +97,30 @@ class HomeActivity : AppCompatActivity() {
             previousMenuItem = it
 
             when(it.itemId){
-                R.id.explore->{
+                R.id.explore -> {
                     exploreFragment()
-//                    draw(6)
+
                 }
-                R.id.search->{
-                    searchFragment=SearchFragment()
-                    supportFragmentManager.beginTransaction().replace(R.id.frameLayout,searchFragment)
+                R.id.search -> {
+                    searchFragment = SearchFragment()
+                    supportFragmentManager.beginTransaction().replace(
+                        R.id.frameLayout,
+                        searchFragment
+                    )
                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).commit()
                     supportActionBar?.hide()
-//                    draw(2)
+
                 }
 
-                R.id.teacher->{
-                    teacherFragment= TeacherFragment()
-                    supportFragmentManager.beginTransaction().replace(R.id.frameLayout,teacherFragment)
+                R.id.teacher -> {
+                    teacherFragment = TeacherFragment()
+                    supportFragmentManager.beginTransaction().replace(
+                        R.id.frameLayout,
+                        teacherFragment
+                    )
                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).commit()
                     supportActionBar?.hide()
-//                    draw()
-                }
-                R.id.more->{
-                    moreFragment= MoreFragment()
-                    supportFragmentManager.beginTransaction().replace(R.id.frameLayout,moreFragment)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).commit()
-                    supportActionBar?.hide()
+
                 }
             }
             true
@@ -116,63 +145,6 @@ class HomeActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onBackPressed() {
-        when(supportFragmentManager.findFragmentById(R.id.frameLayout)){
-            !is ExploreFragment-> {
-                exploreFragment()
-            }
-            else->super.onBackPressed()
-        }
-    }
-
-
-//    private fun draw(i:Int){
-//        bottomNavigationView.firstCurveStartPoint.set(bottomNavigationView.navigationBarWidth/i-bottomNavigationView.radius
-//        *2-bottomNavigationView.radius/3,0)
-//        bottomNavigationView.firstCurveEndPoint.set(bottomNavigationView.navigationBarWidth/i,
-//        bottomNavigationView.radius+bottomNavigationView.radius/4)
-//
-//        bottomNavigationView.firstCurveStartPoint=bottomNavigationView.firstCurveEndPoint
-//
-//        bottomNavigationView.secondCurveEndPoint.set(bottomNavigationView.navigationBarWidth/i+bottomNavigationView
-//            .radius*2+bottomNavigationView.radius/3,0)
-//
-//        bottomNavigationView.firstCurveControlPoint1.set(bottomNavigationView.firstCurveStartPoint.x+bottomNavigationView
-//            .radius+bottomNavigationView.radius/4,bottomNavigationView.firstCurveStartPoint.y)
-//
-//        bottomNavigationView.firstCurveControlPoint2.set(bottomNavigationView.firstCurveEndPoint.x-bottomNavigationView.radius
-//        *2+bottomNavigationView.radius,bottomNavigationView.firstCurveEndPoint.y)
-//
-//        bottomNavigationView.secondCurveControlPoint1.set(bottomNavigationView.secondCurveStartPoint.x+bottomNavigationView
-//            .radius*2-bottomNavigationView.radius,bottomNavigationView.secondCurveStartPoint.y)
-//
-//        bottomNavigationView.firstCurveControlPoint2.set(bottomNavigationView.secondCurveEndPoint.x-(bottomNavigationView.radius
-//                +bottomNavigationView.radius/4),bottomNavigationView.secondCurveEndPoint.y)
-//    }
-//    private fun draw(){
-//        bottomNavigationView.firstCurveStartPoint.set(bottomNavigationView.navigationBarWidth*10/12
-//                -bottomNavigationView.radius
-//                *2-bottomNavigationView.radius/3,0)
-//        bottomNavigationView.firstCurveEndPoint.set(bottomNavigationView.navigationBarWidth*10/12,
-//            bottomNavigationView.radius+bottomNavigationView.radius/4)
-//
-//        bottomNavigationView.firstCurveStartPoint=bottomNavigationView.firstCurveEndPoint
-//
-//        bottomNavigationView.secondCurveEndPoint.set(bottomNavigationView.navigationBarWidth*10/12+bottomNavigationView
-//            .radius*2+bottomNavigationView.radius/3,0)
-//
-//        bottomNavigationView.firstCurveControlPoint1.set(bottomNavigationView.firstCurveStartPoint.x+bottomNavigationView
-//            .radius+bottomNavigationView.radius/4,bottomNavigationView.firstCurveStartPoint.y)
-//
-//        bottomNavigationView.firstCurveControlPoint2.set(bottomNavigationView.firstCurveEndPoint.x-bottomNavigationView.radius
-//                *2+bottomNavigationView.radius,bottomNavigationView.firstCurveEndPoint.y)
-//
-//        bottomNavigationView.secondCurveControlPoint1.set(bottomNavigationView.secondCurveStartPoint.x+bottomNavigationView
-//            .radius*2-bottomNavigationView.radius,bottomNavigationView.secondCurveStartPoint.y)
-//
-//        bottomNavigationView.firstCurveControlPoint2.set(bottomNavigationView.secondCurveEndPoint.x-(bottomNavigationView.radius
-//                +bottomNavigationView.radius/4),bottomNavigationView.secondCurveEndPoint.y)
-//    }
 private fun onAddButtonClicked()
 {
     setVisibility(clicked)
@@ -181,7 +153,7 @@ private fun onAddButtonClicked()
     clicked = !clicked
 
 }
-    private fun setVisibility(clicked:Boolean)
+    private fun setVisibility(clicked: Boolean)
     {
         if(!clicked)
         {
@@ -216,5 +188,70 @@ private fun onAddButtonClicked()
         }
     }
 
+    @SuppressLint("RtlHardcoded")
+    private fun navigationDrawer() {
+
+        //Naviagtion Drawer
+        navigationView.bringToFront()
+        navigationView.setNavigationItemSelectedListener(this)
+        menuIcon.setOnClickListener {
+            if (drawerLayout.isDrawerVisible(GravityCompat.END)) drawerLayout.closeDrawer(
+                GravityCompat.END
+            ) else drawerLayout.openDrawer(GravityCompat.END)
+        }
+        animateNavigationDrawer()
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        return true
+    }
+
+    private fun animateNavigationDrawer() {
+        val END_SCALE = 0.7f
+        drawerLayout.addDrawerListener(object : SimpleDrawerListener() {
+            override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
+                val diffScaledOffset: Float = slideOffset * ( 1-END_SCALE)
+                val offsetScale = 1- diffScaledOffset
+                contentView.scaleX = offsetScale
+                contentView.scaleY = offsetScale
+                val xOffset = drawerView.width * slideOffset
+                val xOffsetDiff = contentView.width * diffScaledOffset / 2
+                val xTranslation = xOffsetDiff - xOffset
+                contentView.translationX = xTranslation
+            }
+        })
+    }
+
+    @SuppressLint("RtlHardcoded")
+    override fun onBackPressed() {
+        if (drawerLayout.isDrawerVisible(GravityCompat.END)){
+            drawerLayout.closeDrawer(GravityCompat.END)
+
+        }else{
+                        when(supportFragmentManager.findFragmentById(R.id.frameLayout)){
+                !is ExploreFragment -> {
+                    exploreFragment()
+                }
+                else->super.onBackPressed()
+            }
+        }
+
+    }
+
+    private fun drawerHeaderItemHandle(){
+        val headerView=navigationView.getHeaderView(0)
+        val rl=headerView.findViewById<ImageView>(R.id.rl_)
+        val rl1=headerView.findViewById<ImageView>(R.id.rl_one)
+        val rl2=headerView.findViewById<ImageView>(R.id.rl_two)
+        val rl3=headerView.findViewById<ImageView>(R.id.rl_three)
+        val rl4=headerView.findViewById<ImageView>(R.id.rl_four)
+        val rl5=headerView.findViewById<ImageView>(R.id.rl_five)
+        val rl6=headerView.findViewById<ImageView>(R.id.rl_six)
+        val rl7=headerView.findViewById<ImageView>(R.id.rl_seven)
+
+        rl.setOnClickListener {
+            startActivity(Intent(this,RegistrationActivity::class.java))
+        }
+    }
 
 }

@@ -18,7 +18,7 @@
         android:icon="@drawable/ic_action_teacher"/>
 
     <item
-    android:id="@+id/more"
-    android:title="@string/more"
-    android:icon="@drawable/ic_action_more"/>
+        android:id="@+id/more"
+        android:title="@string/more"
+        android:icon="@drawable/ic_menu_icon"/>
 </menu>

@@ -16,4 +16,15 @@
     <string name="more">More</string>
     <string name="preference_file_name">Location Preference</string>
     <string name="neutral">Neutral</string>
+    <string name="already_registered">Already registered ?</string>
+    <string name="address">Address</string>
+    <string name="student_name">Student name</string>
+    <string name="live_class">LIVE CLASS</string>
+    <string name="study_material">Study Material</string>
+    <string name="library">Library</string>
+    <string name="setting">Setting</string>
+    <string name="share">Share</string>
+    <string name="suggestoins">Suggestoins</string>
+    <string name="about_us">About us</string>
+    <string name="logout">Logout</string>
 </resources>
