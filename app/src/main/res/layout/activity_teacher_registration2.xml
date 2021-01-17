@@ -27,51 +27,51 @@
                 android:orientation="vertical">
 
 
-                    <EditText
-                        android:id="@+id/et_teacher_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginHorizontal="20dp"
-                        android:hint="Name" />
+                <EditText
+                    android:id="@+id/et_teacher_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginHorizontal="20dp"
+                    android:hint="Name" />
 
-                    <LinearLayout
-                        android:id="@id/LL"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/et_teacher_name"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginHorizontal="10dp"
-                        android:weightSum="5.0">
+                <LinearLayout
+                    android:id="@id/LL"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/et_teacher_name"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:weightSum="5.0">
 
-                        <com.hbb20.CountryCodePicker
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1.5"
-                            android:gravity="center"
-                            app:ccp_autoDetectCountry="true"
-                            app:ccp_showNameCode="true"
-                            app:ccp_textSize="15sp" />
-
-                        <EditText
-                            android:id="@+id/etteacher_mob_num"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="3.5"
-                            android:hint="Mobile Number "
-                            android:inputType="phone"
-                            android:maxLength="10" />
-                    </LinearLayout>
+                    <com.hbb20.CountryCodePicker
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:gravity="center"
+                        app:ccp_autoDetectCountry="true"
+                        app:ccp_showNameCode="true"
+                        app:ccp_textSize="15sp" />
 
                     <EditText
-                        android:id="@+id/et_teacher_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/LL"
-                        android:layout_marginHorizontal="20dp"
-                        android:layout_marginTop="10dp"
-                        android:hint="Email"
-                        android:inputType="textEmailAddress" />
+                        android:id="@+id/etteacher_mob_num"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3.5"
+                        android:hint="Mobile Number "
+                        android:inputType="phone"
+                        android:maxLength="10" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/et_teacher_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/LL"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="10dp"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress" />
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -93,7 +93,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="25dp"
                     />
-               <EditText
+                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/et_teacher_age"
@@ -129,60 +129,61 @@
                     android:layout_marginRight="25dp"/>
 
 
-                    <EditText
-                        android:id="@+id/et_teacher_address"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/et_teacher_qualification"
-                        android:layout_marginTop="10dp"
-                        android:hint="Address "
-                        android:inputType="text"
-                        android:layout_marginHorizontal="20dp"
-                        />
+                <EditText
+                    android:id="@+id/et_teacher_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/et_teacher_qualification"
+                    android:layout_marginTop="10dp"
+                    android:hint="Address "
+                    android:inputType="text"
+                    android:layout_marginHorizontal="20dp"
+                    />
 
-                    <ImageButton
-                        android:id="@+id/btn_location_teacher"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/et_teacher_qualification"
-                        android:src="@drawable/location"
-                        android:background="#ffffff"
-                        android:layout_marginTop="10dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="25dp"
-                        />
-                    <ImageButton
-                        android:id="@+id/imgBtnRegisterTeacher"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/et_teacher_address"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="15dp"
-                        android:background="#ffffff"
-                        android:src="@drawable/registerbtn" />
-                    <ImageButton
-                        android:id="@+id/imgBtnLogin"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/imgBtnRegisterTeacher"
-                        android:layout_marginTop="30dp"
-                        android:layout_centerHorizontal="true"
-                        android:background="#ffffff"
-                        android:src="@drawable/loginn" />
+                <ImageButton
+                    android:id="@+id/btn_location_teacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/et_teacher_qualification"
+                    android:src="@drawable/location"
+                    android:background="#ffffff"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="25dp"
+                    />
+                <ImageButton
+                    android:id="@+id/imgBtnRegisterTeacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/et_teacher_address"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:background="#ffffff"
+                    android:src="@drawable/registerbtn" />
+                <ImageButton
+                    android:id="@+id/imgBtnLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/imgBtnRegisterTeacher"
+                    android:layout_marginTop="30dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="#ffffff"
+                    android:src="@drawable/loginn" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/imgBtnLogin"
-                        android:gravity="center"
-                        android:layout_marginBottom="100dp"
-                        android:text="Already registered ?" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imgBtnLogin"
+                    android:gravity="center"
+                    android:layout_marginBottom="200dp"
+                    android:text="Already registered ?" />
 
 
             </RelativeLayout>
         </ScrollView>
     </RelativeLayout>
 </LinearLayout>
+
 <!--<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
