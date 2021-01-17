@@ -42,7 +42,35 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
 
         setContentView(R.layout.activity_teacher_registration2)
 
-        et_teacher_gender.setOnClickListener {
+       /* val gender= arrayOf("Gender","Male","Female","Neutral")
+        val arrayAdapter=ArrayAdapter(this,android.R.layout.simple_list_item_1,gender)
+        et_teacher_gender.threshold=0
+        et_teacher_gender.setAdapter(arrayAdapter)
+        et_teacher_gender.setOnFocusChangeListener(View.OnFocusChangeListener { v, hasFocus ->
+            if(hasFocus)  et_teacher_gender.showDropDown()
+        })*/
+
+
+
+     //   teacher_gender_spinner.adapter=arrayAdapter
+     //   teacher_gender_spinner.onItemSelectedListener=object :
+        /*AdapterView.OnItemSelectedListener{
+             override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                et_teacher_gender.setText(gender[position])
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+        }*/
+
+       teacher_gender_btn.setOnClickListener {
             val gender = arrayOf("Male", "Female", "Neutral")
             val mAlertDialogBuilder = AlertDialog.Builder(this)
             mAlertDialogBuilder.setTitle("Select gender")
@@ -57,15 +85,30 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
             val mAlertDialog = mAlertDialogBuilder.create()
             mAlertDialog.show()
         }
+        teacher_qualification_btn.setOnClickListener {
+            val qualification = arrayOf("Btech", "Mtech", "Phd")
+            val mAlertDialogBuilder = AlertDialog.Builder(this)
+            mAlertDialogBuilder.setTitle("Select gender")
+            mAlertDialogBuilder.setItems(qualification) { _, which ->
+                when (which) {
+                    which -> {
+                        et_teacher_qualification.setText(qualification[which])
+                        et_teacher_qualification.setTypeface(null, BOLD)
+                    }
+                }
+            }
+            val mAlertDialog = mAlertDialogBuilder.create()
+            mAlertDialog.show()
+        }
 
-        imgBtnTeacherRegister.setOnClickListener {
+        imgBtnRegisterTeacher.setOnClickListener {
             startActivity(Intent(this@TeacherRegistrationActivity2,HomeTeacher::class.java))
         }
-        et_teacher_address.setOnClickListener {
+        btn_location_teacher.setOnClickListener {
             requestPermission()
         }
 
-        btnDob.setOnClickListener {
+        btn_teacher_age.setOnClickListener {
             val now=Calendar.getInstance()
             val datePicker=DatePickerDialog(this,DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
              val selectedDate=Calendar.getInstance()
@@ -73,7 +116,7 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
                 selectedDate.set(Calendar.MONTH,month)
                 selectedDate.set(Calendar.DAY_OF_MONTH,dayOfMonth)
                 val date=formate.format(selectedDate.time)
-               et_teacher_dob.setText(date)
+               et_teacher_age.setText(date)
             },
                 now.get(Calendar.YEAR),now.get(Calendar.MONTH),now.get(Calendar.DAY_OF_MONTH))
             datePicker.show()
