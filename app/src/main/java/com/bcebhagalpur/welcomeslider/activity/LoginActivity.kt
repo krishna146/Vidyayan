@@ -19,6 +19,5 @@ class LoginActivity : AppCompatActivity() {
         btn_register.setOnClickListener {
             startActivity(Intent(this@LoginActivity,TeacherStudentActivity::class.java))
         }
-
     }
 }

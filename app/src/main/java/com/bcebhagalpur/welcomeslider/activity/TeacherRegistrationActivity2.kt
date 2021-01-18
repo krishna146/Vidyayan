@@ -27,22 +27,23 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class TeacherRegistrationActivity2 : AppCompatActivity() {
-    var formate=SimpleDateFormat("dd,mm,yyyy",Locale.US)
+    var formate = SimpleDateFormat("dd,mm,yyyy", Locale.US)
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var locationRequest: LocationRequest
     private lateinit var locationCallback: LocationCallback
+
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.requestFeature(Window.FEATURE_NO_TITLE)
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-        )
-
+//        window.requestFeature(Window.FEATURE_NO_TITLE)
+//        window.setFlags(
+//            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+//            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+//        )
+//        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
         setContentView(R.layout.activity_teacher_registration2)
 
-       /* val gender= arrayOf("Gender","Male","Female","Neutral")
+        /* val gender= arrayOf("Gender","Male","Female","Neutral")
         val arrayAdapter=ArrayAdapter(this,android.R.layout.simple_list_item_1,gender)
         et_teacher_gender.threshold=0
         et_teacher_gender.setAdapter(arrayAdapter)
@@ -51,9 +52,8 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
         })*/
 
 
-
-     //   teacher_gender_spinner.adapter=arrayAdapter
-     //   teacher_gender_spinner.onItemSelectedListener=object :
+        //   teacher_gender_spinner.adapter=arrayAdapter
+        //   teacher_gender_spinner.onItemSelectedListener=object :
         /*AdapterView.OnItemSelectedListener{
              override fun onItemSelected(
                 parent: AdapterView<*>?,
@@ -70,7 +70,7 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
 
         }*/
 
-       teacher_gender_btn.setOnClickListener {
+       et_teacher_gender.setOnClickListener {
             val gender = arrayOf("Male", "Female", "Neutral")
             val mAlertDialogBuilder = AlertDialog.Builder(this)
             mAlertDialogBuilder.setTitle("Select gender")
@@ -85,30 +85,30 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
             val mAlertDialog = mAlertDialogBuilder.create()
             mAlertDialog.show()
         }
-        teacher_qualification_btn.setOnClickListener {
-            val qualification = arrayOf("Btech", "Mtech", "Phd")
-            val mAlertDialogBuilder = AlertDialog.Builder(this)
-            mAlertDialogBuilder.setTitle("Select gender")
-            mAlertDialogBuilder.setItems(qualification) { _, which ->
-                when (which) {
-                    which -> {
-                        et_teacher_qualification.setText(qualification[which])
-                        et_teacher_qualification.setTypeface(null, BOLD)
-                    }
-                }
-            }
-            val mAlertDialog = mAlertDialogBuilder.create()
-            mAlertDialog.show()
-        }
+//        teacher_qualification_btn.setOnClickListener {
+//            val qualification = arrayOf("Btech", "Mtech", "Phd")
+//            val mAlertDialogBuilder = AlertDialog.Builder(this)
+//            mAlertDialogBuilder.setTitle("Select gender")
+//            mAlertDialogBuilder.setItems(qualification) { _, which ->
+//                when (which) {
+//                    which -> {
+//                        et_teacher_qualification.setText(qualification[which])
+//                        et_teacher_qualification.setTypeface(null, BOLD)
+//                    }
+//                }
+//            }
+//            val mAlertDialog = mAlertDialogBuilder.create()
+//            mAlertDialog.show()
+//        }
 
-        imgBtnRegisterTeacher.setOnClickListener {
+        imgBtnTeacherRegister.setOnClickListener {
             startActivity(Intent(this@TeacherRegistrationActivity2,HomeTeacher::class.java))
         }
-        btn_location_teacher.setOnClickListener {
+        et_teacher_address.setOnClickListener {
             requestPermission()
         }
 
-        btn_teacher_age.setOnClickListener {
+       et_teacher_dob.setOnClickListener {
             val now=Calendar.getInstance()
             val datePicker=DatePickerDialog(this,DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
              val selectedDate=Calendar.getInstance()
@@ -116,7 +116,7 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
                 selectedDate.set(Calendar.MONTH,month)
                 selectedDate.set(Calendar.DAY_OF_MONTH,dayOfMonth)
                 val date=formate.format(selectedDate.time)
-               et_teacher_age.setText(date)
+               et_teacher_dob.setText(date)
             },
                 now.get(Calendar.YEAR),now.get(Calendar.MONTH),now.get(Calendar.DAY_OF_MONTH))
             datePicker.show()
@@ -222,4 +222,4 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
 
     }
 
-}
+    }
