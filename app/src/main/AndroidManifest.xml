@@ -12,9 +12,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme1">
         <activity android:name=".activity.HomeTeacher"></activity>
-        <activity android:name=".activity.TeacherRegistrationActivity2" />
+        <activity android:name=".activity.TeacherRegistrationActivity2"
+            android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".activity.HomeActivity" />
         <activity android:name=".activity.RegistrationActivity" />
         <activity android:name=".activity.TeacherStudentActivity" />
