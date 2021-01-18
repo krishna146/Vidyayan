@@ -14,7 +14,7 @@ import com.bcebhagalpur.welcomeslider.fragment.Class12thor11thFragment
 import kotlinx.android.synthetic.main.activity_choose_class.*
 
 
-class ChooseClassActivity : AppCompatActivity() {
+class  ChooseClassActivity : AppCompatActivity() {
 
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +25,7 @@ class ChooseClassActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
         setContentView(R.layout.activity_choose_class)
-        txt13th.setOnClickListener() {
+        txt13th.setOnClickListener {
             txt13th.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
             txt12th.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
             txt11th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
