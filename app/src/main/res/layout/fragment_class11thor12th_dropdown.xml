@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.Class11thor12thDropdownFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/menuBoard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:layout_below="@+id/etEmail"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:hint="Board">
+
+    <AutoCompleteTextView
+        android:id="@+id/AutoCompleteTextViewBoard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="none" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/menuStream"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        android:layout_below="@+id/menuBoard"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:hint="Stream">
+
+    <AutoCompleteTextView
+        android:id="@+id/AutoCompleteTextViewStream"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="none" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+</RelativeLayout>
