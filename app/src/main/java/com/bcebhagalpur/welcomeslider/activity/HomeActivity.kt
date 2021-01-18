@@ -8,6 +8,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -83,6 +84,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             Toast.makeText(this, "by", Toast.LENGTH_SHORT).show()
         }
         exploreFragment()
+        drawerHeaderItemHandle()
+
     }
 
     private fun bottom(){
@@ -240,17 +243,17 @@ private fun onAddButtonClicked()
 
     private fun drawerHeaderItemHandle(){
         val headerView=navigationView.getHeaderView(0)
-        val rl=headerView.findViewById<ImageView>(R.id.rl_)
-        val rl1=headerView.findViewById<ImageView>(R.id.rl_one)
-        val rl2=headerView.findViewById<ImageView>(R.id.rl_two)
-        val rl3=headerView.findViewById<ImageView>(R.id.rl_three)
-        val rl4=headerView.findViewById<ImageView>(R.id.rl_four)
-        val rl5=headerView.findViewById<ImageView>(R.id.rl_five)
-        val rl6=headerView.findViewById<ImageView>(R.id.rl_six)
-        val rl7=headerView.findViewById<ImageView>(R.id.rl_seven)
+        val rl=headerView.findViewById<RelativeLayout>(R.id.rl_)
+        val rl1=headerView.findViewById<RelativeLayout>(R.id.rl_one)
+        val rl2=headerView.findViewById<RelativeLayout>(R.id.rl_two)
+        val rl3=headerView.findViewById<RelativeLayout>(R.id.rl_three)
+        val rl4=headerView.findViewById<RelativeLayout>(R.id.rl_four)
+        val rl5=headerView.findViewById<RelativeLayout>(R.id.rl_five)
+        val rl6=headerView.findViewById<RelativeLayout>(R.id.rl_six)
+        val rl7=headerView.findViewById<RelativeLayout>(R.id.rl_seven)
 
         rl.setOnClickListener {
-            startActivity(Intent(this,RegistrationActivity::class.java))
+            startActivity(Intent(this,StudentProfileActivity::class.java))
         }
     }
 

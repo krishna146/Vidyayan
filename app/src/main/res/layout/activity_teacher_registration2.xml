@@ -8,415 +8,417 @@
     tools:context=".activity.TeacherRegistrationActivity2">
 
 
-<LinearLayout
-    android:background="@drawable/registrationpagebackgroundsecond"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    >
-
-    <View
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="180dp"/>
+        android:layout_height="wrap_content"
+        android:background="@drawable/registrationpagebackgroundsecond"
+        android:orientation="vertical">
 
-         <LinearLayout
-             android:orientation="vertical"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="180dp" />
 
-             <LinearLayout
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-             <com.google.android.material.textfield.TextInputLayout
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_teacher_name"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
-                android:maxLines="2"
-                android:maxLength="50"
-                android:layout_centerHorizontal="true"
-                android:layout_marginHorizontal="20dp"
-                android:hint="Name" />
+                android:orientation="vertical">
 
-             </com.google.android.material.textfield.TextInputLayout>
-             </LinearLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-             <LinearLayout
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:orientation="horizontal">
-                 <com.hbb20.CountryCodePicker
-                     android:id="@+id/countryCode"
-                     android:layout_marginTop="15dp"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:layout_gravity="center"/>
-             <LinearLayout
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:orientation="vertical">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_teacher_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginHorizontal="20dp"
+                        android:hint="Name"
+                        android:inputType="text"
+                        android:maxLength="50"
+                        android:maxLines="2" />
 
-                 <com.google.android.material.textfield.TextInputLayout
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content">
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
 
-                     <com.google.android.material.textfield.TextInputEditText
-                         android:id="@+id/et_teacher_number"
-                         android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
-                         android:layout_centerHorizontal="true"
-                         android:inputType="number"
-                         android:maxLength="10"
-                         android:layout_marginHorizontal="20dp"
-                         android:hint="Number" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-                 </com.google.android.material.textfield.TextInputLayout>
-             </LinearLayout>
-             </LinearLayout>
+                <com.hbb20.CountryCodePicker
+                    android:id="@+id/countryCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp" />
 
-             <LinearLayout
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                 <com.google.android.material.textfield.TextInputLayout
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content">
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                     <com.google.android.material.textfield.TextInputEditText
-                         android:id="@+id/et_teacher_email"
-                         android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
-                         android:inputType="textEmailAddress"
-                         android:maxLines="1"
-                         android:maxLength="50"
-                         android:layout_centerHorizontal="true"
-                         android:layout_marginHorizontal="20dp"
-                         android:hint="Email" />
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_teacher_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginHorizontal="20dp"
+                            android:hint="Number"
+                            android:inputType="number"
+                            android:maxLength="10" />
 
-                 </com.google.android.material.textfield.TextInputLayout>
-             </LinearLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+            </LinearLayout>
 
-             <RelativeLayout
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content">
-             <LinearLayout
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                 <com.google.android.material.textfield.TextInputLayout
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                     <com.google.android.material.textfield.TextInputEditText
-                         android:id="@+id/et_teacher_dob"
-                         android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
-                         android:inputType="date"
-                         android:maxLines="1"
-                         android:maxLength="10"
-                         android:layout_centerHorizontal="true"
-                         android:layout_marginHorizontal="20dp"
-                         android:hint="Date of birth"/>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_teacher_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginHorizontal="20dp"
+                        android:hint="Email"
+                        android:inputType="textEmailAddress"
+                        android:maxLength="50"
+                        android:maxLines="1" />
 
-                 </com.google.android.material.textfield.TextInputLayout>
-             </LinearLayout>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
 
-                 <ImageButton
-                     android:id="@+id/btnDob"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:layout_alignParentEnd="true"
-                     android:layout_marginEnd="25dp"
-                     android:layout_centerVertical="true"
-                     android:background="@color/colorAccent"
-                     android:src="@drawable/ic_date_picker"
-                     android:tint="#ffffff" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-             </RelativeLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-             <LinearLayout
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:orientation="vertical">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_teacher_dob"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginHorizontal="20dp"
+                            android:hint="Date of birth"
+                            android:inputType="date"
+                            android:maxLength="10"
+                            android:maxLines="1" />
 
-                 <com.google.android.material.textfield.TextInputLayout
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content">
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
 
-                     <com.google.android.material.textfield.TextInputEditText
-                         android:id="@+id/et_teacher_gender"
-                         android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
-                         android:inputType="text"
-                         android:maxLines="1"
-                         android:maxLength="15"
-                         android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                         android:layout_centerHorizontal="true"
-                         android:layout_marginHorizontal="20dp"
-                         android:hint="Gender" />
-
-                 </com.google.android.material.textfield.TextInputLayout>
-             </LinearLayout>
-
-             <LinearLayout
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:orientation="vertical">
-
-                 <com.google.android.material.textfield.TextInputLayout
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content">
-
-                     <com.google.android.material.textfield.TextInputEditText
-                         android:id="@+id/et_teacher_address"
-                         android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
-                         android:inputType="text"
-                         android:maxLines="1"
-                         android:drawableEnd="@drawable/location"
-                         android:layout_centerHorizontal="true"
-                         android:layout_marginHorizontal="20dp"
-                         android:hint="Address" />
-
-                 </com.google.android.material.textfield.TextInputLayout>
-             </LinearLayout>
+                <ImageButton
+                    android:id="@+id/btnDob"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="25dp"
+                    android:background="@color/colorAccent"
+                    android:src="@drawable/ic_date_picker"
+                    android:tint="#ffffff" />
 
 
-             <ImageButton
-                 android:id="@+id/imgBtnTeacherRegister"
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_gravity="center_horizontal"
-                 android:layout_marginTop="15dp"
-                 android:background="#ffffff"
-                 android:src="@drawable/registerbtn" />
+            </RelativeLayout>
 
-             <RelativeLayout
-                 android:layout_gravity="bottom|center_horizontal"
-                 android:layout_width="match_parent"
-                 android:layout_height="match_parent"
-                 android:layout_marginBottom="15dp">
-                 <ImageButton
-                     android:id="@+id/imgBtnLogin"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:layout_marginTop="30dp"
-                     android:layout_centerHorizontal="true"
-                     android:background="#ffffff"
-                     android:src="@drawable/loginn"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                 <TextView
-                     android:layout_below="@+id/imgBtnLogin"
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:gravity="center"
-                     android:layout_gravity="center_horizontal"
-                     android:text="@string/already_registered"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-             </RelativeLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_teacher_gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginHorizontal="20dp"
+                        android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                        android:hint="Gender"
+                        android:inputType="text"
+                        android:maxLength="15"
+                        android:maxLines="1" />
 
-         </LinearLayout>
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_teacher_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginHorizontal="20dp"
+                        android:drawableEnd="@drawable/location"
+                        android:hint="Address"
+                        android:inputType="text"
+                        android:maxLines="1" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
 
 
-</LinearLayout>
+            <ImageButton
+                android:id="@+id/imgBtnTeacherRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:background="#ffffff"
+                android:src="@drawable/registerbtn" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="15dp">
+
+                <ImageButton
+                    android:id="@+id/imgBtnLogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="30dp"
+                    android:background="#ffffff"
+                    android:src="@drawable/loginn" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imgBtnLogin"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center"
+                    android:text="@string/already_registered" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 
 </ScrollView>
 
 
+    <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--    xmlns:tools="http://schemas.android.com/tools"-->
+    <!--    android:layout_width="match_parent"-->
+    <!--    android:layout_height="match_parent"-->
+    <!--    android:background="@drawable/registrationpagebackground"-->
+    <!--    tools:context=".activity.TeacherRegistrationActivity2"-->
+    <!--    android:weightSum="5"-->
+    <!--    android:orientation="vertical">-->
 
-<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    android:background="@drawable/registrationpagebackground"-->
-<!--    tools:context=".activity.TeacherRegistrationActivity2"-->
-<!--    android:weightSum="5"-->
-<!--    android:orientation="vertical">-->
-
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:layout_weight="1.3"-->
-<!--        />-->
-<!--    <RelativeLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:layout_weight="3.7">-->
-<!--        <ScrollView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content">-->
-<!--            <RelativeLayout-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:orientation="vertical">-->
-
-
-<!--                    <EditText-->
-<!--                        android:id="@+id/et_teacher_name"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_centerHorizontal="true"-->
-<!--                        android:layout_marginHorizontal="20dp"-->
-<!--                        android:hint="Name" />-->
-
-<!--                    <LinearLayout-->
-<!--                        android:id="@id/LL"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_below="@id/et_teacher_name"-->
-<!--                        android:layout_marginTop="10dp"-->
-<!--                        android:layout_marginHorizontal="10dp"-->
-<!--                        android:weightSum="5.0">-->
-
-<!--                        <com.hbb20.CountryCodePicker-->
-<!--                            android:layout_width="0dp"-->
-<!--                            android:layout_height="match_parent"-->
-<!--                            android:layout_weight="1.5"-->
-<!--                            android:gravity="center"-->
-<!--                            app:ccp_autoDetectCountry="true"-->
-<!--                            app:ccp_showNameCode="true"-->
-<!--                            app:ccp_textSize="15sp" />-->
-
-<!--                        <EditText-->
-<!--                            android:id="@+id/etteacher_mob_num"-->
-<!--                            android:layout_width="0dp"-->
-<!--                            android:layout_height="match_parent"-->
-<!--                            android:layout_weight="3.5"-->
-<!--                            android:hint="Mobile Number "-->
-<!--                            android:inputType="phone"-->
-<!--                            android:maxLength="10" />-->
-<!--                    </LinearLayout>-->
-
-<!--                    <EditText-->
-<!--                        android:id="@+id/et_teacher_email"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_below="@id/LL"-->
-<!--                        android:layout_marginHorizontal="20dp"-->
-<!--                        android:layout_marginTop="10dp"-->
-<!--                        android:hint="Email"-->
-<!--                        android:inputType="textEmailAddress" />-->
-<!--                <EditText-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_below="@id/et_teacher_email"-->
-<!--                    android:layout_marginHorizontal="20dp"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    android:hint="DD/MM/YYYY"-->
-<!--                    android:id="@+id/et_teacher_age"-->
-<!--                    />-->
-<!--                <ImageButton-->
-<!--                    android:id="@+id/btn_teacher_age"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_below="@id/et_teacher_email"-->
-<!--                    android:src="@drawable/ic_date_picker"-->
-<!--                    android:background="@color/colorAccent"-->
-<!--                    android:tint="#ffffff"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    android:layout_alignParentRight="true"-->
-<!--                    android:layout_marginRight="25dp"-->
-<!--                    />-->
-<!--               <EditText-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_below="@id/et_teacher_age"-->
-<!--                    android:layout_marginHorizontal="20dp"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    android:hint="Gender"-->
-<!--                    android:id="@+id/et_teacher_gender"/>-->
-<!--                <ImageView-->
-<!--                    android:id="@+id/teacher_gender_btn"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:src="@drawable/ic_baseline_arrow_drop_down_24"-->
-<!--                    android:layout_below="@id/et_teacher_age"-->
-<!--                    android:layout_alignParentRight="true"-->
-<!--                    android:layout_marginRight="25dp"/>-->
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:layout_weight="1.3"-->
+    <!--        />-->
+    <!--    <RelativeLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:layout_weight="3.7">-->
+    <!--        <ScrollView-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content">-->
+    <!--            <RelativeLayout-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:orientation="vertical">-->
 
 
-<!--                <EditText-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_below="@id/et_teacher_gender"-->
-<!--                    android:layout_marginHorizontal="20dp"-->
-<!--                    android:layout_marginTop="10dp"-->
-<!--                    android:hint="Qualification"-->
-<!--                    android:id="@+id/et_teacher_qualification"/>-->
-<!--                <ImageView-->
-<!--                    android:id="@+id/teacher_qualification_btn"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:src="@drawable/ic_baseline_arrow_drop_down_24"-->
-<!--                    android:layout_below="@id/et_teacher_gender"-->
-<!--                    android:layout_alignParentRight="true"-->
-<!--                    android:layout_marginRight="25dp"/>-->
+    <!--                    <EditText-->
+    <!--                        android:id="@+id/et_teacher_name"-->
+    <!--                        android:layout_width="match_parent"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_centerHorizontal="true"-->
+    <!--                        android:layout_marginHorizontal="20dp"-->
+    <!--                        android:hint="Name" />-->
+
+    <!--                    <LinearLayout-->
+    <!--                        android:id="@id/LL"-->
+    <!--                        android:layout_width="match_parent"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_below="@id/et_teacher_name"-->
+    <!--                        android:layout_marginTop="10dp"-->
+    <!--                        android:layout_marginHorizontal="10dp"-->
+    <!--                        android:weightSum="5.0">-->
+
+    <!--                        <com.hbb20.CountryCodePicker-->
+    <!--                            android:layout_width="0dp"-->
+    <!--                            android:layout_height="match_parent"-->
+    <!--                            android:layout_weight="1.5"-->
+    <!--                            android:gravity="center"-->
+    <!--                            app:ccp_autoDetectCountry="true"-->
+    <!--                            app:ccp_showNameCode="true"-->
+    <!--                            app:ccp_textSize="15sp" />-->
+
+    <!--                        <EditText-->
+    <!--                            android:id="@+id/etteacher_mob_num"-->
+    <!--                            android:layout_width="0dp"-->
+    <!--                            android:layout_height="match_parent"-->
+    <!--                            android:layout_weight="3.5"-->
+    <!--                            android:hint="Mobile Number "-->
+    <!--                            android:inputType="phone"-->
+    <!--                            android:maxLength="10" />-->
+    <!--                    </LinearLayout>-->
+
+    <!--                    <EditText-->
+    <!--                        android:id="@+id/et_teacher_email"-->
+    <!--                        android:layout_width="match_parent"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_below="@id/LL"-->
+    <!--                        android:layout_marginHorizontal="20dp"-->
+    <!--                        android:layout_marginTop="10dp"-->
+    <!--                        android:hint="Email"-->
+    <!--                        android:inputType="textEmailAddress" />-->
+    <!--                <EditText-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_below="@id/et_teacher_email"-->
+    <!--                    android:layout_marginHorizontal="20dp"-->
+    <!--                    android:layout_marginTop="10dp"-->
+    <!--                    android:hint="DD/MM/YYYY"-->
+    <!--                    android:id="@+id/et_teacher_age"-->
+    <!--                    />-->
+    <!--                <ImageButton-->
+    <!--                    android:id="@+id/btn_teacher_age"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_below="@id/et_teacher_email"-->
+    <!--                    android:src="@drawable/ic_date_picker"-->
+    <!--                    android:background="@color/colorAccent"-->
+    <!--                    android:tint="#ffffff"-->
+    <!--                    android:layout_marginTop="10dp"-->
+    <!--                    android:layout_alignParentRight="true"-->
+    <!--                    android:layout_marginRight="25dp"-->
+    <!--                    />-->
+    <!--               <EditText-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_below="@id/et_teacher_age"-->
+    <!--                    android:layout_marginHorizontal="20dp"-->
+    <!--                    android:layout_marginTop="10dp"-->
+    <!--                    android:hint="Gender"-->
+    <!--                    android:id="@+id/et_teacher_gender"/>-->
+    <!--                <ImageView-->
+    <!--                    android:id="@+id/teacher_gender_btn"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:src="@drawable/ic_baseline_arrow_drop_down_24"-->
+    <!--                    android:layout_below="@id/et_teacher_age"-->
+    <!--                    android:layout_alignParentRight="true"-->
+    <!--                    android:layout_marginRight="25dp"/>-->
 
 
-<!--                    <EditText-->
-<!--                        android:id="@+id/et_teacher_address"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_below="@+id/et_teacher_qualification"-->
-<!--                        android:layout_marginTop="10dp"-->
-<!--                        android:hint="Address "-->
-<!--                        android:inputType="text"-->
-<!--                        android:layout_marginHorizontal="20dp"-->
-<!--                        />-->
-
-<!--                    <ImageButton-->
-<!--                        android:id="@+id/btn_location_teacher"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_below="@id/et_teacher_qualification"-->
-<!--                        android:src="@drawable/location"-->
-<!--                        android:background="#ffffff"-->
-<!--                        android:layout_marginTop="10dp"-->
-<!--                        android:layout_alignParentRight="true"-->
-<!--                        android:layout_marginRight="25dp"-->
-<!--                        />-->
-<!--                    <ImageButton-->
-<!--                        android:id="@+id/imgBtnRegisterTeacher"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_below="@id/et_teacher_address"-->
-<!--                        android:layout_centerHorizontal="true"-->
-<!--                        android:layout_marginTop="15dp"-->
-<!--                        android:background="#ffffff"-->
-<!--                        android:src="@drawable/registerbtn" />-->
-<!--                    <ImageButton-->
-<!--                        android:id="@+id/imgBtnLogin"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_below="@id/imgBtnRegisterTeacher"-->
-<!--                        android:layout_marginTop="30dp"-->
-<!--                        android:layout_centerHorizontal="true"-->
-<!--                        android:background="#ffffff"-->
-<!--                        android:src="@drawable/loginn" />-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_below="@+id/imgBtnLogin"-->
-<!--                        android:gravity="center"-->
-<!--                        android:layout_marginBottom="100dp"-->
-<!--                        android:text="Already registered ?" />-->
+    <!--                <EditText-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_below="@id/et_teacher_gender"-->
+    <!--                    android:layout_marginHorizontal="20dp"-->
+    <!--                    android:layout_marginTop="10dp"-->
+    <!--                    android:hint="Qualification"-->
+    <!--                    android:id="@+id/et_teacher_qualification"/>-->
+    <!--                <ImageView-->
+    <!--                    android:id="@+id/teacher_qualification_btn"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:src="@drawable/ic_baseline_arrow_drop_down_24"-->
+    <!--                    android:layout_below="@id/et_teacher_gender"-->
+    <!--                    android:layout_alignParentRight="true"-->
+    <!--                    android:layout_marginRight="25dp"/>-->
 
 
-<!--            </RelativeLayout>-->
-<!--        </ScrollView>-->
-<!--    </RelativeLayout>-->
-<!--</LinearLayout>-->
+    <!--                    <EditText-->
+    <!--                        android:id="@+id/et_teacher_address"-->
+    <!--                        android:layout_width="match_parent"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_below="@+id/et_teacher_qualification"-->
+    <!--                        android:layout_marginTop="10dp"-->
+    <!--                        android:hint="Address "-->
+    <!--                        android:inputType="text"-->
+    <!--                        android:layout_marginHorizontal="20dp"-->
+    <!--                        />-->
+
+    <!--                    <ImageButton-->
+    <!--                        android:id="@+id/btn_location_teacher"-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_below="@id/et_teacher_qualification"-->
+    <!--                        android:src="@drawable/location"-->
+    <!--                        android:background="#ffffff"-->
+    <!--                        android:layout_marginTop="10dp"-->
+    <!--                        android:layout_alignParentRight="true"-->
+    <!--                        android:layout_marginRight="25dp"-->
+    <!--                        />-->
+    <!--                    <ImageButton-->
+    <!--                        android:id="@+id/imgBtnRegisterTeacher"-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_below="@id/et_teacher_address"-->
+    <!--                        android:layout_centerHorizontal="true"-->
+    <!--                        android:layout_marginTop="15dp"-->
+    <!--                        android:background="#ffffff"-->
+    <!--                        android:src="@drawable/registerbtn" />-->
+    <!--                    <ImageButton-->
+    <!--                        android:id="@+id/imgBtnLogin"-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_below="@id/imgBtnRegisterTeacher"-->
+    <!--                        android:layout_marginTop="30dp"-->
+    <!--                        android:layout_centerHorizontal="true"-->
+    <!--                        android:background="#ffffff"-->
+    <!--                        android:src="@drawable/loginn" />-->
+
+    <!--                    <TextView-->
+    <!--                        android:layout_width="match_parent"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_below="@+id/imgBtnLogin"-->
+    <!--                        android:gravity="center"-->
+    <!--                        android:layout_marginBottom="100dp"-->
+    <!--                        android:text="Already registered ?" />-->
+
+
+    <!--            </RelativeLayout>-->
+    <!--        </ScrollView>-->
+    <!--    </RelativeLayout>-->
+    <!--</LinearLayout>-->
 
 
 
