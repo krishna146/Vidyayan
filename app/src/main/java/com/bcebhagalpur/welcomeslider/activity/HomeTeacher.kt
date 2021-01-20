@@ -39,6 +39,7 @@ class HomeTeacher : AppCompatActivity() {
         setContentView(R.layout.activity_home_teacher)
         bottomNavigationView=findViewById(R.id.bottomNavigationView2)
         bottom()
+        exploreFragmentTeacher()
         floatingActionButton7.setOnClickListener {
             onAddButtonClicked()
         }

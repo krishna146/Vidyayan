@@ -141,19 +141,34 @@
                 android:id="@+id/menu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
                 android:layout_below="@+id/etAddress"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="10dp"
                 android:hint="class">
-
-                <AutoCompleteTextView
-                    android:id="@+id/AutoCompleteTextView"
+                <EditText
+                    android:id="@+id/et_class"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none" />
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:editable="true"
+                    android:ems="10"
+                    android:text="10"
+                     />
+
+
 
             </com.google.android.material.textfield.TextInputLayout>
+            <ImageView
+                android:id="@+id/autoCompleteTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etAddress"
+                android:layout_alignParentRight="true"
+                 android:layout_marginTop="20dp"
+                android:layout_marginRight="40dp"
+                android:src="@drawable/ic_baseline_arrow_drop_down_24"
+                />
             <androidx.coordinatorlayout.widget.CoordinatorLayout
                 android:id="@+id/CL"
                 android:layout_below="@+id/menu"

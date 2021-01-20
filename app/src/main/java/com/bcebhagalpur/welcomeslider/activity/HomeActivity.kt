@@ -72,7 +72,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
          navigationDrawer()
 
         bottomNavigationView=findViewById(R.id.bottomNavigationView)
-
+        exploreFragment()
         bottom()
         floatingActionButton.setOnClickListener {
             onAddButtonClicked()
