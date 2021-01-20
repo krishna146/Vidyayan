@@ -46,6 +46,10 @@ class SplashActivity : AppCompatActivity() {
        // requestPermission()
     }
 
+    override fun onPause() {
+        super.onPause()
+        finish()
+    }
 
   /*  fun requestPermission() {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)

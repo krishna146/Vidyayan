@@ -120,13 +120,19 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="10dp"
         android:background="@android:drawable/editbox_background"
-        android:drawableEnd="@android:drawable/arrow_down_float"
         android:drawablePadding="20dp"
-        android:gravity="center"
+        android:gravity=""
         android:padding="10dp"
-        android:text="Select Subjects"
         android:textColor="#000000"
         android:textSize="20sp"
         android:visibility="gone" />
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:layout_below="@+id/txtSelectSubject"/>
 
 </RelativeLayout>
