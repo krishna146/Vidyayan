@@ -102,7 +102,7 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
 //        }
 
         imgBtnTeacherRegister.setOnClickListener {
-            startActivity(Intent(this@TeacherRegistrationActivity2,HomeTeacher::class.java))
+            startActivity(Intent(this@TeacherRegistrationActivity2,TeacherRegistrationActivity3::class.java))
         }
         et_teacher_address.setOnClickListener {
             requestPermission()
