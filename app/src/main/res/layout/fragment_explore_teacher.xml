@@ -1,14 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".bodyfragment.ExploreTeacherFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".bodyfragment.ExploreTeacherFragment"
+    android:background="#ffffff">
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="@android:color/white">
+        <EditText
+            android:id="@+id/etSearchTeacherExplore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/new_background"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:textSize="18sp"
+            android:layout_marginBottom="2dp"
+            android:hint="search teacher, subject, course etc"/>
 
-</FrameLayout>
+
+        <LinearLayout
+           android:layout_below="@id/etSearchTeacherExplore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:id="@+id/llExplore">
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="#fff"
+                app:cardCornerRadius="8dp"
+                android:layout_margin="5dp">
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_height="200dp"
+                    />
+            </androidx.cardview.widget.CardView>
+            <LinearLayout
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <ImageView
+                    android:id="@+id/indicator1"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/indicator_circle_black"/>
+                <ImageView
+                    android:id="@+id/indicator2"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/indicator_circle"/>
+                <ImageView
+                    android:id="@+id/indicator3"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/indicator_circle"/>
+                <ImageView
+                    android:id="@+id/indicator4"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/indicator_circle"/>
+                <ImageView
+                    android:id="@+id/indicator5"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/indicator_circle"/>
+                <ImageView
+                    android:id="@+id/indicator6"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:src="@drawable/indicator_circle"/>
+
+            </LinearLayout>
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/llExplore"
+            android:text="Your Today Schedule"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:id="@+id/txt_schedule"
+            android:textColor="#BDBCBC"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_schedule"
+            android:id="@+id/recyclerView1"
+            android:layout_marginStart="5dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/recyclerView1"
+            android:text="Your Subjects"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:id="@+id/txt_subject"
+            android:textColor="#BDBCBC"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_subject"
+            android:id="@+id/recyclerView2"
+            android:layout_marginStart="5dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/recyclerView2"
+            android:text="Students Around You"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="20dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:id="@+id/txt_studet_around"
+            android:textColor="#BDBCBC"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_studet_around"
+            android:id="@+id/recyclerView3"
+            android:layout_marginStart="5dp"/>
+    </RelativeLayout>
+
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+</ScrollView>
