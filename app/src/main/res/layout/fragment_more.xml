@@ -85,9 +85,47 @@
         android:layout_marginRight="15dp"/>
 </RelativeLayout>
 
-
      <RelativeLayout
          android:id="@+id/rl_two"
+         android:layout_width="match_parent"
+         android:layout_height="70dp"
+         android:layout_marginLeft="20dp"
+         android:layout_marginRight="20dp"
+         android:background="@drawable/new_background"
+         android:layout_marginHorizontal="5dp"
+         android:padding="2dp"
+         android:layout_marginTop="10dp"
+         >
+         <ImageView
+             android:id="@+id/analytics"
+             android:layout_width="30dp"
+             android:layout_height="30dp"
+             android:src="@drawable/ic_analytics"
+             android:layout_centerVertical="true"
+             android:layout_marginLeft="40dp"/>
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="Analysis"
+             android:layout_centerVertical="true"
+             android:layout_toRightOf="@id/analytics"
+             android:layout_marginLeft="25dp"
+             android:textSize="15sp"
+             android:textStyle="bold"/>
+         <ImageView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:src="@drawable/ic_baseline_navigate_next_24"
+             android:layout_centerVertical="true"
+             android:layout_alignParentEnd="true"
+             android:layout_marginRight="15dp"/>
+     </RelativeLayout>
+
+
+
+
+     <RelativeLayout
+         android:id="@+id/rl_three"
          android:layout_width="match_parent"
          android:layout_height="70dp"
          android:background="@drawable/new_background"
@@ -96,7 +134,7 @@
          android:layout_marginTop="10dp"
          >
          <ImageView
-             android:id="@+id/study_material"
+             android:id="@+id/my_course"
              android:layout_width="30dp"
              android:layout_height="30dp"
              android:src="@drawable/ic_baseline_file_copy_24"
@@ -105,9 +143,9 @@
          <TextView
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:text="Study Material"
+             android:text="My Course"
              android:layout_centerVertical="true"
-             android:layout_toRightOf="@id/study_material"
+             android:layout_toRightOf="@id/my_course"
              android:layout_marginLeft="25dp"
              android:textSize="15sp"
              android:textStyle="bold"/>
@@ -121,7 +159,7 @@
      </RelativeLayout>
 
      <RelativeLayout
-         android:id="@+id/rl_three"
+         android:id="@+id/rl_four"
          android:layout_width="match_parent"
          android:layout_height="70dp"
          android:background="@drawable/new_background"
@@ -129,18 +167,18 @@
          android:padding="2dp"
          android:layout_marginTop="10dp"
          > <ImageView
-         android:id="@+id/my_content"
+         android:id="@+id/my_bookmark"
          android:layout_width="30dp"
          android:layout_height="30dp"
-         android:src="@drawable/ic_baseline_picture_as_pdf_24"
+         android:src="@drawable/ic_bookmarks"
          android:layout_centerVertical="true"
          android:layout_marginLeft="40dp"/>
          <TextView
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:text="Library"
+             android:text="BookMarks"
              android:layout_centerVertical="true"
-             android:layout_toRightOf="@id/my_content"
+             android:layout_toRightOf="@id/my_bookmark"
              android:layout_marginLeft="25dp"
              android:textSize="15sp"
              android:textStyle="bold"/>
@@ -153,7 +191,7 @@
              android:layout_marginRight="15dp"/></RelativeLayout>
 
      <RelativeLayout
-         android:id="@+id/rl_four"
+         android:id="@+id/rl_five"
          android:layout_width="match_parent"
          android:layout_height="70dp"
          android:background="@drawable/new_background"
@@ -162,18 +200,18 @@
          android:layout_marginTop="10dp"
          >
          <ImageView
-             android:id="@+id/setting"
+             android:id="@+id/my_tutor"
              android:layout_width="30dp"
              android:layout_height="30dp"
-             android:src="@drawable/ic_baseline_settings_24"
+             android:src="@drawable/ic_my_tutor"
              android:layout_centerVertical="true"
              android:layout_marginLeft="40dp"/>
          <TextView
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:text="Setting"
+             android:text="My Tutor"
              android:layout_centerVertical="true"
-             android:layout_toRightOf="@id/setting"
+             android:layout_toRightOf="@id/my_tutor"
              android:layout_marginLeft="25dp"
              android:textSize="15sp"
              android:textStyle="bold"/>
@@ -187,7 +225,7 @@
      </RelativeLayout>
 
      <RelativeLayout
-         android:id="@+id/rl_five"
+         android:id="@+id/rl_six"
          android:layout_width="match_parent"
          android:layout_height="70dp"
          android:background="@drawable/new_background"
@@ -221,7 +259,7 @@
      </RelativeLayout>
 
      <RelativeLayout
-         android:id="@+id/rl_six"
+         android:id="@+id/rl_seven"
          android:layout_width="match_parent"
          android:layout_height="70dp"
          android:background="@drawable/new_background"
@@ -255,7 +293,7 @@
      </RelativeLayout>
 
      <RelativeLayout
-         android:id="@+id/rl_seven"
+         android:id="@+id/rl_eight"
          android:layout_width="match_parent"
          android:layout_height="70dp"
          android:background="@drawable/new_background"

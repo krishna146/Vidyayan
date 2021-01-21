@@ -5,9 +5,9 @@
         android:title="@string/explore"
         android:icon="@drawable/ic_action_explore"/>
     <item
-        android:id="@+id/search"
-        android:title="@string/search"
-        android:icon="@drawable/ic_action_search"/>
+        android:id="@+id/study"
+        android:title="Study"
+        android:icon="@drawable/ic_baseline_file_copy_24"/>
     <item
         android:id="@+id/student"
         android:title=""

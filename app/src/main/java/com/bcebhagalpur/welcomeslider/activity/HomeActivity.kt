@@ -33,7 +33,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var bottomNavigationView:BottomNavigationView
     private lateinit var exploreFragment: ExploreFragment
 //    private lateinit var moreFragment: MoreFragment
-    private lateinit var searchFragment:SearchFragment
+    private lateinit var studyFragment: StudyFragment
     private lateinit var studentFragment: StudentFragment
     private lateinit var teacherFragment: TeacherFragment
     private var previousMenuItem: MenuItem? = null
@@ -104,11 +104,11 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     exploreFragment()
 
                 }
-                R.id.search -> {
-                    searchFragment = SearchFragment()
+                R.id.study -> {
+                    studyFragment = StudyFragment()
                     supportFragmentManager.beginTransaction().replace(
                         R.id.frameLayout,
-                        searchFragment
+                        studyFragment
                     )
                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).commit()
                     supportActionBar?.hide()
@@ -254,6 +254,15 @@ private fun onAddButtonClicked()
 
         rl.setOnClickListener {
             startActivity(Intent(this,StudentProfileActivity::class.java))
+        }
+        rl3.setOnClickListener {
+            startActivity(Intent(this,MyCoursesActivity::class.java))
+        }
+        rl4.setOnClickListener {
+            startActivity(Intent(this,BookmarkActivity::class.java))
+        }
+        rl5.setOnClickListener {
+            startActivity(Intent(this,MyTutorActivity::class.java))
         }
     }
 

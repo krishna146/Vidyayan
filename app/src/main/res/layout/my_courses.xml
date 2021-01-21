@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    android:layout_width="220dp"
+    android:layout_height="240dp"
+    android:layout_gravity="center"
+    android:layout_margin="2dp"
+    card_view:cardCornerRadius="8dp"
+    card_view:cardElevation="4dp"
+    card_view:cardUseCompatPadding="true"
+    android:background="@drawable/new_background">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:src="@drawable/tp"
+            android:id="@+id/course_image"
+            android:scaleType="centerCrop"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/course_name"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/course_image"
+            android:textSize="15dp"
+            android:text="Computer"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/course_teacher"
+            android:layout_below="@+id/course_name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="-5dp"
+            android:textSize="15dp"
+            android:text="BY krishna"
+            />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
