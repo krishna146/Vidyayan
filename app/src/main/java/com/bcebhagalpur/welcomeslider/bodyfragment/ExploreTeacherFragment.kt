@@ -1,20 +1,27 @@
 package com.bcebhagalpur.welcomeslider.bodyfragment
 
 import android.content.Context
+import android.content.Intent
+import android.graphics.Canvas
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
 import com.bcebhagalpur.welcomeslider.R
+import com.bcebhagalpur.welcomeslider.Swipe
+import com.bcebhagalpur.welcomeslider.activity.BlankActivity2
 import com.bcebhagalpur.welcomeslider.adapter.*
 import com.bcebhagalpur.welcomeslider.model.Schedule
 import com.bcebhagalpur.welcomeslider.model.StudentAround
 import com.bcebhagalpur.welcomeslider.model.Syllabus
+import java.util.*
 
 
 class ExploreTeacherFragment :Fragment() {
@@ -108,6 +115,45 @@ class ExploreTeacherFragment :Fragment() {
           recyclerView_three.adapter=studentAroundAdapter
           recyclerView_three.layoutManager= LinearLayoutManager(activity as Context, LinearLayoutManager.VERTICAL,false)
           imageSwitcher()
+          val item=object : Swipe(activity as Context,0, ItemTouchHelper.LEFT){
+              override fun onMove(
+                  recyclerView: RecyclerView,
+                  viewHolder: RecyclerView.ViewHolder,
+                  target: RecyclerView.ViewHolder
+              ): Boolean {
+                  //  var fromPosition=viewHolder.adapterPosition
+                  //  var toPosition=viewHolder.adapterPosition
+                  //  Collections.swap(teacherInfoInfoList,fromPosition,toPosition)
+                  //  recyclerView.adapter!!.notifyItemMoved(toPosition,fromPosition)
+                  return false
+              }
+              override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                  Toast.makeText(activity as Context,"Senorita", Toast.LENGTH_SHORT).show()
+                  startActivity(Intent(activity as Context,BlankActivity2::class.java))
+                 studentAroundAdapter.notifyItemChanged(viewHolder.adapterPosition)
+                  var fromPosition=viewHolder.adapterPosition
+                    var toPosition=viewHolder.adapterPosition
+                   Collections.swap(student_aroundList,fromPosition,toPosition)
+                    recyclerView_three.adapter!!.notifyItemMoved(toPosition,fromPosition)
+                  
+              }
+
+              override fun onChildDraw(
+                  c: Canvas,
+                  recyclerView: RecyclerView,
+                  viewHolder: RecyclerView.ViewHolder,
+                  dX: Float,
+                  dY: Float,
+                  actionState: Int,
+                  isCurrentlyActive: Boolean
+              ) {
+
+
+              }
+          }
+           val itemTouchHelper=ItemTouchHelper(item)
+           itemTouchHelper.attachToRecyclerView(recyclerView_three)
+
           return view
       }
     private fun imageSwitcher(){

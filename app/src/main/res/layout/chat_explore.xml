@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="4dp"
+    app:cardCornerRadius="10dp"
+    android:orientation="vertical"
+    android:id="@+id/card_explore">
+    <LinearLayout
+        android:id="@+id/chatLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        >
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/imgChatProfileImage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:cardCornerRadius="25dp"
+            android:layout_marginLeft="15dp"
+            android:layout_gravity="center">
+            <ImageView
+                android:id="@+id/img_teacher_pic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/tp"
+                android:scaleType="centerCrop"/>
+        </androidx.cardview.widget.CardView>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/txtChatUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User name"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="60dp"
+                android:textSize="25sp"
+                android:textColor="#272525"/>
+
+        </RelativeLayout>
+
+
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

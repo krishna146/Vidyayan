@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -14,19 +13,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".student.dashboard.activity.TeacherDetailActivity"></activity>
-        <activity android:name=".student.dashboard.activity.TeacherDemoVideoActivity" />
-        <activity android:name=".teacher.dashboard.activity.HomeTeacher" />
-        <activity android:name=".teacher.starter.activity.TeacherRegistrationActivity2" />
-        <activity android:name=".student.dashboard.activity.HomeActivity" />
-        <activity android:name=".activity.AdharVerificationActivity" />
-        <activity android:name=".activity.StudentProgressActivity" />
-        <activity android:name=".student.navigationDrawer.activity.MyTutorActivity" />
-        <activity android:name=".student.starter.activity.RegistrationActivity" />
-        <activity android:name=".teacher.starter.activity.TeacherRegistrationActivity3" />
+        <activity android:name=".activity.BookmarkActivity"></activity>
+        <activity android:name=".activity.MyCoursesActivity" />
+        <activity android:name=".activity.MyTutorActivity" />
+        <activity android:name=".activity.HomeTeacher" />
+        <activity android:name=".activity.TeacherRegistrationActivity2" />
+        <activity android:name=".activity.HomeActivity" />
+        <activity android:name=".activity.RegistrationActivity" />
+        <activity android:name=".activity.TeacherRegistrationActivity3" />
         <activity android:name=".activity.TeacherStudentActivity" />
-        <activity android:name=".student.navigationDrawer.activity.StudentProfileActivity" />
-        <activity android:name=".student.starter.activity.ChooseClassActivity" />
+        <activity android:name=".activity.StudentProfileActivity" />
+        <activity android:name=".activity.ChooseClassActivity" />
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
