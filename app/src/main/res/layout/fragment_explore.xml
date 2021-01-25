@@ -5,38 +5,64 @@
     android:orientation="vertical"
     android:background="@android:color/white">
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:fitsSystemWindows="true"
-    android:background="@android:color/white">
+<!--    <Toolbar-->
+<!--        android:id="@+id/toolBar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:elevation="10dp"-->
+<!--        android:background="@color/white"/>-->
+
+<!--<RelativeLayout-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:fitsSystemWindows="true"-->
+<!--    android:background="@android:color/white">-->
+<!--&lt;!&ndash;<androidx.cardview.widget.CardView&ndash;&gt;-->
+<!--&lt;!&ndash;    android:id="@+id/c1"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;    android:layout_height="wrap_content">&ndash;&gt;-->
+<!--&lt;!&ndash;    <androidx.recyclerview.widget.RecyclerView&ndash;&gt;-->
+<!--&lt;!&ndash;        android:id="@+id/recyclerStatus"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_marginTop="3dp"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;        android:layout_marginStart="5dp"/>&ndash;&gt;-->
+<!--&lt;!&ndash;</androidx.cardview.widget.CardView>&ndash;&gt;-->
+
+<!--    <androidx.cardview.widget.CardView-->
+<!--        android:id="@+id/c2"-->
+<!--        android:visibility="gone"-->
+<!--        app:cardBackgroundColor="@color/kathai"-->
+<!--        app:cardCornerRadius="10dp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
+
+<!--    <androidx.appcompat.widget.SearchView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layoutDirection="ltr"-->
+<!--        app:queryHint="search by teacher name, location etc"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:id="@+id/searchView"-->
+<!--       />-->
+<!--    </androidx.cardview.widget.CardView>-->
+<!--    <TextView-->
+<!--        android:id="@+id/txt"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_marginEnd="10dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:text="Teachers according to your preference"-->
+<!--        android:textSize="12sp"-->
+<!--        android:drawableEnd="@drawable/ic_action_search"/>-->
 
     <androidx.recyclerview.widget.RecyclerView
-        android:padding="5dp"
-        android:id="@+id/recyclerStatus"
-        android:layout_marginTop="3dp"
-        android:background="@drawable/new_background"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"/>
-
-    <androidx.appcompat.widget.SearchView
-        android:layout_width="match_parent"
-        android:layout_margin="10dp"
-        android:background="@drawable/new_background"
-        android:layout_height="wrap_content"
-        android:id="@+id/searchView"
-        android:layout_below="@+id/recyclerStatus"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="10dp"
             android:id="@+id/recyclerTeacher"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/searchView"
-            android:layout_marginStart="5dp"/>
+        android:layout_marginTop="60dp"
+            android:layout_height="wrap_content"/>
 
-</RelativeLayout>
+<!--</RelativeLayout>-->
 
 </LinearLayout>
 

@@ -2,6 +2,7 @@ package com.bcebhagalpur.welcomeslider.student.dashboard.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.*
 import android.view.animation.Animation
@@ -9,23 +10,24 @@ import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.drawerlayout.widget.DrawerLayout.SimpleDrawerListener
 import androidx.fragment.app.FragmentTransaction
 import com.bcebhagalpur.welcomeslider.R
+import com.bcebhagalpur.welcomeslider.activity.ChatExploreActivity
+import com.bcebhagalpur.welcomeslider.activity.VidyayanChatingActivity
+import com.bcebhagalpur.welcomeslider.bodyfragment.*
+import com.bcebhagalpur.welcomeslider.student.dashboard.fragment.ExploreFragment
 import com.bcebhagalpur.welcomeslider.student.navigationDrawer.activity.BookmarkActivity
 import com.bcebhagalpur.welcomeslider.student.navigationDrawer.activity.MyCoursesActivity
 import com.bcebhagalpur.welcomeslider.student.navigationDrawer.activity.MyTutorActivity
 import com.bcebhagalpur.welcomeslider.student.navigationDrawer.activity.StudentProfileActivity
-import com.bcebhagalpur.welcomeslider.bodyfragment.*
-import com.bcebhagalpur.welcomeslider.student.dashboard.fragment.ExploreFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_home.*
-
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -33,10 +35,10 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var navigationView: NavigationView
     private lateinit var menuIcon: ImageView
     private lateinit var contentView: LinearLayout
+    private lateinit var toolbar: androidx.appcompat.widget.Toolbar
 
     private lateinit var bottomNavigationView:BottomNavigationView
     private lateinit var exploreFragment: ExploreFragment
-
     private lateinit var studyFragment: StudyFragment
     private lateinit var teacherFragment: TeacherFragment
     private var previousMenuItem: MenuItem? = null
@@ -62,11 +64,13 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         window.requestFeature(Window.FEATURE_NO_TITLE)
         setContentView(R.layout.activity_home)
-
+        changeColor()
         drawerLayout = findViewById(R.id.drawer_layout)
         navigationView = findViewById(R.id.navigation_view)
         menuIcon = findViewById(R.id.menu_icon)
         contentView = findViewById(R.id.content)
+        toolbar=findViewById(R.id.toolBar)
+        setUpToolbar()
 
          navigationDrawer()
          drawerHeaderItemHandle()
@@ -99,6 +103,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             when(it.itemId){
                 R.id.explore -> {
                     exploreFragment()
+                    supportActionBar!!.title="Explore Teachers"
 
                 }
                 R.id.study -> {
@@ -106,10 +111,10 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     supportFragmentManager.beginTransaction().replace(
                         R.id.frameLayout,
                         studyFragment
+
                     )
                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).commit()
                     supportActionBar?.hide()
-
                 }
 
                 R.id.teacher -> {
@@ -207,11 +212,11 @@ private fun onAddButtonClicked()
     }
 
     private fun animateNavigationDrawer() {
-        val END_SCALE = 0.7f
+        val endScale = 0.7f
         drawerLayout.addDrawerListener(object : SimpleDrawerListener() {
             override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
-                val diffScaledOffset: Float = slideOffset * ( 1-END_SCALE)
-                val offsetScale = 1- diffScaledOffset
+                val diffScaledOffset: Float = slideOffset * (1 - endScale)
+                val offsetScale = 1 - diffScaledOffset
                 contentView.scaleX = offsetScale
                 contentView.scaleY = offsetScale
                 val xOffset = drawerView.width * slideOffset
@@ -229,9 +234,9 @@ private fun onAddButtonClicked()
 
         }else{
                         when(supportFragmentManager.findFragmentById(R.id.frameLayout)){
-                !is ExploreFragment -> {
-                    exploreFragment()
-                }
+                            !is ExploreFragment -> {
+                                exploreFragment()
+                            }
                 else->super.onBackPressed()
             }
         }
@@ -241,13 +246,13 @@ private fun onAddButtonClicked()
     private fun drawerHeaderItemHandle(){
         val headerView=navigationView.getHeaderView(0)
         val rl= headerView.findViewById<RelativeLayout>(R.id.rl_)
-        val rl1=headerView.findViewById<RelativeLayout>(R.id.rl_one)
-        val rl2=headerView.findViewById<RelativeLayout>(R.id.rl_two)
+//        val rl1=headerView.findViewById<RelativeLayout>(R.id.rl_one)
+//        val rl2=headerView.findViewById<RelativeLayout>(R.id.rl_two)
         val rl3=headerView.findViewById<RelativeLayout>(R.id.rl_three)
         val rl4=headerView.findViewById<RelativeLayout>(R.id.rl_four)
         val rl5=headerView.findViewById<RelativeLayout>(R.id.rl_five)
-        val rl6=headerView.findViewById<RelativeLayout>(R.id.rl_six)
-        val rl7=headerView.findViewById<RelativeLayout>(R.id.rl_seven)
+//        val rl6=headerView.findViewById<RelativeLayout>(R.id.rl_six)
+//        val rl7=headerView.findViewById<RelativeLayout>(R.id.rl_seven)
         rl.setOnClickListener {
             startActivity(Intent(this, StudentProfileActivity::class.java))
         }
@@ -260,6 +265,21 @@ private fun onAddButtonClicked()
         rl5.setOnClickListener {
             startActivity(Intent(this, MyTutorActivity::class.java))
         }
+    }
+
+
+    private fun changeColor() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.statusBarColor = ContextCompat.getColor(applicationContext, R.color.darkerGray)
+        }
+
+    }
+    private fun setUpToolbar() {
+        setSupportActionBar(toolbar)
+        supportActionBar!!.title="Explore Teachers"
+        supportActionBar?.setHomeButtonEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
     }
 
 }

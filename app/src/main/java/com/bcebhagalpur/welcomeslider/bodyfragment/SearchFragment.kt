@@ -7,16 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.FragmentTransaction
-import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.bcebhagalpur.welcomeslider.R
-import com.bcebhagalpur.welcomeslider.Swipe
-import com.bcebhagalpur.welcomeslider.activity.HomeActivity
-import com.bcebhagalpur.welcomeslider.adapter.MyCourseAdaptor
-import com.bcebhagalpur.welcomeslider.model.MyCourse
 import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
