@@ -1,4 +1,4 @@
-package com.bcebhagalpur.welcomeslider.activity
+package com.bcebhagalpur.welcomeslider.student.navigationDrawer.activity
 
 import android.app.AlertDialog
 import android.graphics.Typeface

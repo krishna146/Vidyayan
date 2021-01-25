@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/registrationpagebackground"
-    tools:context=".activity.RegistrationActivity">
+    tools:context=".student.starter.activity.RegistrationActivity">
 
     <LinearLayout
         android:id="@+id/LL1"

@@ -9,6 +9,7 @@ import com.bcebhagalpur.welcomeslider.R
 
 class PagerAdapterThree(private val context: Context): PagerAdapter()
 {
+
     companion object {
         val list = arrayOf(
             R.drawable.tp,

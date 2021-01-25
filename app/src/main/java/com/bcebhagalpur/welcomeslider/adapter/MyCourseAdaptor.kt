@@ -9,7 +9,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bcebhagalpur.welcomeslider.R
 import com.bcebhagalpur.welcomeslider.model.MyCourse
-import com.bcebhagalpur.welcomeslider.model.Syllabus
 
 class MyCourseAdaptor(private val context: Context, private val itemList: ArrayList<MyCourse>) : RecyclerView.Adapter<MyCourseAdaptor.MyCourseViewHolder>() {
 

@@ -9,7 +9,7 @@ import com.bcebhagalpur.welcomeslider.fragment.WelcomeFragment3
 
 class PagerAdapter(manager: FragmentManager): FragmentPagerAdapter(manager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT)
 {
-    val list= arrayOf(WelcomeFragment1(),WelcomeFragment2(),WelcomeFragment3())
+    private val list= arrayOf(WelcomeFragment1(),WelcomeFragment2(),WelcomeFragment3())
 
     override fun getCount(): Int {
         return list.size

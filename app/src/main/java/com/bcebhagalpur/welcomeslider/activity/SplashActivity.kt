@@ -1,20 +1,14 @@
 package com.bcebhagalpur.welcomeslider.activity
 
-import android.Manifest
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.pm.PackageManager
 import android.location.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.os.Looper
 import android.view.Window
 import android.view.WindowManager
-import android.widget.Toast
-import androidx.core.app.ActivityCompat
 import com.bcebhagalpur.welcomeslider.R
 import com.google.android.gms.location.*
 import java.util.*
@@ -23,7 +17,7 @@ class SplashActivity : AppCompatActivity() {
     /*  private var lm: LocationManager? = null
     private var loc: Location? = null*/
 
-    lateinit var sharedPreferences: SharedPreferences
+    private lateinit var sharedPreferences: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.requestFeature(Window.FEATURE_NO_TITLE)
@@ -88,7 +82,7 @@ class SplashActivity : AppCompatActivity() {
                 Manifest.permission.ACCESS_COARSE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            // TODO: Consider calling
+
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
             //   public void onRequestPermissionsResult(int requestCode, String[] permissions,

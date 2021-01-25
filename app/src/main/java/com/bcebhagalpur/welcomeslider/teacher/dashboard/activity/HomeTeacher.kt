@@ -1,4 +1,4 @@
-package com.bcebhagalpur.welcomeslider.activity
+package com.bcebhagalpur.welcomeslider.teacher.dashboard.activity
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity

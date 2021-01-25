@@ -19,5 +19,8 @@ class LoginActivity : AppCompatActivity() {
         btn_register.setOnClickListener {
             startActivity(Intent(this@LoginActivity,TeacherStudentActivity::class.java))
         }
+        btn_get_otp.setOnClickListener {
+            startActivity(Intent(this@LoginActivity,StudentProgressActivity::class.java))
+        }
     }
 }

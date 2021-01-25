@@ -1,4 +1,4 @@
-package com.bcebhagalpur.welcomeslider.activity
+package com.bcebhagalpur.welcomeslider.teacher.starter.activity
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -13,9 +13,6 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Looper
-import android.view.View
-import android.view.Window
-import android.view.WindowManager
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
@@ -102,7 +99,7 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
 //        }
 
         imgBtnTeacherRegister.setOnClickListener {
-            startActivity(Intent(this@TeacherRegistrationActivity2,TeacherRegistrationActivity3::class.java))
+            startActivity(Intent(this@TeacherRegistrationActivity2, TeacherRegistrationActivity3::class.java))
         }
         et_teacher_address.setOnClickListener {
             requestPermission()

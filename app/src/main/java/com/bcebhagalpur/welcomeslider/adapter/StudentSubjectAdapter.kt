@@ -29,14 +29,11 @@ class StudentSubjectAdapter(private val context: Context, private val itemList: 
         val subject = itemList[position]
         holder.sub_name_stu.text = subject.sub_name_stu
         holder.subject_pic.setImageResource(subject.sub_pic)
-
-
     }
 
     class StudentSubjectViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val sub_name_stu: TextView = view.findViewById(R.id.student_subject)
         val subject_pic: ImageView = view.findViewById(R.id.subject_pic)
-
     }
 }
 

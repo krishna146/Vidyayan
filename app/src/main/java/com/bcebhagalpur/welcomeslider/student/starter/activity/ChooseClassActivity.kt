@@ -1,4 +1,4 @@
-package com.bcebhagalpur.welcomeslider.activity
+package com.bcebhagalpur.welcomeslider.student.starter.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -12,7 +12,6 @@ import com.bcebhagalpur.welcomeslider.fragment.Claas6thTo10thFragment
 import com.bcebhagalpur.welcomeslider.fragment.Class13thFragment
 import com.bcebhagalpur.welcomeslider.fragment.Class12thor11thFragment
 import kotlinx.android.synthetic.main.activity_choose_class.*
-
 
 class  ChooseClassActivity : AppCompatActivity() {
 

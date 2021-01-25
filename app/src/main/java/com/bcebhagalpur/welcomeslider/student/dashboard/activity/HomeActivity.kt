@@ -1,4 +1,4 @@
-package com.bcebhagalpur.welcomeslider.activity
+package com.bcebhagalpur.welcomeslider.student.dashboard.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -12,12 +12,16 @@ import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
-import androidx.core.view.get
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.drawerlayout.widget.DrawerLayout.SimpleDrawerListener
 import androidx.fragment.app.FragmentTransaction
 import com.bcebhagalpur.welcomeslider.R
+import com.bcebhagalpur.welcomeslider.student.navigationDrawer.activity.BookmarkActivity
+import com.bcebhagalpur.welcomeslider.student.navigationDrawer.activity.MyCoursesActivity
+import com.bcebhagalpur.welcomeslider.student.navigationDrawer.activity.MyTutorActivity
+import com.bcebhagalpur.welcomeslider.student.navigationDrawer.activity.StudentProfileActivity
 import com.bcebhagalpur.welcomeslider.bodyfragment.*
+import com.bcebhagalpur.welcomeslider.student.dashboard.fragment.ExploreFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_home.*
@@ -32,9 +36,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private lateinit var bottomNavigationView:BottomNavigationView
     private lateinit var exploreFragment: ExploreFragment
-//    private lateinit var moreFragment: MoreFragment
+
     private lateinit var studyFragment: StudyFragment
-    private lateinit var studentFragment: StudentFragment
     private lateinit var teacherFragment: TeacherFragment
     private var previousMenuItem: MenuItem? = null
     private val rotateOpen: Animation by lazy{ AnimationUtils.loadAnimation(
@@ -57,11 +60,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        window.requestFeature(Window.FEATURE_NO_TITLE)
-//        window.setFlags(
-//            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-//            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-//        )
+        window.requestFeature(Window.FEATURE_NO_TITLE)
         setContentView(R.layout.activity_home)
 
         drawerLayout = findViewById(R.id.drawer_layout)
@@ -70,7 +69,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         contentView = findViewById(R.id.content)
 
          navigationDrawer()
-
+         drawerHeaderItemHandle()
         bottomNavigationView=findViewById(R.id.bottomNavigationView)
         exploreFragment()
         bottom()
@@ -84,8 +83,6 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             Toast.makeText(this, "by", Toast.LENGTH_SHORT).show()
         }
         exploreFragment()
-        drawerHeaderItemHandle()
-
     }
 
     private fun bottom(){
@@ -243,7 +240,7 @@ private fun onAddButtonClicked()
 
     private fun drawerHeaderItemHandle(){
         val headerView=navigationView.getHeaderView(0)
-        val rl=headerView.findViewById<RelativeLayout>(R.id.rl_)
+        val rl= headerView.findViewById<RelativeLayout>(R.id.rl_)
         val rl1=headerView.findViewById<RelativeLayout>(R.id.rl_one)
         val rl2=headerView.findViewById<RelativeLayout>(R.id.rl_two)
         val rl3=headerView.findViewById<RelativeLayout>(R.id.rl_three)
@@ -251,18 +248,17 @@ private fun onAddButtonClicked()
         val rl5=headerView.findViewById<RelativeLayout>(R.id.rl_five)
         val rl6=headerView.findViewById<RelativeLayout>(R.id.rl_six)
         val rl7=headerView.findViewById<RelativeLayout>(R.id.rl_seven)
-
         rl.setOnClickListener {
-            startActivity(Intent(this,StudentProfileActivity::class.java))
+            startActivity(Intent(this, StudentProfileActivity::class.java))
         }
         rl3.setOnClickListener {
-            startActivity(Intent(this,MyCoursesActivity::class.java))
+            startActivity(Intent(this, MyCoursesActivity::class.java))
         }
         rl4.setOnClickListener {
-            startActivity(Intent(this,BookmarkActivity::class.java))
+            startActivity(Intent(this, BookmarkActivity::class.java))
         }
         rl5.setOnClickListener {
-            startActivity(Intent(this,MyTutorActivity::class.java))
+            startActivity(Intent(this, MyTutorActivity::class.java))
         }
     }
 

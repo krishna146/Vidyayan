@@ -1,4 +1,4 @@
-package com.bcebhagalpur.welcomeslider.activity
+package com.bcebhagalpur.welcomeslider.student.navigationDrawer.activity
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity

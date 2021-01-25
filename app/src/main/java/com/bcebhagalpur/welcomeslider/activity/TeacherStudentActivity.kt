@@ -1,24 +1,17 @@
 package com.bcebhagalpur.welcomeslider.activity
 
-import android.app.AlertDialog
-import android.app.DatePickerDialog
 import android.content.Intent
-import android.graphics.Typeface.BOLD
-import android.graphics.Typeface.NORMAL
 import android.os.Bundle
-import android.view.MotionEvent
-import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.bcebhagalpur.welcomeslider.R
-import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.bcebhagalpur.welcomeslider.student.starter.activity.ChooseClassActivity
+import com.bcebhagalpur.welcomeslider.teacher.starter.activity.TeacherRegistrationActivity2
 import kotlinx.android.synthetic.main.activity_teacher_registration2.*
 import kotlinx.android.synthetic.main.activity_teacher_student.*
-import kotlinx.android.synthetic.main.teacher_registration_bottomsheet.*
 import java.text.SimpleDateFormat
 import java.util.*
 

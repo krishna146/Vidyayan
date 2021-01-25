@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:fitsSystemWindows="true"
+    android:orientation="vertical"
     android:background="@android:color/white">
 
 <RelativeLayout
@@ -13,145 +11,33 @@
     android:fitsSystemWindows="true"
     android:background="@android:color/white">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@drawable/gradient_background"/>
-
-        <EditText
-            android:id="@+id/etSearch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rectangle_background"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="5dp"
-            android:padding="10dp"
-            android:textSize="18sp"
-            android:layout_marginBottom="2dp"
-            android:hint="search teacher, subject, course etc"/>
-
-        <TextView
-            android:layout_below="@+id/etSearch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:id="@+id/txt1"
-            android:textColor="@android:color/white"
-            android:text="Teachers of your one kilometer radius"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="3dp"
-            />
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerTeacherList"
+        android:padding="5dp"
+        android:id="@+id/recyclerStatus"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/new_background"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txt1"
         android:layout_marginStart="5dp"/>
 
-
-
-    <TextView
-        android:layout_below="@+id/recyclerTeacherList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:id="@+id/txt2"
-        android:textColor="@android:color/black"
-        android:text="Get Courses of your related preference"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="3dp"
-        />
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerCourses"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txt2"
-            android:layout_marginStart="5dp"/>
-
-    <TextView
-        android:layout_below="@+id/recyclerCourses"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:id="@+id/txt3"
-        android:textColor="@android:color/holo_red_dark"
-        android:text="Offers"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="3dp"
-        />
-
-    <LinearLayout
-        android:layout_below="@+id/txt3"
+    <androidx.appcompat.widget.SearchView
         android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:background="@drawable/new_background"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <androidx.cardview.widget.CardView
+        android:id="@+id/searchView"
+        android:layout_below="@+id/recyclerStatus"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="10dp"
+            android:id="@+id/recyclerTeacher"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardElevation="2dp"
-            app:cardBackgroundColor="#fff"
-            app:cardCornerRadius="8dp"
-            android:layout_margin="5dp">
+            android:layout_below="@+id/searchView"
+            android:layout_marginStart="5dp"/>
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager"
-        android:layout_width="match_parent"
-       android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="5dp"
-        android:layout_height="200dp"
-        />
-        </androidx.cardview.widget.CardView>
-      <LinearLayout
-          android:layout_gravity="center_horizontal"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:orientation="horizontal"
-          android:layout_margin="10dp">
-
-          <ImageView
-              android:id="@+id/indicator1"
-              android:layout_width="10dp"
-              android:layout_height="10dp"
-              android:layout_marginEnd="5dp"
-              android:src="@drawable/indicator_circle_black"/>
-          <ImageView
-              android:id="@+id/indicator2"
-              android:layout_width="10dp"
-              android:layout_height="10dp"
-              android:layout_marginEnd="5dp"
-              android:src="@drawable/indicator_circle"/>
-          <ImageView
-              android:id="@+id/indicator3"
-              android:layout_width="10dp"
-              android:layout_height="10dp"
-              android:layout_marginEnd="5dp"
-              android:src="@drawable/indicator_circle"/>
-          <ImageView
-              android:id="@+id/indicator4"
-              android:layout_width="10dp"
-              android:layout_height="10dp"
-              android:layout_marginEnd="5dp"
-              android:src="@drawable/indicator_circle"/>
-          <ImageView
-              android:id="@+id/indicator5"
-              android:layout_width="10dp"
-              android:layout_height="10dp"
-              android:layout_marginEnd="5dp"
-              android:src="@drawable/indicator_circle"/>
-          <ImageView
-              android:id="@+id/indicator6"
-              android:layout_width="10dp"
-              android:layout_height="10dp"
-              android:layout_marginEnd="5dp"
-              android:src="@drawable/indicator_circle"/>
-
-      </LinearLayout>
-    </LinearLayout>
 </RelativeLayout>
-</ScrollView>
+
+</LinearLayout>
+
+

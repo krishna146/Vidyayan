@@ -1,4 +1,4 @@
-package com.bcebhagalpur.welcomeslider.activity
+package com.bcebhagalpur.welcomeslider.teacher.starter.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -10,9 +10,9 @@ import android.view.View
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
 import com.bcebhagalpur.welcomeslider.R
+import com.bcebhagalpur.welcomeslider.teacher.dashboard.activity.HomeTeacher
 import kotlinx.android.synthetic.main.activity_teacher_registration3.*
 import java.util.*
-import kotlin.collections.ArrayList
 
 class TeacherRegistrationActivity3 : AppCompatActivity() {
 
@@ -55,7 +55,14 @@ class TeacherRegistrationActivity3 : AppCompatActivity() {
         val classList = Arrays.asList(*classArray)
 
         // Boolean array for initial selected items
+        val checkedClassArray = booleanArrayOf(
+            false,
+            false,
+            false,
+            false,
+            false
 
+        )
         val checkedSubArray13th = booleanArrayOf(
             false,
             false,
@@ -100,20 +107,11 @@ class TeacherRegistrationActivity3 : AppCompatActivity() {
 
         )
 
-        var checkedClassArray = booleanArrayOf(
-            false,
-            false,
-            false,
-            false,
-            false
-
-        )
         txtSelectClass.setOnClickListener() {
-
-            txtSelectClass.text = ""
 
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Select Classes")
+
             builder.setMultiChoiceItems(classArray, checkedClassArray) { _, which, isChecked ->
 
                 // Update the current focused item's checked status
@@ -173,17 +171,9 @@ class TeacherRegistrationActivity3 : AppCompatActivity() {
 
 
                 }
-                else{
-                    for (i in checkedSubArray13th.indices){
-                        checkedSubArray13th[i] = false
-                    }
-
-
-                }
-
                 if(which == 1 && isChecked){
                     val builder = AlertDialog.Builder(this)
-                    builder.setTitle("Select 12th Subjects")
+                    builder.setTitle("Select Subjects")
 
                     val classList = arrayOf(
                         "12th Physics",
@@ -222,18 +212,10 @@ class TeacherRegistrationActivity3 : AppCompatActivity() {
                     val dialog1 = builder.create()
                     dialog1.show()
                 }
-                else{
-                    for (i in checkedSubArray12th.indices){
-
-                        checkedSubArray12th[i] = false
-
-                    }
-                }
-
                 if(which == 2 && isChecked){
 
                     val builder = AlertDialog.Builder(this)
-                    builder.setTitle("Select 11th Subjects")
+                    builder.setTitle("Select Subjects")
 
                     val subArray = arrayOf(
                         "11th Physics",
@@ -277,14 +259,6 @@ class TeacherRegistrationActivity3 : AppCompatActivity() {
                     // Display the alert dialog on interface
                     dialog.show()
                 }
-                else{
-                    for (i in checkedSubArray11th.indices){
-                        checkedSubArray11th[i] = false
-                    }
-
-
-                }
-
                 if(which == 3 && isChecked){
                     val subArray = arrayOf(
                         "6-10th Science",
@@ -298,7 +272,7 @@ class TeacherRegistrationActivity3 : AppCompatActivity() {
                     val subList = Arrays.asList(*subArray)
 
                     val builder = AlertDialog.Builder(this)
-                    builder.setTitle("Select 6-10th Subjects")
+                    builder.setTitle("Select Subjects")
 
                     builder.setMultiChoiceItems(subArray, checkedSubArray6To10th) { _, which, isChecked ->
 
@@ -330,13 +304,6 @@ class TeacherRegistrationActivity3 : AppCompatActivity() {
                     val dialog = builder.create()
                     dialog.show()
                 }
-                else{
-                    for (i in checkedSubArray6To10th.indices){
-                        checkedSubArray6To10th[i] = false
-                    }
-
-
-                }
                 if(which == 4 && isChecked){
                     val subArray = arrayOf(
                         "1-5th Science",
@@ -350,7 +317,7 @@ class TeacherRegistrationActivity3 : AppCompatActivity() {
                     val subList = Arrays.asList(*subArray)
 
                     val builder = AlertDialog.Builder(this)
-                    builder.setTitle("Select 1-5th Subjects")
+                    builder.setTitle("Select Subjects")
 
                     builder.setMultiChoiceItems(subArray, checkedSubArray1To5th) { _, which, isChecked ->
 
@@ -361,7 +328,7 @@ class TeacherRegistrationActivity3 : AppCompatActivity() {
 
                     builder.setPositiveButton("OK") { _, _ ->
 
-                        for (i in checkedSubArray1To5th.indices) {
+                        for (i in checkedSubArray6To10th.indices) {
 
                             val checked = checkedSubArray1To5th[i]
                             if (checked) {
@@ -383,16 +350,8 @@ class TeacherRegistrationActivity3 : AppCompatActivity() {
                     dialog.show()
 
                 }
-                else{
-                    for (i in checkedSubArray1To5th.indices){
-                        checkedSubArray1To5th[i] = false
-                    }
-
-
-                }
 
             }
-
 
             builder.setPositiveButton("OK") { _, which ->
 
@@ -400,7 +359,7 @@ class TeacherRegistrationActivity3 : AppCompatActivity() {
                 for (i in checkedClassArray.indices) {
 
                     val checked = checkedClassArray[i]
-                    //checkedClassArray[i] = checked
+                    // checkedClassArray[i] = checked
                     if (checked) {
                         if(b == 1){
                             txtSelectClass.text = ""
@@ -437,6 +396,10 @@ class TeacherRegistrationActivity3 : AppCompatActivity() {
             dialog.show()
 
         }
+
+
+
+
 
         btnSubmit.setOnClickListener(){
             startActivity(Intent(this, HomeTeacher::class.java))

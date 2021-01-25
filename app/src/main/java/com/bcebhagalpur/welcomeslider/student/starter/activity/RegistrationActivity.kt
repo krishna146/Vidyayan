@@ -1,11 +1,8 @@
-package com.bcebhagalpur.welcomeslider.activity
+package com.bcebhagalpur.welcomeslider.student.starter.activity
 
 import android.Manifest
-import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.location.*
 import androidx.appcompat.app.AppCompatActivity
@@ -13,10 +10,10 @@ import android.os.Bundle
 import android.os.Looper
 import android.view.Window
 import android.view.WindowManager
-import android.widget.ImageButton
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.bcebhagalpur.welcomeslider.R
+import com.bcebhagalpur.welcomeslider.student.dashboard.activity.HomeActivity
 import com.google.android.gms.location.*
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_registration.*
