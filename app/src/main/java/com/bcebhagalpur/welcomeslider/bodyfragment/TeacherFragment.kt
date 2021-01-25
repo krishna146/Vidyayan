@@ -6,13 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bcebhagalpur.welcomeslider.R
+import com.bcebhagalpur.welcomeslider.Swipe
 import com.bcebhagalpur.welcomeslider.adapter.TEacherAdapter
-import com.bcebhagalpur.welcomeslider.adapter.TeacherListAdapter
-import com.bcebhagalpur.welcomeslider.model.TeacherListModel
 import com.bcebhagalpur.welcomeslider.model.Teacherlist
+import java.util.*
 
 class TeacherFragment :Fragment() {
 
@@ -42,6 +44,24 @@ class TeacherFragment :Fragment() {
         recyclerView.adapter = recyclerAdapter
         recyclerView.layoutManager=
             LinearLayoutManager(activity as Context, LinearLayoutManager.VERTICAL,false)
+        val item=object :Swipe(activity as Context,0,ItemTouchHelper.LEFT){
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                var fromPosition=viewHolder.adapterPosition
+                var toPosition=viewHolder.adapterPosition
+                Collections.swap(teacherInfoInfoList,fromPosition,toPosition)
+               // recyclerView.adapter!!.notifyItemMoved(fromPosition,toPosition)
+                return false
+            }
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                Toast.makeText(activity as Context,"Senorita",Toast.LENGTH_SHORT).show()
+            }
+        }
+        val itemTouchHelper=ItemTouchHelper(item)
+        itemTouchHelper.attachToRecyclerView(recyclerView)
         return view
     }
 

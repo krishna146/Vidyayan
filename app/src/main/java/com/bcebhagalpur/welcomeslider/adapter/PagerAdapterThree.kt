@@ -34,6 +34,7 @@ class PagerAdapterThree(private val context: Context): PagerAdapter()
         image.setImageResource(list[position])
         container.addView(image,0)
         return image
+
     }
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {

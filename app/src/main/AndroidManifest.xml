@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bcebhagalpur.welcomeslider">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -13,7 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.BookmarkActivity"></activity>
+        <activity android:name=".activity.ChatExploreActivity"></activity>
+        <activity android:name=".activity.TeacherDemoActivity2" />
+        <activity android:name=".activity.VidyayanChatingActivity" />
+        <activity android:name=".activity.BookmarkActivity" />
         <activity android:name=".activity.MyCoursesActivity" />
         <activity android:name=".activity.MyTutorActivity" />
         <activity android:name=".activity.HomeTeacher" />

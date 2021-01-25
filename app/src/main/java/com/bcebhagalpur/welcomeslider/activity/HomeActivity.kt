@@ -78,10 +78,10 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             onAddButtonClicked()
         }
         floatingActionButton2.setOnClickListener {
-            Toast.makeText(this, "hy", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, VidyayanChatingActivity::class.java))
         }
         floatingActionButton3.setOnClickListener {
-            Toast.makeText(this, "by", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this, ChatExploreActivity::class.java))
         }
         exploreFragment()
         drawerHeaderItemHandle()
