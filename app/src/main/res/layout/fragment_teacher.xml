@@ -36,6 +36,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/teachers_list"
             android:layout_margin="10dp"
-            android:layout_below="@+id/eteacher"/>
+            android:layout_below="@id/eteacher"
+            />
+
     </RelativeLayout>
 </ScrollView>
