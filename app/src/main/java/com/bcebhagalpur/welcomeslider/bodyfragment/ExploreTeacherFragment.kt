@@ -135,7 +135,7 @@ class ExploreTeacherFragment :Fragment() {
                     var toPosition=viewHolder.adapterPosition
                    Collections.swap(student_aroundList,fromPosition,toPosition)
                     recyclerView_three.adapter!!.notifyItemMoved(toPosition,fromPosition)
-                  
+
               }
 
               override fun onChildDraw(

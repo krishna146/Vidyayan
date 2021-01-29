@@ -21,6 +21,7 @@ import com.bcebhagalpur.welcomeslider.activity.ChatExploreActivity
 import com.bcebhagalpur.welcomeslider.activity.VidyayanChatingActivity
 import com.bcebhagalpur.welcomeslider.bodyfragment.*
 import com.bcebhagalpur.welcomeslider.student.dashboard.fragment.ExploreFragment
+import com.bcebhagalpur.welcomeslider.student.dashboard.fragment.NotificationFragment
 import com.bcebhagalpur.welcomeslider.student.navigationDrawer.activity.BookmarkActivity
 import com.bcebhagalpur.welcomeslider.student.navigationDrawer.activity.MyCoursesActivity
 import com.bcebhagalpur.welcomeslider.student.navigationDrawer.activity.MyTutorActivity
@@ -41,6 +42,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var exploreFragment: ExploreFragment
     private lateinit var studyFragment: StudyFragment
     private lateinit var teacherFragment: TeacherFragment
+    private lateinit var notificationFragment: NotificationFragment
     private var previousMenuItem: MenuItem? = null
     private val rotateOpen: Animation by lazy{ AnimationUtils.loadAnimation(
         this,
@@ -117,11 +119,11 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     supportActionBar?.hide()
                 }
 
-                R.id.teacher -> {
-                    teacherFragment = TeacherFragment()
+                R.id.notification -> {
+                    notificationFragment=NotificationFragment()
                     supportFragmentManager.beginTransaction().replace(
                         R.id.frameLayout,
-                        teacherFragment
+                        notificationFragment
                     )
                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).commit()
                     supportActionBar?.hide()
