@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
                 if (position==2){
                     btnStart.visibility=View.VISIBLE
                     btnStart.setOnClickListener {
-                        startActivity(Intent(this@MainActivity,LoginActivity::class.java))
+                        startActivity(Intent(this@MainActivity,TeacherStudentActivity::class.java))
                         finish()
                     }
                 }else{

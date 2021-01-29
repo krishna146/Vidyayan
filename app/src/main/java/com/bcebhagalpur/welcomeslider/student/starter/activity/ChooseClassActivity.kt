@@ -14,7 +14,7 @@ import com.bcebhagalpur.welcomeslider.fragment.Class12thor11thFragment
 import kotlinx.android.synthetic.main.activity_choose_class.*
 
 class  ChooseClassActivity : AppCompatActivity() {
-
+    lateinit var classStudent:String
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +25,7 @@ class  ChooseClassActivity : AppCompatActivity() {
         )
         setContentView(R.layout.activity_choose_class)
         txt13th.setOnClickListener {
+            classStudent = txt13th.text.toString()
             txt13th.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
             txt12th.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
             txt11th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
@@ -42,10 +43,10 @@ class  ChooseClassActivity : AppCompatActivity() {
             val transaction =
                 supportFragmentManager.beginTransaction().replace(R.id.frame, Class13thFragment())
             transaction.commit()
-            txt13th.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
 
         }
         txt12th.setOnClickListener() {
+            classStudent = txt12th.text.toString()
             txt12th.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
             txt13th.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
             txt11th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
@@ -63,6 +64,7 @@ class  ChooseClassActivity : AppCompatActivity() {
             transaction.commit()
         }
         txt11th.setOnClickListener() {
+            classStudent = txt11th.text.toString()
             txt11th.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
             txt12th.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
             txt13th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
@@ -81,6 +83,7 @@ class  ChooseClassActivity : AppCompatActivity() {
             transaction.commit()
         }
         txt10th.setOnClickListener() {
+            classStudent = txt10th.text.toString()
             txt10th.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
             txt12th.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
             txt11th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
@@ -100,6 +103,7 @@ class  ChooseClassActivity : AppCompatActivity() {
             transaction.commit()
         }
         txt9th.setOnClickListener() {
+            classStudent = txt9th.text.toString()
             txt9th.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
             txt12th.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
             txt11th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
@@ -119,6 +123,7 @@ class  ChooseClassActivity : AppCompatActivity() {
             transaction.commit()
         }
         txt8th.setOnClickListener() {
+            classStudent = txt8th.text.toString()
             txt8th.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
             txt12th.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
             txt11th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
@@ -138,6 +143,7 @@ class  ChooseClassActivity : AppCompatActivity() {
             transaction.commit()
         }
         txt7th.setOnClickListener() {
+            classStudent = txt7th.text.toString()
             txt7th.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
             txt12th.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
             txt11th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
@@ -157,6 +163,7 @@ class  ChooseClassActivity : AppCompatActivity() {
             transaction.commit()
         }
         txt6th.setOnClickListener() {
+            classStudent = txt6th.text.toString()
             txt6th.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
             txt12th.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
             txt11th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
@@ -176,6 +183,7 @@ class  ChooseClassActivity : AppCompatActivity() {
             transaction.commit()
         }
         txt5th.setOnClickListener() {
+            classStudent = txt5th.text.toString()
             txt5th.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
             txt12th.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
             txt11th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
@@ -195,6 +203,7 @@ class  ChooseClassActivity : AppCompatActivity() {
             transaction.commit()
         }
         txt4th.setOnClickListener() {
+            classStudent = txt4th.text.toString()
             txt4th.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
             txt12th.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
             txt11th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
@@ -214,6 +223,7 @@ class  ChooseClassActivity : AppCompatActivity() {
             transaction.commit()
         }
         txt3rd.setOnClickListener() {
+            classStudent = txt3rd.text.toString()
             txt3rd.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
             txt12th.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
             txt11th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
@@ -233,6 +243,7 @@ class  ChooseClassActivity : AppCompatActivity() {
             transaction.commit()
         }
         txt2nd.setOnClickListener() {
+            classStudent = txt2nd.text.toString()
             txt2nd.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
             txt12th.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
             txt11th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
@@ -253,6 +264,7 @@ class  ChooseClassActivity : AppCompatActivity() {
         }
 
         txt1st.setOnClickListener() {
+            classStudent = txt1st.text.toString()
             txt1st.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
             txt12th.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
             txt11th . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
@@ -272,7 +284,9 @@ class  ChooseClassActivity : AppCompatActivity() {
             transaction.commit()
         }
         btnStartLearning.setOnClickListener(){
-            startActivity(Intent(this@ChooseClassActivity, RegistrationActivity::class.java))
+            val intent=  Intent(this@ChooseClassActivity, RegistrationActivity::class.java)
+            intent.putExtra("class", classStudent)
+            startActivity(intent)
             Toast.makeText(this@ChooseClassActivity, "Auto detecting Location ", Toast.LENGTH_LONG).show()
         }
 

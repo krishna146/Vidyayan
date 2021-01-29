@@ -4,87 +4,86 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainActivity"
-    android:background="@drawable/intro_one">
+    android:background="@drawable/intro_one"
+    tools:context=".activity.MainActivity">
 
     <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/viewPager"/>
+        android:layout_height="match_parent" />
 
     <RelativeLayout
-        android:layout_marginBottom="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-<!--       <Button-->
-<!--           android:background="@android:color/white"-->
-<!--           android:textStyle="bold"-->
-<!--           android:textSize="18dp"-->
-<!--           android:layout_alignParentStart="true"-->
-<!--           android:id="@+id/btnSkip"-->
-<!--           android:layout_width="wrap_content"-->
-<!--           android:layout_height="wrap_content"-->
-<!--           android:text="@string/skip"-->
-<!--           android:layout_margin="10dp"-->
-<!--           android:textAllCaps="false"-->
-<!--           />-->
+        android:layout_marginBottom="50dp">
+        <!--       <Button-->
+        <!--           android:background="@android:color/white"-->
+        <!--           android:textStyle="bold"-->
+        <!--           android:textSize="18dp"-->
+        <!--           android:layout_alignParentStart="true"-->
+        <!--           android:id="@+id/btnSkip"-->
+        <!--           android:layout_width="wrap_content"-->
+        <!--           android:layout_height="wrap_content"-->
+        <!--           android:text="@string/skip"-->
+        <!--           android:layout_margin="10dp"-->
+        <!--           android:textAllCaps="false"-->
+        <!--           />-->
 
-<!--        <Button-->
-<!--            android:textStyle="bold"-->
-<!--            android:textSize="18dp"-->
-<!--            android:background="@android:color/white"-->
-<!--            android:layout_alignParentEnd="true"-->
-<!--            android:id="@+id/btnNext"-->
-<!--            android:layout_margin="10dp"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="@string/next"-->
-<!--            android:textAllCaps="false"-->
-<!--            />-->
-
+        <!--        <Button-->
+        <!--            android:textStyle="bold"-->
+        <!--            android:textSize="18dp"-->
+        <!--            android:background="@android:color/white"-->
+        <!--            android:layout_alignParentEnd="true"-->
+        <!--            android:id="@+id/btnNext"-->
+        <!--            android:layout_margin="10dp"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="@string/next"-->
+        <!--            android:textAllCaps="false"-->
+        <!--            />-->
 
 
         <LinearLayout
-            android:layout_below="@+id/btnStart"
             android:id="@+id/l1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/btnStart"
             android:layout_centerInParent="true">
 
             <ImageView
-                android:layout_margin="2dp"
                 android:id="@+id/img1"
                 android:layout_width="10dp"
                 android:layout_height="10dp"
-                android:src="@drawable/indicator_circle_black"/>
-            <ImageView
                 android:layout_margin="2dp"
+                android:src="@drawable/indicator_circle_black" />
+
+            <ImageView
                 android:id="@+id/img2"
                 android:layout_width="10dp"
                 android:layout_height="10dp"
-                android:src="@drawable/indicator_circle"/>
-            <ImageView
                 android:layout_margin="2dp"
+                android:src="@drawable/indicator_circle" />
+
+            <ImageView
                 android:id="@+id/img3"
                 android:layout_width="10dp"
                 android:layout_height="10dp"
-                android:src="@drawable/indicator_circle"/>
+                android:layout_margin="2dp"
+                android:src="@drawable/indicator_circle" />
 
         </LinearLayout>
 
         <Button
+            android:id="@+id/btnStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btnStart"
-            android:background="@drawable/getstarted"
-            android:visibility="gone"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
             android:layout_marginTop="500dp"
-            />
-
+            android:layout_marginRight="10dp"
+            android:background="@drawable/getstarted"
+            android:visibility="gone" />
 
 
     </RelativeLayout>

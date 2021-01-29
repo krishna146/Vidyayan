@@ -7,6 +7,7 @@ import android.view.WindowManager
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.startActivity
 import com.bcebhagalpur.welcomeslider.R
 import com.bcebhagalpur.welcomeslider.student.starter.activity.ChooseClassActivity
 import com.bcebhagalpur.welcomeslider.teacher.starter.activity.TeacherRegistrationActivity2
@@ -36,13 +37,16 @@ class TeacherStudentActivity : AppCompatActivity() {
 
 
         btnstudent.setOnClickListener {
-            startActivity(Intent(this@TeacherStudentActivity, ChooseClassActivity::class.java))
+           val intent = Intent(this@TeacherStudentActivity, LoginActivity::class.java)
+            intent.putExtra("Designation", "student");
+            startActivity(intent)
         }
         btnteacher.setOnClickListener() {
 
-            startActivity(Intent(this@TeacherStudentActivity, TeacherRegistrationActivity2::class.java))
-            Toast.makeText(this@TeacherStudentActivity, "Auto Detecting location", Toast.LENGTH_LONG)
-                .show()
+            val intent = Intent(this@TeacherStudentActivity, LoginActivity::class.java)
+            intent.putExtra("Designation", "teacher");
+            startActivity(intent)
+
 
 //            if (bottomSheetBehavior.state == BottomSheetBehavior.STATE_COLLAPSED) {
 //                bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
