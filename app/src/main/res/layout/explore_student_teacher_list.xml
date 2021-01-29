@@ -138,7 +138,7 @@
 
     <RatingBar
         android:id="@+id/rating"
-        android:layout_width="250dp"
+        android:layout_width="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
         android:layout_height="wrap_content"/>
 
@@ -149,17 +149,17 @@
         android:layout_height="match_parent">
 <Button
     android:layout_margin="5dp"
-    android:layout_weight="1"
+    android:layout_weight="2"
     android:text="Send Request"
     android:textAllCaps="false"
     android:textSize="18sp"
     android:textStyle="bold"
     android:textColor="@color/kathai"
-    android:background="@drawable/startlearningbackground"
+     android:background="@drawable/buttonresorcefile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     />
-        <Button
+      <!--  <Button
             android:layout_margin="5dp"
             android:layout_weight="1"
             android:text="Demo Video"
@@ -170,7 +170,7 @@
             android:textColor="@color/kathai"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            />
+            />-->
     </LinearLayout>
 
 </LinearLayout>
