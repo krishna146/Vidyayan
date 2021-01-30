@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "301968710296",
+    "project_id": "welcomeslider-f1285",
+    "storage_bucket": "welcomeslider-f1285.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:301968710296:android:63b1afb65c54295e478eed",
+        "android_client_info": {
+          "package_name": "com.bcebhagalpur.welcomeslider"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "301968710296-8r9aa70gvc435j57duj9gelhgmug6u5l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsf-8ni9nLV4uM_9lK1ivMeVs3bpFM95c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "301968710296-8r9aa70gvc435j57duj9gelhgmug6u5l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

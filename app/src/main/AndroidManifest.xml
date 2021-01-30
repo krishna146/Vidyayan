@@ -16,6 +16,7 @@
         <activity android:name=".student.navigationDrawer.activity.BookmarkActivity"/>
         <activity android:name=".student.dashboard.activity.TeacherDemoVideoActivity"/>
         <activity android:name=".activity.BlankActivity2"/>
+        <activity android:name=".activity.OtpVerifyActivity"/>
         <activity android:name=".student.dashboard.activity.TeacherDetailActivity"/>
         <activity android:name=".activity.ChatExploreActivity"/>
         <activity android:name=".activity.LoginActivity"/>
