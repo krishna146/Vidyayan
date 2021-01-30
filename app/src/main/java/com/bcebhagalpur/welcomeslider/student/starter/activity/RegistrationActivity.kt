@@ -2,22 +2,30 @@ package com.bcebhagalpur.welcomeslider.student.starter.activity
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Typeface
 import android.location.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Looper
 import android.view.Window
 import android.view.WindowManager
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.bcebhagalpur.welcomeslider.R
 import com.bcebhagalpur.welcomeslider.student.dashboard.activity.HomeActivity
 import com.google.android.gms.location.*
+import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_otp_verify.*
+import kotlinx.android.synthetic.main.activity_otp_verify.view.*
 import kotlinx.android.synthetic.main.activity_registration.*
+import kotlinx.android.synthetic.main.activity_teacher_registration2.*
+import kotlinx.android.synthetic.main.activity_teacher_registration3.*
 import java.util.*
 
 class RegistrationActivity : AppCompatActivity() {
@@ -41,11 +49,15 @@ class RegistrationActivity : AppCompatActivity() {
         var studentStream = intent.getStringExtra("studentStream")
         var studentBoard = intent.getStringExtra("studentBoard")
         var targetExam = intent.getStringExtra("targetExam")
+        val genderItems = listOf("Male", "Female", "Neutral")
+
+        val genderAdapter = ArrayAdapter(this, R.layout.list_item, genderItems)
+        actxtGender.setAdapter(genderAdapter)
 
         imgBtnRegister.setOnClickListener {
             startActivity(Intent(this@RegistrationActivity, HomeActivity::class.java))
         }
-        btn_location.setOnClickListener {
+        btnLocation.setOnClickListener {
             requestPermission()
         }
     }
@@ -72,7 +84,7 @@ class RegistrationActivity : AppCompatActivity() {
                         longitude, 1
                     )
                     val address: Address = addresses[0]
-                    et_user_address.setText("${address.getAddressLine(0)},${address.locality}")
+                    etStudentAddress.txt("${address.getAddressLine(0)},${address.locality}")
                     //  txt_location.text=" ${address.getAddressLine(0)},${address.locality}"
                 }
             }
@@ -166,6 +178,10 @@ class RegistrationActivity : AppCompatActivity() {
         }
 
     }
+}
+
+private fun TextInputLayout.txt(s: String) {
+
 }
 
 // location=sharedPreferences.getString("location"," ")
