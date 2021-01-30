@@ -159,14 +159,12 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
             if (et_teacher_email.text!!.isNotEmpty() && et_teacher_address.text!!.isNotEmpty() && et_teacher_dob.text!!.isNotEmpty() && et_teacher_gender.text!!.isNotEmpty()){
                 val intent1=Intent(this,TeacherRegistrationActivity3::class.java)
                 val mobileNumber=intent.getStringExtra("mobileNumber")
-                val userType=intent.getStringArrayExtra("userType")
                 intent1.putExtra("teacherName",et_teacher_name.text.toString())
                 intent1.putExtra("mobileNumber",mobileNumber)
                 intent1.putExtra("teacherEmail",et_teacher_email.text.toString())
                 intent1.putExtra("teacherDob",et_teacher_dob.text.toString())
                 intent1.putExtra("teacherGender",et_teacher_gender.text.toString())
                 intent1.putExtra("teacherAddress",et_teacher_address.text.toString())
-                intent1.putExtra("userType",userType)
                 intent1.putExtra("city",txtSelectCity.text.toString())
                 startActivity(intent1)
             }else{

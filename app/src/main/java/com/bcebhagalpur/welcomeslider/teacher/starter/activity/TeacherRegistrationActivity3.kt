@@ -466,7 +466,7 @@ class TeacherRegistrationActivity3 : AppCompatActivity() {
 
             mDatabase = FirebaseDatabase.getInstance()
             mDatabaseReference = mDatabase.reference.child("TEACHERS")
-            val currentUserDb = mDatabaseReference.child("patna")
+            val currentUserDb = mDatabaseReference.child(city!!)
             mAuth= FirebaseAuth.getInstance()
             val userId= mAuth.currentUser!!.uid
 

@@ -10,6 +10,7 @@ import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
@@ -18,6 +19,7 @@ import androidx.drawerlayout.widget.DrawerLayout.SimpleDrawerListener
 import androidx.fragment.app.FragmentTransaction
 import com.bcebhagalpur.welcomeslider.R
 import com.bcebhagalpur.welcomeslider.activity.ChatExploreActivity
+import com.bcebhagalpur.welcomeslider.activity.LoginActivity
 import com.bcebhagalpur.welcomeslider.activity.VidyayanChatingActivity
 import com.bcebhagalpur.welcomeslider.bodyfragment.*
 import com.bcebhagalpur.welcomeslider.student.dashboard.fragment.ExploreFragment
@@ -28,6 +30,7 @@ import com.bcebhagalpur.welcomeslider.student.navigationDrawer.activity.MyTutorA
 import com.bcebhagalpur.welcomeslider.student.navigationDrawer.activity.StudentProfileActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -248,13 +251,14 @@ private fun onAddButtonClicked()
     private fun drawerHeaderItemHandle(){
         val headerView=navigationView.getHeaderView(0)
         val rl= headerView.findViewById<RelativeLayout>(R.id.rl_)
-//        val rl1=headerView.findViewById<RelativeLayout>(R.id.rl_one)
-//        val rl2=headerView.findViewById<RelativeLayout>(R.id.rl_two)
+        val rl1=headerView.findViewById<RelativeLayout>(R.id.rl_one)
+        val rl2=headerView.findViewById<RelativeLayout>(R.id.rl_two)
         val rl3=headerView.findViewById<RelativeLayout>(R.id.rl_three)
         val rl4=headerView.findViewById<RelativeLayout>(R.id.rl_four)
         val rl5=headerView.findViewById<RelativeLayout>(R.id.rl_five)
-//        val rl6=headerView.findViewById<RelativeLayout>(R.id.rl_six)
-//        val rl7=headerView.findViewById<RelativeLayout>(R.id.rl_seven)
+        val rl6=headerView.findViewById<RelativeLayout>(R.id.rl_six)
+        val rl7=headerView.findViewById<RelativeLayout>(R.id.rl_seven)
+        val logOut=headerView.findViewById<TextView>(R.id.log_out)
         rl.setOnClickListener {
             startActivity(Intent(this, StudentProfileActivity::class.java))
         }
@@ -266,6 +270,11 @@ private fun onAddButtonClicked()
         }
         rl5.setOnClickListener {
             startActivity(Intent(this, MyTutorActivity::class.java))
+        }
+        logOut.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            startActivity(Intent(this,LoginActivity::class.java))
+            finish()
         }
     }
 

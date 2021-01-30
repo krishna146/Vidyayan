@@ -52,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
             val studentOrTeacher=intent.getStringExtra("student")
             val intent=Intent(this,OtpVerifyActivity::class.java)
             intent.putExtra("mobileNumber",number)
-            intent.putExtra("studentOrTeacher",studentOrTeacher)
+//            intent.putExtra("studentOrTeacher",studentOrTeacher)
             startActivity(intent)
         }
     }

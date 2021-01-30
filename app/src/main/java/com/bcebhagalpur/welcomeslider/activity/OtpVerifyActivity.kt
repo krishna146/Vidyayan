@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bcebhagalpur.welcomeslider.R
 import com.bcebhagalpur.welcomeslider.student.dashboard.activity.HomeActivity
 import com.bcebhagalpur.welcomeslider.student.starter.activity.ChooseClassActivity
+import com.bcebhagalpur.welcomeslider.teacher.dashboard.activity.HomeTeacher
 import com.bcebhagalpur.welcomeslider.teacher.starter.activity.TeacherRegistrationActivity2
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
@@ -35,7 +36,7 @@ class OtpVerifyActivity : AppCompatActivity() {
 
 
         val number = intent.getStringExtra("mobileNumber")!!.toString()
-        val userType=intent.getStringExtra("studentOrTeacher")!!.toString()
+//        val userType=intent.getStringExtra("studentOrTeacher")!!.toString()
 
 
         btnVerify=findViewById(R.id.btnVerify)
@@ -96,48 +97,43 @@ class OtpVerifyActivity : AppCompatActivity() {
         signInWithPhoneAuthCredential(credential)
     }
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
-        val userType=intent.getStringExtra("studentOrTeacher")!!.toString()
+//        val userType=intent.getStringExtra("studentOrTeacher")!!.toString()
         val number = intent.getStringExtra("mobileNumber")!!.toString()
         mAuth.signInWithCredential(credential)
             .addOnCompleteListener(this@OtpVerifyActivity) { task ->
                 if (task.isSuccessful) {
-                    val isNewUser= task.result.additionalUserInfo!!.isNewUser
+                    val isNewUser = task.result.additionalUserInfo!!.isNewUser
                     if (isNewUser) {
-                        if (userType == "Student") {
-                            val intent =Intent(this@OtpVerifyActivity, ChooseClassActivity::class.java)
-                            intent.putExtra("userType",userType)
-                            intent.putExtra("mobileNumber",number)
-                            intent.flags =
-                                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                            startActivity(intent)
-                        } else if (userType == "Teacher") {
-                            val intent = Intent(
-                                this@OtpVerifyActivity,
-                                TeacherRegistrationActivity2::class.java
-                            )
-                            intent.putExtra("userType",userType)
-                            intent.putExtra("mobileNumber",number)
-                            intent.flags =
-                                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                            startActivity(intent)
-                        }
-
-                       else{
-
-                            val intent = Intent(this@OtpVerifyActivity, HomeActivity::class.java)
-                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                            startActivity(intent)
-
-                        }
+                              val intent=Intent(this,TeacherStudentActivity::class.java)
+                        intent.putExtra("mobileNumber",number)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        val intent = Intent(this@OtpVerifyActivity, HomeActivity::class.java)
+                        intent.flags =
+                            Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
+                        finish()
                     }
-
-                } else {
+                }
+                else {
                     var message = "Something is wrong, we will fix it soon..."
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
                         message = "Invalid code entered..."
                     }
                 }
             }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user != null) {
+            startActivity( Intent(this, HomeActivity::class.java).apply {
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                finish()
+            })
+        }
     }
 
 }

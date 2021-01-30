@@ -9,6 +9,9 @@ import android.view.WindowManager
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import com.bcebhagalpur.welcomeslider.R
+import com.bcebhagalpur.welcomeslider.student.starter.activity.RegistrationActivity
+import com.bcebhagalpur.welcomeslider.teacher.starter.activity.TeacherRegistrationActivity2
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_teacher_registration2.*
 import kotlinx.android.synthetic.main.activity_teacher_student.*
 import java.util.*
@@ -34,26 +37,25 @@ class TeacherStudentActivity : AppCompatActivity() {
         btnTeacher=findViewById(R.id.btnteacher)
 
         btnStudent.setOnClickListener {
-
-            val editor:SharedPreferences.Editor =  sharedPreferences.edit()
-            editor.putString("student","Student")
-            editor.apply()
-            editor.apply()
-            val intent = Intent(this@TeacherStudentActivity, LoginActivity::class.java)
+            val number=intent.getStringExtra("mobileNumber")
+            val intent = Intent(this@TeacherStudentActivity, RegistrationActivity::class.java)
             intent.putExtra("student", "Student")
+            intent.putExtra("mobileNumber",number)
             startActivity(intent)
         }
 
         btnTeacher.setOnClickListener {
-            val editor:SharedPreferences.Editor =  sharedPreferences.edit()
-            editor.putString("student","Student")
-            editor.apply()
-            editor.commit()
-            val intent = Intent(this@TeacherStudentActivity, LoginActivity::class.java)
+            val number=intent.getStringExtra("mobileNumber")
+            val intent = Intent(this@TeacherStudentActivity, TeacherRegistrationActivity2::class.java)
+            intent.putExtra("mobileNumber",number)
             intent.putExtra("student", "Teacher")
             startActivity(intent)
         }
+    }
 
+    override fun onBackPressed() {
+        FirebaseAuth.getInstance().signOut()
+        super.onBackPressed()
     }
 }
 
