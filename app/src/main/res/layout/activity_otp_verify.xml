@@ -29,26 +29,117 @@
         android:textSize="15sp"
         android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/etOtp"
-        android:layout_width="200dp"
+    <!-- <LinearLayout
+         android:id="@+id/LL2"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_below="@+id/txtNumber"
+         android:orientation="horizontal"
+         android:gravity="center"
+         android:layout_marginTop="30dp">
+
+         <EditText
+             android:id="@+id/inputCode1"
+             android:layout_width="40dp"
+             android:layout_height="45dp"
+             android:gravity="center"
+             android:imeOptions="actionNext"
+             android:importantForAutofill="no"
+             android:inputType="number"
+             android:textSize="24sp"
+             android:textStyle="bold"
+             android:maxLength="1"
+             tools:ignore="labelFor" />
+         <EditText
+             android:id="@+id/inputCode2"
+             android:layout_width="40dp"
+             android:layout_height="45dp"
+             android:gravity="center"
+             android:imeOptions="actionNext"
+             android:importantForAutofill="no"
+             android:inputType="number"
+             android:textSize="24sp"
+             android:textStyle="bold"
+             android:maxLength="1"
+             tools:ignore="labelFor" />
+         <EditText
+             android:id="@+id/inputCode3"
+             android:layout_width="40dp"
+             android:layout_height="45dp"
+             android:gravity="center"
+             android:imeOptions="actionNext"
+             android:importantForAutofill="no"
+             android:inputType="number"
+             android:textSize="24sp"
+             android:textStyle="bold"
+             android:maxLength="1"
+             tools:ignore="labelFor" />
+         <EditText
+             android:id="@+id/inputCode4"
+             android:layout_width="40dp"
+             android:layout_height="45dp"
+             android:gravity="center"
+             android:imeOptions="actionNext"
+             android:importantForAutofill="no"
+             android:inputType="number"
+             android:textSize="24sp"
+             android:textStyle="bold"
+             android:maxLength="1"
+             tools:ignore="labelFor" />
+         <EditText
+             android:id="@+id/inputCode5"
+             android:layout_width="40dp"
+             android:layout_height="45dp"
+             android:gravity="center"
+             android:imeOptions="actionNext"
+             android:importantForAutofill="no"
+             android:inputType="number"
+             android:textSize="24sp"
+             android:textStyle="bold"
+             android:maxLength="1"
+             tools:ignore="labelFor" />
+         <EditText
+             android:id="@+id/inputCode6"
+             android:layout_width="40dp"
+             android:layout_height="45dp"
+             android:gravity="center"
+             android:imeOptions="actionNext"
+             android:importantForAutofill="no"
+             android:inputType="number"
+             android:textSize="24sp"
+             android:textStyle="bold"
+             android:maxLength="1"
+             tools:ignore="labelFor" />
+
+
+
+     </LinearLayout>-->
+
+    <com.chaos.view.PinView
+        android:id="@id/etOtp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtNumber"
+        android:layout_below="@id/txtNumber"
         android:layout_centerHorizontal="true"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="20dp"
-        android:ems="20"
-        android:gravity="center"
-        android:inputType="phone"
-        android:maxLength="4" />
+        android:layout_marginTop="30dp"
+        app:lineColor="@color/colorAccent"
+        android:inputType="number"
+        app:itemCount="6"
+        android:cursorVisible="true"
+        app:hideLineWhenFilled="true"
+        app:itemRadius="10dp"
+        android:itemBackground="#ffffff"
+        style="@style/PinWidget.PinView"
+        app:itemHeight="50dp"
+        app:itemWidth="50dp" />
 
     <LinearLayout
         android:id="@+id/LL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/etOtp"
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp">
 
 
         <TextView
@@ -63,8 +154,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Resend"
-            android:textSize="15sp"
             android:textColor="@color/colorAccent"
+            android:textSize="15sp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -75,5 +166,6 @@
         android:layout_below="@+id/LL"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
+        android:background="@color/colorAccent"
         android:text="Verify" />
 </RelativeLayout>

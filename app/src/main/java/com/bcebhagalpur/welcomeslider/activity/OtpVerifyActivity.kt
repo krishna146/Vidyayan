@@ -50,21 +50,6 @@ class OtpVerifyActivity : AppCompatActivity() {
         btnVerify.setOnClickListener(){
             val code: String = etOtp.getText().toString().trim()
 
-//            if(etOtp.text.toString()== "1234" && userType =="student"){
-//                startActivity(Intent(this, HomeActivity::class.java))
-//            }
-//
-//            if(etOtp.text.toString()!="1234" && userType == "student" ){
-//                startActivity(Intent(this, ChooseClassActivity::class.java))
-//            }
-//
-//            if(etOtp.text.toString()== "1234" && userType =="teacher"){
-//                startActivity(Intent(this, HomeTeacher::class.java))
-//            }
-//
-//            if(etOtp.text.toString()!="1234" && userType == "teacher" ){
-//                startActivity(Intent(this, TeacherRegistrationActivity2::class.java))
-//            }
             verifyVerificationCode(code)
 
         }
@@ -77,6 +62,7 @@ class OtpVerifyActivity : AppCompatActivity() {
                 if (code != null) {
                     etOtp.setText(code)
                     verifyVerificationCode(code)
+
                 }
             }
             override fun onVerificationFailed(e: FirebaseException) {
@@ -87,6 +73,11 @@ class OtpVerifyActivity : AppCompatActivity() {
                 mVerificationId = s
             }
         }
+
+
+
+
+
 
     private fun sendVerificationCode(mobile: String) {
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
@@ -111,7 +102,7 @@ class OtpVerifyActivity : AppCompatActivity() {
                         Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                 } else {
-                    var message = "Somthing is wrong, we will fix it soon..."
+                    var message = "Something is wrong, we will fix it soon..."
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
                         message = "Invalid code entered..."
                     }

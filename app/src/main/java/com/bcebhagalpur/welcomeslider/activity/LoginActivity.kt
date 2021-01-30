@@ -45,6 +45,9 @@ class LoginActivity : AppCompatActivity() {
         etMobileNumber=findViewById(R.id.etMobileNumber)
         btnNext=findViewById(R.id.btn_get_otp)
         btnNext.setOnClickListener {
+
+            btnNext.visibility = View.GONE
+            loginProgressBar.visibility = View.VISIBLE
             val number= etMobileNumber.editText!!.text.toString().trim()
             val studentOrTeacher=intent.getStringExtra("student")
             val intent=Intent(this,OtpVerifyActivity::class.java)
