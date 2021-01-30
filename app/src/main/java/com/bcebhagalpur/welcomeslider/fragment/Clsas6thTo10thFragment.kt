@@ -1,13 +1,21 @@
 package com.bcebhagalpur.welcomeslider.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bcebhagalpur.welcomeslider.R
+import com.bcebhagalpur.welcomeslider.student.starter.activity.ChooseClassActivity
+import com.bcebhagalpur.welcomeslider.student.starter.activity.RegistrationActivity
+import kotlinx.android.synthetic.main.fragment_class12thor11th.view.*
 import kotlinx.android.synthetic.main.fragment_class6th_to10th.*
 import kotlinx.android.synthetic.main.fragment_class6th_to10th.view.*
+import kotlinx.android.synthetic.main.fragment_class6th_to10th.view.btnStartLearning
+import kotlinx.android.synthetic.main.fragment_class6th_to10th.view.txtCBSE
+import kotlinx.android.synthetic.main.fragment_class6th_to10th.view.txtICSE
+import kotlinx.android.synthetic.main.fragment_class6th_to10th.view.txtSTATE
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,6 +31,7 @@ class Claas6thTo10thFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    lateinit var studentBoard: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,20 +48,32 @@ class Claas6thTo10thFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_class6th_to10th, container, false)
         view.txtCBSE.setOnClickListener(){
+            studentBoard = txtCBSE.text.toString()
             txtCBSE.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
             txtICSE.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
             txtSTATE.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
         }
         view.txtICSE.setOnClickListener(){
+            studentBoard = txtICSE.text.toString()
             txtICSE.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
             txtCBSE.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
             txtSTATE.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
         }
         view.txtSTATE.setOnClickListener(){
+            studentBoard = txtSTATE.text.toString()
             txtSTATE.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
             txtICSE.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
             txtCBSE.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
         }
+        var studentClass= (activity as ChooseClassActivity?)?.getResult()
+
+        view.btnStartLearning.setOnClickListener(){
+            val intent = Intent(activity, RegistrationActivity::class.java)
+            intent.putExtra("studentClass",studentClass )
+            intent.putExtra("studentBoard", studentBoard)
+            startActivity(intent)
+        }
+
         return view
     }
 

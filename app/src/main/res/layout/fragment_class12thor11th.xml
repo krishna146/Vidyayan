@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".fragment.Class12thor11thFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <TextView
         android:id="@+id/txtSelectBoard"
         android:layout_width="match_parent"
@@ -115,7 +115,7 @@
 
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/LL3"
+        android:id="@+id/LLSelectStream"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_below="@+id/LL2"
@@ -140,4 +140,14 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/btnStartLearning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LLSelectStream"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="70dp"
+        android:background="@drawable/startlearningbackground"
+        android:text="Start Learning" />
 </RelativeLayout>
