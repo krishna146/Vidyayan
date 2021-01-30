@@ -13,16 +13,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".student.navigationDrawer.activity.BookmarkActivity"/>
-        <activity android:name=".student.dashboard.activity.TeacherDemoVideoActivity"/>
-        <activity android:name=".activity.BlankActivity2"/>
-        <activity android:name=".activity.OtpVerifyActivity"/>
-        <activity android:name=".student.dashboard.activity.TeacherDetailActivity"/>
-        <activity android:name=".activity.ChatExploreActivity"/>
-        <activity android:name=".activity.LoginActivity"/>
-        <activity android:name=".activity.MainActivity"/>
-        <activity android:name=".activity.VidyayanChatingActivity"/>
-        <activity android:name=".activity.StudentProgressActivity"/>
+        <activity android:name=".student.navigationDrawer.activity.BookmarkActivity" />
+        <activity android:name=".student.dashboard.activity.TeacherDemoVideoActivity" />
+        <activity android:name=".activity.BlankActivity2" />
+        <activity android:name=".activity.OtpVerifyActivity" />
+        <activity android:name=".student.dashboard.activity.TeacherDetailActivity" />
+        <activity android:name=".activity.ChatExploreActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.VidyayanChatingActivity" />
+        <activity android:name=".activity.StudentProgressActivity" />
         <activity android:name=".student.navigationDrawer.activity.MyCoursesActivity" />
         <activity android:name=".student.navigationDrawer.activity.MyTutorActivity" />
         <activity android:name=".teacher.dashboard.activity.HomeTeacher" />
@@ -32,7 +32,13 @@
         <activity android:name=".teacher.starter.activity.TeacherRegistrationActivity3" />
         <activity android:name=".activity.TeacherStudentActivity" />
         <activity android:name=".student.navigationDrawer.activity.StudentProfileActivity" />
-        <activity android:name=".student.starter.activity.ChooseClassActivity" />
+        <activity android:name=".student.starter.activity.ChooseClassActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

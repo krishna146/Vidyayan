@@ -37,6 +37,10 @@ class RegistrationActivity : AppCompatActivity() {
         )
         // sharedPreferences=getSharedPreferences(getString(R.string.preference_file_name), Context.MODE_PRIVATE)
         setContentView(R.layout.activity_registration)
+        var studentClass = intent.getStringExtra("studentClass")
+        var studentStream = intent.getStringExtra("studentStream")
+        var studentBoard = intent.getStringExtra("studentBoard")
+        var targetExam = intent.getStringExtra("targetExam")
 
         imgBtnRegister.setOnClickListener {
             startActivity(Intent(this@RegistrationActivity, HomeActivity::class.java))

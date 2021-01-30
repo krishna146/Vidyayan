@@ -1,11 +1,14 @@
 package com.bcebhagalpur.welcomeslider.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bcebhagalpur.welcomeslider.R
+import com.bcebhagalpur.welcomeslider.student.starter.activity.ChooseClassActivity
+import com.bcebhagalpur.welcomeslider.student.starter.activity.RegistrationActivity
 import kotlinx.android.synthetic.main.fragment_class12thor11th.*
 import kotlinx.android.synthetic.main.fragment_class12thor11th.view.*
 
@@ -14,15 +17,13 @@ import kotlinx.android.synthetic.main.fragment_class12thor11th.view.*
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [Class12thFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class Class12thor11thFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    lateinit var studentBoard: String
+    lateinit var studentStream: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,34 +40,48 @@ class Class12thor11thFragment : Fragment() {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_class12thor11th, container, false)
         view.txtCBSE.setOnClickListener(){
+            studentBoard = txtCBSE.text.toString()
             txtCBSE.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
             txtICSE.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
             txtSTATE.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
         }
         view.txtICSE.setOnClickListener(){
+            studentBoard = txtICSE.text.toString()
             txtICSE.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
             txtCBSE.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
             txtSTATE.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
         }
         view.txtSTATE.setOnClickListener(){
+            studentBoard = txtSTATE.text.toString()
             txtSTATE.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
             txtICSE.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
             txtCBSE.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
         }
         view.txtSciencePCB.setOnClickListener(){
+            studentStream = txtSciencePCB.text.toString()
             txtSciencePCB.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
             txtSciencePCM.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
             txtCommerce.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
         }
         view.txtSciencePCM.setOnClickListener(){
+            studentStream = txtSciencePCM.text.toString()
             txtSciencePCM.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
             txtSciencePCB.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
             txtCommerce.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
         }
         view.txtCommerce.setOnClickListener(){
+            studentStream = txtCommerce.text.toString()
             txtCommerce.setBackgroundResource(R.drawable.rounded_corners_imagebutton2)
             txtSciencePCM.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
             txtSciencePCB.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
+        }
+        var studentClass= (activity as ChooseClassActivity?)?.getResult()
+        view.btnStartLearning.setOnClickListener(){
+            val intent = Intent(activity, RegistrationActivity::class.java)
+            intent.putExtra("studentClass",studentClass )
+            intent.putExtra("studentBoard", studentBoard)
+            intent.putExtra("studentStream", studentStream)
+            startActivity(intent)
         }
 
         return view

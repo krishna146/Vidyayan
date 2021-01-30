@@ -17,7 +17,7 @@
         android:textSize="20sp" />
 
     <LinearLayout
-        android:id="@+id/LL1"
+        android:id="@+id/LLSelectBoard"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_below="@+id/txtSelectBoard"
@@ -65,4 +65,14 @@
             android:textSize="15sp" />
 
     </LinearLayout>
+    <Button
+        android:id="@+id/btnStartLearning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LLSelectBoard"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="70dp"
+        android:background="@drawable/startlearningbackground"
+        android:text="Start Learning" />
 </RelativeLayout>

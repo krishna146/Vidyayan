@@ -12,6 +12,8 @@ import com.bcebhagalpur.welcomeslider.fragment.Claas6thTo10thFragment
 import com.bcebhagalpur.welcomeslider.fragment.Class13thFragment
 import com.bcebhagalpur.welcomeslider.fragment.Class12thor11thFragment
 import kotlinx.android.synthetic.main.activity_choose_class.*
+import kotlinx.android.synthetic.main.activity_otp_verify.view.*
+import kotlinx.android.synthetic.main.fragment_class13th.*
 
 class  ChooseClassActivity : AppCompatActivity() {
     lateinit var classStudent:String
@@ -39,7 +41,6 @@ class  ChooseClassActivity : AppCompatActivity() {
             txt3rd . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
             txt2nd . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
             txt1st . setBackgroundResource (R.drawable.rounded_corners_imagebutton)
-
             val transaction =
                 supportFragmentManager.beginTransaction().replace(R.id.frame, Class13thFragment())
             transaction.commit()
@@ -283,14 +284,20 @@ class  ChooseClassActivity : AppCompatActivity() {
                     .replace(R.id.frame, Claas6thTo10thFragment())
             transaction.commit()
         }
-        btnStartLearning.setOnClickListener(){
+        /*btnStartLearning.setOnClickListener(){
             val intent=  Intent(this@ChooseClassActivity, RegistrationActivity::class.java)
             intent.putExtra("class", classStudent)
             startActivity(intent)
             Toast.makeText(this@ChooseClassActivity, "Auto detecting Location ", Toast.LENGTH_LONG).show()
-        }
+        }*/
 
 
 
     }
+
+    fun getResult(): String {
+        return classStudent
+    }
+
+
 }
