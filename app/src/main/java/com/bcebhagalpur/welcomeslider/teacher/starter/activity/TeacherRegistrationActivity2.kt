@@ -18,6 +18,8 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import com.bcebhagalpur.welcomeslider.R
 import com.google.android.gms.location.*
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.activity_registration.*
 import kotlinx.android.synthetic.main.activity_teacher_registration2.*
 import java.text.SimpleDateFormat
@@ -29,43 +31,49 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
     private lateinit var locationRequest: LocationRequest
     private lateinit var locationCallback: LocationCallback
 
+    private lateinit var et_teacher_name:TextInputEditText
+    private lateinit var et_teacher_email:TextInputEditText
+    private lateinit var et_teacher_gender:TextInputEditText
+    private lateinit var et_teacher_dob:TextInputEditText
+    private lateinit var et_teacher_address:TextInputEditText
+    private lateinit var txtSelectCity:TextView
+
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        window.requestFeature(Window.FEATURE_NO_TITLE)
-//        window.setFlags(
-//            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-//            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-//        )
-//        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
         setContentView(R.layout.activity_teacher_registration2)
 
-        /* val gender= arrayOf("Gender","Male","Female","Neutral")
-        val arrayAdapter=ArrayAdapter(this,android.R.layout.simple_list_item_1,gender)
-        et_teacher_gender.threshold=0
-        et_teacher_gender.setAdapter(arrayAdapter)
-        et_teacher_gender.setOnFocusChangeListener(View.OnFocusChangeListener { v, hasFocus ->
-            if(hasFocus)  et_teacher_gender.showDropDown()
-        })*/
+        et_teacher_name=findViewById(R.id.et_teacher_name)
+        et_teacher_email=findViewById(R.id.et_teacher_email)
+        et_teacher_gender=findViewById(R.id.et_teacher_gender)
+        et_teacher_dob=findViewById(R.id.et_teacher_dob)
+        et_teacher_address=findViewById(R.id.et_teacher_address)
+        txtSelectCity=findViewById(R.id.txtSelectCity)
 
+//        val teacherName= et_teacher_name.text.toString()
+//        val teacherEmail= et_teacher_email.text.toString()
+//        val teacherGender= et_teacher_gender.text.toString()
+//        val teacherDob= et_teacher_dob.text.toString()
+//        val teacherAddress= et_teacher_address.text.toString()
 
-        //   teacher_gender_spinner.adapter=arrayAdapter
-        //   teacher_gender_spinner.onItemSelectedListener=object :
-        /*AdapterView.OnItemSelectedListener{
-             override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                et_teacher_gender.setText(gender[position])
+        txtSelectCity.setOnClickListener {
+            val city= arrayOf("Araria","Arwal","Aurangabad","Banka","Begusarai","Bhagalpur","Bhojpur",
+                "Buxar","Darbhanga","East Champaran (Motihari)","Gaya","Gopalganj","Jamui","Jehanabad",
+                "Kaimur (Bhabua)", "Katihar","Khagaria","Kishanganj","Lakhisarai","Madhepura","Madhubani",
+                "Munger","Muzaffarpur","Nalanda","Nawada","Patna","Purnia","Rohtas","Saharsa","Samastipur","Saran",
+                "Sheikhpura", "Sheohar", "Sitamarhi", "Siwan", "Supaul", "Vaishali", "West Champara")
+            val mAlertDialogBuilder=AlertDialog.Builder(this@TeacherRegistrationActivity2)
+            mAlertDialogBuilder.setTitle("search city")
+            mAlertDialogBuilder.setItems(city){_,which->
+                when(which){
+                    which->{
+                        txtSelectCity.setText(city[which])
+                    }
+                }
             }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-
-            }
-
-        }*/
+            val mAlertDialog=mAlertDialogBuilder.create()
+            mAlertDialog.show()
+        }
 
        et_teacher_gender.setOnClickListener {
             val gender = arrayOf("Male", "Female", "Neutral")
@@ -74,7 +82,7 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
             mAlertDialogBuilder.setItems(gender) { _, which ->
                 when (which) {
                     which -> {
-                       et_teacher_gender.setText(gender[which])
+                      et_teacher_gender.setText(gender[which])
                         et_teacher_gender.setTypeface(null, BOLD)
                     }
                 }
@@ -82,32 +90,9 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
             val mAlertDialog = mAlertDialogBuilder.create()
             mAlertDialog.show()
         }
-//        teacher_qualification_btn.setOnClickListener {
-//            val qualification = arrayOf("Btech", "Mtech", "Phd")
-//            val mAlertDialogBuilder = AlertDialog.Builder(this)
-//            mAlertDialogBuilder.setTitle("Select gender")
-//            mAlertDialogBuilder.setItems(qualification) { _, which ->
-//                when (which) {
-//                    which -> {
-//                        et_teacher_qualification.setText(qualification[which])
-//                        et_teacher_qualification.setTypeface(null, BOLD)
-//                    }
-//                }
-//            }
-//            val mAlertDialog = mAlertDialogBuilder.create()
-//            mAlertDialog.show()
-//        }
-
-        imgBtnTeacherRegister.setOnClickListener {
-            startActivity(Intent(this@TeacherRegistrationActivity2, TeacherRegistrationActivity3::class.java))
-        }
-        et_teacher_address.setOnClickListener {
-            requestPermission()
-        }
-
        et_teacher_dob.setOnClickListener {
             val now=Calendar.getInstance()
-            val datePicker=DatePickerDialog(this,DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+            val datePicker=DatePickerDialog(this, { _, year, month, dayOfMonth ->
              val selectedDate=Calendar.getInstance()
                 selectedDate.set(Calendar.YEAR,year)
                 selectedDate.set(Calendar.MONTH,month)
@@ -118,23 +103,21 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
                 now.get(Calendar.YEAR),now.get(Calendar.MONTH),now.get(Calendar.DAY_OF_MONTH))
             datePicker.show()
         }
-    }
-    fun requestPermission()
-    {
+
         fusedLocationProviderClient= LocationServices.getFusedLocationProviderClient(this)
         locationRequest= LocationRequest()
-        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-        locationRequest.setFastestInterval(2000)
-        locationRequest.setInterval(4000)
+        locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+        locationRequest.fastestInterval = 2000
+        locationRequest.interval = 4000
         locationCallback=object :LocationCallback(){
             @SuppressLint("SetTextI18n")
             override fun onLocationResult(p0: LocationResult?) {
                 super.onLocationResult(p0)
                 LocationServices.getFusedLocationProviderClient(this@TeacherRegistrationActivity2).removeLocationUpdates(this)
                 if(p0!=null&&p0.locations.size>0){
-                    var latestLocationIndex=p0.locations.size-1
-                    var latitude=p0.locations.get(latestLocationIndex).latitude
-                    var longitude=p0.locations.get(latestLocationIndex).longitude
+                    val latestLocationIndex=p0.locations.size-1
+                    val latitude= p0.locations[latestLocationIndex].latitude
+                    val longitude= p0.locations[latestLocationIndex].longitude
                     val gc = Geocoder(this@TeacherRegistrationActivity2, Locale.getDefault())
                     val addresses: List<Address> = gc.getFromLocation(latitude,
                         longitude, 1)
@@ -153,13 +136,13 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
                 Manifest.permission.ACCESS_COARSE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
+
             // here to request the missing permissions, and then overriding
             //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
+
             ActivityCompat.requestPermissions(
                 this,
                 arrayOf(
@@ -172,7 +155,27 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
         }
         fusedLocationProviderClient.requestLocationUpdates(locationRequest,locationCallback, Looper.getMainLooper())
 
+        imgBtnTeacherRegister.setOnClickListener {
+            if (et_teacher_email.text!!.isNotEmpty() && et_teacher_address.text!!.isNotEmpty() && et_teacher_dob.text!!.isNotEmpty() && et_teacher_gender.text!!.isNotEmpty()){
+                val intent1=Intent(this,TeacherRegistrationActivity3::class.java)
+                val mobileNumber=intent.getStringExtra("mobileNumber")
+                val userType=intent.getStringArrayExtra("userType")
+                intent1.putExtra("teacherName",et_teacher_name.text.toString())
+                intent1.putExtra("mobileNumber",mobileNumber)
+                intent1.putExtra("teacherEmail",et_teacher_email.text.toString())
+                intent1.putExtra("teacherDob",et_teacher_dob.text.toString())
+                intent1.putExtra("teacherGender",et_teacher_gender.text.toString())
+                intent1.putExtra("teacherAddress",et_teacher_address.text.toString())
+                intent1.putExtra("userType",userType)
+                intent1.putExtra("city",txtSelectCity.text.toString())
+                startActivity(intent1)
+            }else{
+                Toast.makeText(this,"please fill everything!! all fields are required",Toast.LENGTH_SHORT).show()
+            }
+
+        }
     }
+
     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<String>,
         grantResults: IntArray
@@ -208,15 +211,16 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
                     // btn_teacher_location.setOnClickListener(null)
                 }
 
-            } else {
+            }
+            else {
                 Toast.makeText(this, "Permission Denied",
                     Toast.LENGTH_SHORT).show()
                 return
-                // btn_teacher_location.setOnClickListener(null)
             }
-
         }
 
+
     }
+
 
     }

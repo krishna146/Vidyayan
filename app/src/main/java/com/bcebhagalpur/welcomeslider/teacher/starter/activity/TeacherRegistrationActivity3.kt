@@ -1,25 +1,70 @@
 package com.bcebhagalpur.welcomeslider.teacher.starter.activity
 
 import android.annotation.SuppressLint
+import android.app.ProgressDialog
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
+import android.view.textclassifier.TextLanguage
 import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.bcebhagalpur.welcomeslider.R
 import com.bcebhagalpur.welcomeslider.teacher.dashboard.activity.HomeTeacher
+import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_teacher_registration3.*
 import java.util.*
 
 class TeacherRegistrationActivity3 : AppCompatActivity() {
 
+    private lateinit var menuHighestQualification:TextInputLayout
+    private lateinit var menuStatus:TextInputLayout
+    private lateinit var menuCollege:TextInputLayout
+    private lateinit var menuLanguage: TextInputLayout
+    private lateinit var menuMode:TextInputLayout
+    private lateinit var txtSelectClass:TextView
+    private lateinit var txtSelectSubject:TextView
+
+    private lateinit var actxtQualification:AutoCompleteTextView
+    private lateinit var actxtStatus:AutoCompleteTextView
+    private lateinit var actxtCollege:AutoCompleteTextView
+    private lateinit var actxtLanguage:AutoCompleteTextView
+    private lateinit var actxtMode:AutoCompleteTextView
+
+    private lateinit var mDatabaseReference: DatabaseReference
+    private lateinit var mDatabase: FirebaseDatabase
+    private lateinit var mStorage : StorageReference
+    private lateinit var mAuth: FirebaseAuth
+
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_teacher_registration3)
+
+        menuHighestQualification=findViewById(R.id.menuHighestQualification)
+        menuStatus=findViewById(R.id.menuStatus)
+        menuCollege=findViewById(R.id.menuCollege)
+        menuLanguage=findViewById(R.id.menuLanguage)
+        menuMode=findViewById(R.id.menuMode)
+        txtSelectClass=findViewById(R.id.txtSelectClass)
+        txtSelectSubject=findViewById(R.id.txtSelectSubject)
+
+        actxtQualification=findViewById(R.id.actxtQualification)
+        actxtStatus=findViewById(R.id.actxtStatus)
+        actxtCollege=findViewById(R.id.actxtCollege)
+        actxtLanguage=findViewById(R.id.actxtLanguage)
+        actxtMode=findViewById(R.id.actxtMode)
+
 
         var b = 1
 
@@ -396,13 +441,61 @@ class TeacherRegistrationActivity3 : AppCompatActivity() {
             dialog.show()
 
         }
+        submit()
+    }
 
+    private fun submit(){
+        btnSubmit.setOnClickListener {
 
+            val teacherName=intent.getStringExtra("teacherName")
+            val mobileNumber=intent.getStringExtra("mobileNumber")
+            val teacherEmail=intent.getStringExtra("mobileEmail")
+            val teacherDob=intent.getStringExtra("teacherDob")
+            val teacherGender=intent.getStringExtra("teacherGender")
+            val teacherAddress=intent.getStringExtra("teacherAddress")
+            val userType=intent.getStringExtra("userType")
+            val city=intent.getStringExtra("city")
 
+            val qualification=actxtQualification.text
+            val status=actxtStatus.text
+            val college=actxtCollege.text
+            val language=actxtLanguage.text
+            val mode=actxtMode.text
+            val selectClass=txtSelectClass.text
+            val selectSubject=txtSelectSubject.text
 
+            mDatabase = FirebaseDatabase.getInstance()
+            mDatabaseReference = mDatabase.reference.child("TEACHERS")
+            val currentUserDb = mDatabaseReference.child("patna")
+            mAuth= FirebaseAuth.getInstance()
+            val userId= mAuth.currentUser!!.uid
 
-        btnSubmit.setOnClickListener(){
-            startActivity(Intent(this, HomeTeacher::class.java))
+            currentUserDb.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val anotherChild = currentUserDb.child(userId)
+                    anotherChild.child("userId").setValue(userId)
+                    anotherChild.child("mobileNumber").setValue(mobileNumber)
+                    anotherChild.child("teacherName").setValue(teacherName)
+                    anotherChild.child("teacherEmail").setValue(teacherEmail)
+                    anotherChild.child("teacherDob").setValue(teacherDob)
+                    anotherChild.child("teacherCity").setValue(city)
+                    anotherChild.child("teacherGender").setValue(teacherGender)
+                    anotherChild.child("teacherAddress").setValue(teacherAddress)
+                    anotherChild.child("qualification").setValue(qualification)
+                    anotherChild.child("status").setValue(status)
+                    anotherChild.child("language").setValue(language)
+                    anotherChild.child("college").setValue(college)
+                    anotherChild.child("mode").setValue(mode)
+                    anotherChild.child("class").setValue(selectClass)
+                    anotherChild.child("subject").setValue(selectSubject)
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                }
+
+            })
+            val intent=Intent(this@TeacherRegistrationActivity3, HomeTeacher::class.java)
+            startActivity(intent)
         }
     }
 }

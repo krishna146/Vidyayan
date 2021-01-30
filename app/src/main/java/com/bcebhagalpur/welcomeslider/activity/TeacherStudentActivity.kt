@@ -1,26 +1,24 @@
 package com.bcebhagalpur.welcomeslider.activity
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Window
 import android.view.WindowManager
 import android.widget.ImageButton
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.startActivity
 import com.bcebhagalpur.welcomeslider.R
-import com.bcebhagalpur.welcomeslider.student.starter.activity.ChooseClassActivity
-import com.bcebhagalpur.welcomeslider.teacher.starter.activity.TeacherRegistrationActivity2
-import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_teacher_registration2.*
 import kotlinx.android.synthetic.main.activity_teacher_student.*
-import java.text.SimpleDateFormat
 import java.util.*
-
 
 class TeacherStudentActivity : AppCompatActivity() {
     private lateinit var btnStudent:ImageButton
     private lateinit var btnTeacher:ImageButton
+
+    private val sharedPrefFile = "userTypeSharedPreferences"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.requestFeature(Window.FEATURE_NO_TITLE)
@@ -30,19 +28,32 @@ class TeacherStudentActivity : AppCompatActivity() {
         )
         setContentView(R.layout.activity_teacher_student)
 
+        val sharedPreferences: SharedPreferences = this.getSharedPreferences(sharedPrefFile,Context.MODE_PRIVATE)
+
         btnStudent=findViewById(R.id.btnstudent)
         btnTeacher=findViewById(R.id.btnteacher)
 
         btnStudent.setOnClickListener {
-           val intent = Intent(this@TeacherStudentActivity, LoginActivity::class.java)
-            intent.putExtra("student", "Student");
+
+            val editor:SharedPreferences.Editor =  sharedPreferences.edit()
+            editor.putString("student","Student")
+            editor.apply()
+            editor.apply()
+            val intent = Intent(this@TeacherStudentActivity, LoginActivity::class.java)
+            intent.putExtra("student", "Student")
             startActivity(intent)
         }
-        btnTeacher.setOnClickListener() {
+
+        btnTeacher.setOnClickListener {
+            val editor:SharedPreferences.Editor =  sharedPreferences.edit()
+            editor.putString("student","Student")
+            editor.apply()
+            editor.commit()
             val intent = Intent(this@TeacherStudentActivity, LoginActivity::class.java)
-            intent.putExtra("student", "Teacher");
+            intent.putExtra("student", "Teacher")
             startActivity(intent)
         }
 
     }
 }
+

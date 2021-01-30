@@ -9,8 +9,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bcebhagalpur.welcomeslider.R
+import com.bcebhagalpur.welcomeslider.student.dashboard.activity.HomeActivity
 import com.bcebhagalpur.welcomeslider.student.starter.activity.ChooseClassActivity
-import com.google.android.material.snackbar.Snackbar
+import com.bcebhagalpur.welcomeslider.teacher.starter.activity.TeacherRegistrationActivity2
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
 import com.google.firebase.auth.PhoneAuthProvider.ForceResendingToken
@@ -18,9 +19,7 @@ import com.google.firebase.auth.PhoneAuthProvider.OnVerificationStateChangedCall
 import kotlinx.android.synthetic.main.activity_otp_verify.*
 import java.util.concurrent.TimeUnit
 
-
 class OtpVerifyActivity : AppCompatActivity() {
-
     private lateinit var btnVerify:Button
     private lateinit var txtNumber:TextView
     private lateinit var txtResend:TextView
@@ -34,8 +33,10 @@ class OtpVerifyActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_otp_verify)
 
+
         val number = intent.getStringExtra("mobileNumber")!!.toString()
         val userType=intent.getStringExtra("studentOrTeacher")!!.toString()
+
 
         btnVerify=findViewById(R.id.btnVerify)
         txtNumber=findViewById(R.id.txtNumber)
@@ -80,6 +81,7 @@ class OtpVerifyActivity : AppCompatActivity() {
 
 
     private fun sendVerificationCode(mobile: String) {
+        @Suppress("DEPRECATION")
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
             "+91$mobile",
             60,
@@ -94,22 +96,46 @@ class OtpVerifyActivity : AppCompatActivity() {
         signInWithPhoneAuthCredential(credential)
     }
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
+        val userType=intent.getStringExtra("studentOrTeacher")!!.toString()
+        val number = intent.getStringExtra("mobileNumber")!!.toString()
         mAuth.signInWithCredential(credential)
             .addOnCompleteListener(this@OtpVerifyActivity) { task ->
                 if (task.isSuccessful) {
-                    val intent = Intent(this@OtpVerifyActivity, ChooseClassActivity::class.java)
-                    intent.flags =
-                        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    startActivity(intent)
+                    val isNewUser= task.result.additionalUserInfo!!.isNewUser
+                    if (isNewUser) {
+                        if (userType == "Student") {
+                            val intent =Intent(this@OtpVerifyActivity, ChooseClassActivity::class.java)
+                            intent.putExtra("userType",userType)
+                            intent.putExtra("mobileNumber",number)
+                            intent.flags =
+                                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            startActivity(intent)
+                        } else if (userType == "Teacher") {
+                            val intent = Intent(
+                                this@OtpVerifyActivity,
+                                TeacherRegistrationActivity2::class.java
+                            )
+                            intent.putExtra("userType",userType)
+                            intent.putExtra("mobileNumber",number)
+                            intent.flags =
+                                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            startActivity(intent)
+                        }
+
+                       else{
+
+                            val intent = Intent(this@OtpVerifyActivity, HomeActivity::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            startActivity(intent)
+
+                        }
+                    }
+
                 } else {
                     var message = "Something is wrong, we will fix it soon..."
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
                         message = "Invalid code entered..."
                     }
-                    val snackbar = Snackbar.make(
-                        findViewById(R.id.parent),
-                        message, Snackbar.LENGTH_LONG
-                    )
                 }
             }
     }
