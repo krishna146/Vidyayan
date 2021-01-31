@@ -46,7 +46,7 @@ class TeacherStudentActivity : AppCompatActivity() {
 
         btnTeacher.setOnClickListener {
             val number=intent.getStringExtra("mobileNumber")
-            val intent = Intent(this@TeacherStudentActivity, TeacherRegistrationActivity2::class.java)
+            val intent = Intent(this@TeacherStudentActivity, LoginActivity::class.java)
             intent.putExtra("mobileNumber",number)
             intent.putExtra("student", "Teacher")
             startActivity(intent)

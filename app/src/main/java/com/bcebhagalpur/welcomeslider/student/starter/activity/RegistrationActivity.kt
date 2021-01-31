@@ -38,11 +38,7 @@ class RegistrationActivity : AppCompatActivity() {
     private lateinit var locationCallback: LocationCallback
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.requestFeature(Window.FEATURE_NO_TITLE)
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-        )
+
         // sharedPreferences=getSharedPreferences(getString(R.string.preference_file_name), Context.MODE_PRIVATE)
         setContentView(R.layout.activity_registration)
         var studentClass = intent.getStringExtra("studentClass")

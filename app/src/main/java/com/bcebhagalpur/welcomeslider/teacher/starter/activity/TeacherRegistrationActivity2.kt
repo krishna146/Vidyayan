@@ -41,11 +41,10 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val mobileNumber=intent.getStringExtra("mobileNumber")
         setContentView(R.layout.activity_teacher_registration2)
-
         et_teacher_name=findViewById(R.id.et_teacher_name)
         et_teacher_email=findViewById(R.id.et_teacher_email)
-        et_teacher_gender=findViewById(R.id.et_teacher_gender)
         et_teacher_dob=findViewById(R.id.et_teacher_dob)
         et_teacher_address=findViewById(R.id.et_teacher_address)
         txtSelectCity=findViewById(R.id.txtSelectCity)
@@ -75,21 +74,11 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
             mAlertDialog.show()
         }
 
-       et_teacher_gender.setOnClickListener {
-            val gender = arrayOf("Male", "Female", "Neutral")
-            val mAlertDialogBuilder = AlertDialog.Builder(this)
-            mAlertDialogBuilder.setTitle("Select gender")
-            mAlertDialogBuilder.setItems(gender) { _, which ->
-                when (which) {
-                    which -> {
-                      et_teacher_gender.setText(gender[which])
-                        et_teacher_gender.setTypeface(null, BOLD)
-                    }
-                }
-            }
-            val mAlertDialog = mAlertDialogBuilder.create()
-            mAlertDialog.show()
-        }
+        val genderItems = listOf("Male", "Female", "Neutral")
+        val genderAdapter = ArrayAdapter(this, R.layout.list_item, genderItems)
+        acTxtGender.setAdapter(genderAdapter)
+
+
        et_teacher_dob.setOnClickListener {
             val now=Calendar.getInstance()
             val datePicker=DatePickerDialog(this, { _, year, month, dayOfMonth ->
@@ -155,10 +144,9 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
         }
         fusedLocationProviderClient.requestLocationUpdates(locationRequest,locationCallback, Looper.getMainLooper())
 
-        imgBtnTeacherRegister.setOnClickListener {
-            if (et_teacher_email.text!!.isNotEmpty() && et_teacher_address.text!!.isNotEmpty() && et_teacher_dob.text!!.isNotEmpty() && et_teacher_gender.text!!.isNotEmpty()){
+        imgBtnTeacherNext.setOnClickListener {
+           /* if (et_teacher_name.text!!.isNotEmpty()&&et_teacher_email.text!!.isNotEmpty() && et_teacher_address.text!!.isNotEmpty() && et_teacher_dob.text!!.isNotEmpty() && et_teacher_gender.text!!.isNotEmpty()){
                 val intent1=Intent(this,TeacherRegistrationActivity3::class.java)
-                val mobileNumber=intent.getStringExtra("mobileNumber")
                 intent1.putExtra("teacherName",et_teacher_name.text.toString())
                 intent1.putExtra("mobileNumber",mobileNumber)
                 intent1.putExtra("teacherEmail",et_teacher_email.text.toString())
@@ -169,7 +157,16 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
                 startActivity(intent1)
             }else{
                 Toast.makeText(this,"please fill everything!! all fields are required",Toast.LENGTH_SHORT).show()
-            }
+            }*/
+            val intent1=Intent(this,TeacherRegistrationActivity3::class.java)
+            intent1.putExtra("teacherName",et_teacher_name.text.toString())
+            intent1.putExtra("mobileNumber",mobileNumber)
+            intent1.putExtra("teacherEmail",et_teacher_email.text.toString())
+            intent1.putExtra("teacherDob",et_teacher_dob.text.toString())
+            intent1.putExtra("teacherGender",et_teacher_gender.text.toString())
+            intent1.putExtra("teacherAddress",et_teacher_address.text.toString())
+            intent1.putExtra("city",txtSelectCity.text.toString())
+            startActivity(intent1)
 
         }
     }

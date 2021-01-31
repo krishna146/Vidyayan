@@ -4,226 +4,155 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
     android:orientation="vertical"
+    android:theme="@style/AppTheme1"
     tools:context=".teacher.starter.activity.TeacherRegistrationActivity2">
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/registrationpagebackgroundsecond"
         android:orientation="vertical">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="180dp" />
 
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="30dp"
+            android:hint="Name">
 
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_teacher_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:inputType="text"
+                android:maxLength="50"
+                android:maxLines="2" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+        </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_teacher_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginHorizontal="20dp"
-                        android:hint="Name"
-                        android:inputType="text"
-                        android:maxLength="50"
-                        android:maxLines="2" />
 
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="15dp">
 
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_teacher_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:maxLength="50"
+                android:maxLines="1" />
 
-                <com.hbb20.CountryCodePicker
-                    android:id="@+id/countryCode"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="15dp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/et_teacher_number"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginHorizontal="20dp"
-                            android:hint="Number"
-                            android:inputType="number"
-                            android:maxLength="10" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginHorizontal="20dp">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_teacher_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginHorizontal="20dp"
-                        android:hint="Email"
-                        android:inputType="textEmailAddress"
-                        android:maxLength="50"
-                        android:maxLines="1" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_teacher_dob"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:hint="Date of birth"
+                    android:inputType="date"
+                    android:maxLength="10"
+                    android:maxLines="1" />
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/et_teacher_dob"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:layout_marginHorizontal="20dp"
-                            android:hint="Date of birth"
-                            android:inputType="date"
-                            android:maxLength="10"
-                            android:maxLines="1" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-                </LinearLayout>
-
-                <ImageButton
-                    android:id="@+id/btnDob"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="25dp"
-                    android:background="@color/colorAccent"
-                    android:src="@drawable/ic_date_picker"
-                    android:tint="#ffffff" />
-
-
-            </RelativeLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_teacher_gender"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginHorizontal="20dp"
-                        android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
-                        android:hint="Gender"
-                        android:inputType="text"
-                        android:maxLength="15"
-                        android:maxLines="1" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/et_teacher_address"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginHorizontal="20dp"
-                        android:drawableEnd="@drawable/location"
-                        android:hint="Address"
-                        android:inputType="text"
-                        android:maxLines="1" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-            <TextView
-                android:id="@+id/txtSelectCity"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="10dp"
-                android:background="@android:drawable/editbox_background"
-                android:drawablePadding="20dp"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="Select City"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                app:drawableEndCompat="@android:drawable/arrow_down_float" />
-
-
+            </com.google.android.material.textfield.TextInputLayout>
 
             <ImageButton
-                android:id="@+id/imgBtnTeacherRegister"
+                android:id="@+id/btnDob"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="25dp"
-                android:background="#ffffff"
-                android:src="@drawable/registerbtn" />
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="45dp"
+                android:background="@color/colorAccent"
+                android:src="@drawable/ic_date_picker"
+                android:tint="#ffffff" />
 
 
+        </RelativeLayout>
 
-        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="15dp">
+
+            <AutoCompleteTextView
+                android:id="@+id/acTxtGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                android:hint="Gender"
+                android:inputType="text"
+                android:maxLength="15"
+                android:maxLines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/txtSelectCity"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="15dp"
+            android:background="@android:drawable/editbox_background"
+            android:drawablePadding="20dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Select City"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            app:drawableEndCompat="@android:drawable/arrow_down_float" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="15dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_teacher_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/location"
+                android:hint="Address"
+                android:inputType="text"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <ImageButton
+            android:id="@+id/imgBtnTeacherNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="#ffffff"
+            android:src="@drawable/nextbtn" />
 
 
     </LinearLayout>
+
 
 </ScrollView>
 

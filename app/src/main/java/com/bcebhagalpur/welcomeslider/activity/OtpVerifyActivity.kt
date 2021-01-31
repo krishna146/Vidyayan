@@ -104,12 +104,12 @@ class OtpVerifyActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     val isNewUser = task.result.additionalUserInfo!!.isNewUser
                     if (isNewUser) {
-                              val intent=Intent(this,TeacherStudentActivity::class.java)
+                              val intent=Intent(this,TeacherRegistrationActivity2::class.java)
                         intent.putExtra("mobileNumber",number)
                         startActivity(intent)
                         finish()
                     } else {
-                        val intent = Intent(this@OtpVerifyActivity, HomeActivity::class.java)
+                        val intent = Intent(this@OtpVerifyActivity, TeacherRegistrationActivity2::class.java)
                         intent.flags =
                             Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         startActivity(intent)
@@ -129,7 +129,7 @@ class OtpVerifyActivity : AppCompatActivity() {
         super.onStart()
         val user = FirebaseAuth.getInstance().currentUser
         if (user != null) {
-            startActivity( Intent(this, HomeActivity::class.java).apply {
+            startActivity( Intent(this, TeacherRegistrationActivity2::class.java).apply {
                 addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 finish()
             })
