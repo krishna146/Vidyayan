@@ -15,6 +15,7 @@ import com.bcebhagalpur.welcomeslider.teacher.dashboard.activity.HomeTeacher
 import com.bcebhagalpur.welcomeslider.teacher.starter.activity.TeacherRegistrationActivity2
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthProvider.ForceResendingToken
 import com.google.firebase.auth.PhoneAuthProvider.OnVerificationStateChangedCallbacks
 import com.google.firebase.database.DataSnapshot
@@ -22,6 +23,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_otp_verify.*
+import java.lang.NullPointerException
 import java.util.concurrent.TimeUnit
 
 class OtpVerifyActivity : AppCompatActivity() {
@@ -54,9 +56,16 @@ class OtpVerifyActivity : AppCompatActivity() {
         sendVerificationCode(number)
 
         btnVerify.setOnClickListener(){
-            val code: String = etOtp.getText().toString().trim()
 
-            verifyVerificationCode(code)
+
+
+
+                val code: String = etOtp.getText().toString().trim()
+               if(code.length==6) {
+                   verifyVerificationCode(code)
+               }else{
+                Toast.makeText(this,"Enter Otp",Toast.LENGTH_SHORT).show()}
+
 
         }
     }

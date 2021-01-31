@@ -6,6 +6,7 @@ import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bcebhagalpur.welcomeslider.R
 import com.bcebhagalpur.welcomeslider.student.dashboard.activity.HomeActivity
@@ -34,17 +35,29 @@ class LoginActivity : AppCompatActivity() {
 
         etMobileNumber=findViewById(R.id.etMobileNumber)
         btnNext=findViewById(R.id.btn_get_otp)
+       // val number_s= etMobileNumber.editText!!.text.toString().trim()
+
+
+
+
+
         btnNext.setOnClickListener {
 
-            btnNext.visibility = View.GONE
-            loginProgressBar.visibility = View.VISIBLE
+
             val number= etMobileNumber.editText!!.text.toString().trim()
+            if(number.isEmpty()||number.length!=10) {
+                Toast.makeText(this,"Enter Valid Number",Toast.LENGTH_SHORT).show()
+            }
+            else
+            {
+                btnNext.visibility = View.GONE
+                loginProgressBar.visibility = View.VISIBLE
             val userType=intent.getStringExtra("userType")
             val intent=Intent(this, OtpVerifyActivity::class.java)
             intent.putExtra("mobileNumber", number)
             intent.putExtra("studentOrTeacher",userType)
             startActivity(intent)
-        }
+        }}
     }
 }
 

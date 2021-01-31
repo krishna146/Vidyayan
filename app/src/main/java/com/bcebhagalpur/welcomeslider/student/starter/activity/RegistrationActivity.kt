@@ -24,6 +24,7 @@ import com.google.android.gms.location.*
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_otp_verify.*
