@@ -26,14 +26,12 @@
         <activity android:name=".student.navigationDrawer.activity.MyCoursesActivity" />
         <activity android:name=".student.navigationDrawer.activity.MyTutorActivity" />
         <activity android:name=".teacher.dashboard.activity.HomeTeacher" />
-        <activity android:name=".teacher.starter.activity.TeacherRegistrationActivity2" />
+        <activity android:name=".teacher.starter.activity.TeacherRegistrationActivity2" >
+
+        </activity>
         <activity android:name=".student.dashboard.activity.HomeActivity" />
         <activity android:name=".student.starter.activity.RegistrationActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".teacher.starter.activity.TeacherRegistrationActivity3">
         </activity>
