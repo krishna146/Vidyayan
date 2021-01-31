@@ -17,6 +17,10 @@ import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
 import com.google.firebase.auth.PhoneAuthProvider.ForceResendingToken
 import com.google.firebase.auth.PhoneAuthProvider.OnVerificationStateChangedCallbacks
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_otp_verify.*
 import java.util.concurrent.TimeUnit
 
@@ -97,24 +101,61 @@ class OtpVerifyActivity : AppCompatActivity() {
         signInWithPhoneAuthCredential(credential)
     }
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
-//        val userType=intent.getStringExtra("studentOrTeacher")!!.toString()
+        val userType=intent.getStringExtra("studentOrTeacher")!!.toString()
         val number = intent.getStringExtra("mobileNumber")!!.toString()
         mAuth.signInWithCredential(credential)
             .addOnCompleteListener(this@OtpVerifyActivity) { task ->
                 if (task.isSuccessful) {
-                    val isNewUser = task.result.additionalUserInfo!!.isNewUser
-                    if (isNewUser) {
-                              val intent=Intent(this,TeacherStudentActivity::class.java)
-                        intent.putExtra("mobileNumber",number)
-                        startActivity(intent)
-                        finish()
-                    } else {
-                        val intent = Intent(this@OtpVerifyActivity, HomeActivity::class.java)
-                        intent.flags =
-                            Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                        startActivity(intent)
-                        finish()
+                    if (userType=="Student"){
+                        val uid = FirebaseAuth.getInstance().currentUser!!.uid
+                        val rootRef = FirebaseDatabase.getInstance().reference
+                        val uidRef = rootRef.child("CheckStudent").child(uid)
+                        val eventListener: ValueEventListener = object : ValueEventListener {
+                            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                if (dataSnapshot.exists()) {
+                                    startActivity(Intent(this@OtpVerifyActivity,HomeActivity::class.java))
+                                }else{
+                                    val intent=Intent(this@OtpVerifyActivity,TeacherStudentActivity::class.java)
+                                    intent.putExtra("mobileNumber",number)
+                                    startActivity(intent)
+                                    finish()
+                                }
+                            }
+
+                            override fun onCancelled(databaseError: DatabaseError) {}
+                        }
+                        uidRef.addListenerForSingleValueEvent(eventListener)
+                    }else if (userType=="Teacher"){
+                        val uid = FirebaseAuth.getInstance().currentUser!!.uid
+                        val rootRef = FirebaseDatabase.getInstance().reference
+                        val uidRef = rootRef.child("CheckTeacher").child(uid)
+                        val eventListener: ValueEventListener = object : ValueEventListener {
+                            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                if (dataSnapshot.exists()) {
+                                    startActivity(Intent(this@OtpVerifyActivity,HomeTeacher::class.java))
+                                }else{
+                                    val intent=Intent(this@OtpVerifyActivity,TeacherRegistrationActivity2::class.java)
+                                    intent.putExtra("mobileNumber",number)
+                                    startActivity(intent)
+                                    finish()
+                                }
+                            }
+
+                            override fun onCancelled(databaseError: DatabaseError) {}
+                        }
+                        uidRef.addListenerForSingleValueEvent(eventListener)
                     }
+
+//                    val isNewUser = task.result.additionalUserInfo!!.isNewUser
+//                    if (isNewUser) {
+//
+//                    } else {
+//                        val intent = Intent(this@OtpVerifyActivity, HomeActivity::class.java)
+//                        intent.flags =
+//                            Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+//                        startActivity(intent)
+//                        finish()
+//                    }
                 }
                 else {
                     var message = "Something is wrong, we will fix it soon..."
@@ -125,15 +166,15 @@ class OtpVerifyActivity : AppCompatActivity() {
             }
     }
 
-    override fun onStart() {
-        super.onStart()
-        val user = FirebaseAuth.getInstance().currentUser
-        if (user != null) {
-            startActivity( Intent(this, HomeActivity::class.java).apply {
-                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                finish()
-            })
-        }
-    }
+//    override fun onStart() {
+//        super.onStart()
+//        val user = FirebaseAuth.getInstance().currentUser
+//        if (user != null) {
+//            startActivity( Intent(this, HomeActivity::class.java).apply {
+//                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+//                finish()
+//            })
+//        }
+//    }
 
 }
