@@ -1,32 +1,23 @@
 package com.bcebhagalpur.welcomeslider.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
-import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.bcebhagalpur.welcomeslider.R
 import com.bcebhagalpur.welcomeslider.student.dashboard.activity.HomeActivity
-import com.bcebhagalpur.welcomeslider.student.starter.activity.ChooseClassActivity
-import com.bcebhagalpur.welcomeslider.student.starter.activity.RegistrationActivity
-import com.bcebhagalpur.welcomeslider.teacher.starter.activity.TeacherRegistrationActivity2
-import com.firebase.ui.auth.ui.phone.PhoneVerificationActivity
 import com.google.android.material.textfield.TextInputLayout
-import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
-import com.google.firebase.auth.PhoneAuthCredential
-import com.google.firebase.auth.PhoneAuthProvider
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_login.*
-import java.lang.NullPointerException
-import java.util.concurrent.TimeUnit
+
 
 class LoginActivity : AppCompatActivity() {
 
@@ -44,17 +35,29 @@ class LoginActivity : AppCompatActivity() {
 
         etMobileNumber=findViewById(R.id.etMobileNumber)
         btnNext=findViewById(R.id.btn_get_otp)
+       // val number_s= etMobileNumber.editText!!.text.toString().trim()
+
+
+
+
+
         btnNext.setOnClickListener {
 
-            btnNext.visibility = View.GONE
-            loginProgressBar.visibility = View.VISIBLE
+
             val number= etMobileNumber.editText!!.text.toString().trim()
-            val studentOrTeacher=intent.getStringExtra("student")
-            val intent=Intent(this,OtpVerifyActivity::class.java)
-            intent.putExtra("mobileNumber",number)
-//            intent.putExtra("studentOrTeacher",studentOrTeacher)
+            if(number.isEmpty()||number.length!=10) {
+                Toast.makeText(this,"Enter Valid Number",Toast.LENGTH_SHORT).show()
+            }
+            else
+            {
+                btnNext.visibility = View.GONE
+                loginProgressBar.visibility = View.VISIBLE
+            val userType=intent.getStringExtra("userType")
+            val intent=Intent(this, OtpVerifyActivity::class.java)
+            intent.putExtra("mobileNumber", number)
+            intent.putExtra("studentOrTeacher",userType)
             startActivity(intent)
-        }
+        }}
     }
 }
 

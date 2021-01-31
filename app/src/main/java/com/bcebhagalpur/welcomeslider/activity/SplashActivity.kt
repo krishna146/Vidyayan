@@ -14,8 +14,6 @@ import com.google.android.gms.location.*
 import java.util.*
 
 class SplashActivity : AppCompatActivity() {
-    /*  private var lm: LocationManager? = null
-    private var loc: Location? = null*/
 
     private lateinit var sharedPreferences: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +34,7 @@ class SplashActivity : AppCompatActivity() {
                     MainActivity::class.java
                 )
             )
-        }, 1500)
+        }, 500)
        // requestPermission()
     }
 
