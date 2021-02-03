@@ -22,8 +22,8 @@ class Class12thor11thFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    lateinit var studentBoard: String
-    lateinit var studentStream: String
+   var studentBoard: String?=""
+    var studentStream: String?=""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -105,13 +105,13 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="10dp"
         android:background="@android:drawable/editbox_background"
-        android:drawableEnd="@android:drawable/arrow_down_float"
         android:drawablePadding="20dp"
         android:gravity="center"
         android:padding="10dp"
         android:text="Select Classes"
         android:textColor="#000000"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        app:drawableEndCompat="@android:drawable/arrow_down_float" />
 
     <TextView
         android:id="@+id/txtSelectSubject"

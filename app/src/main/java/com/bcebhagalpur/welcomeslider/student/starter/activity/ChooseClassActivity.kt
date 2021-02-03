@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_otp_verify.view.*
 import kotlinx.android.synthetic.main.fragment_class13th.*
 
 class  ChooseClassActivity : AppCompatActivity() {
-    lateinit var classStudent:String
+    var classStudent:String?=""
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -296,7 +296,7 @@ class  ChooseClassActivity : AppCompatActivity() {
     }
 
     fun getResult(): String {
-        return classStudent
+        return classStudent!!
     }
 
 

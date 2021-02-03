@@ -11,7 +11,6 @@ import android.widget.ImageView
 import androidx.viewpager.widget.ViewPager
 import com.bcebhagalpur.welcomeslider.R
 import com.bcebhagalpur.welcomeslider.adapter.PagerAdapter
-import com.bcebhagalpur.welcomeslider.student.starter.activity.ChooseClassActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -37,17 +36,12 @@ class MainActivity : AppCompatActivity() {
         adapter= PagerAdapter(supportFragmentManager)
         viewPager.adapter=adapter
         viewPager.addOnPageChangeListener(object :ViewPager.OnPageChangeListener{
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int)
-            {
-
-            }
-
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
             override fun onPageSelected(position: Int) {
-
                 if (position==2){
                     btnStart.visibility=View.VISIBLE
                     btnStart.setOnClickListener {
-                        startActivity(Intent(this@MainActivity,TeacherStudentActivity::class.java))
+                        startActivity(Intent(this@MainActivity,LoginActivity::class.java))
                         finish()
                     }
                 }else{
@@ -71,11 +65,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
-
-            override fun onPageScrollStateChanged(state: Int) {
-
-            }
-
+            override fun onPageScrollStateChanged(state: Int) {}
         })
 
     }

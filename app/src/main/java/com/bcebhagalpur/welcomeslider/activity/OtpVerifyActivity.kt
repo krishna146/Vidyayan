@@ -1,6 +1,9 @@
+@file:Suppress("DEPRECATION")
+
 package com.bcebhagalpur.welcomeslider.activity
 
 import android.annotation.SuppressLint
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -10,14 +13,14 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bcebhagalpur.welcomeslider.R
 import com.bcebhagalpur.welcomeslider.student.dashboard.activity.HomeActivity
-import com.bcebhagalpur.welcomeslider.student.starter.activity.ChooseClassActivity
 import com.bcebhagalpur.welcomeslider.teacher.dashboard.activity.HomeTeacher
-import com.bcebhagalpur.welcomeslider.teacher.starter.activity.TeacherRegistrationActivity2
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.*
 import com.google.firebase.auth.PhoneAuthProvider.ForceResendingToken
 import com.google.firebase.auth.PhoneAuthProvider.OnVerificationStateChangedCallbacks
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_otp_verify.*
+import java.lang.NullPointerException
 import java.util.concurrent.TimeUnit
 
 class OtpVerifyActivity : AppCompatActivity() {
@@ -25,7 +28,6 @@ class OtpVerifyActivity : AppCompatActivity() {
     private lateinit var txtNumber:TextView
     private lateinit var txtResend:TextView
     private lateinit var etOtp:EditText
-
     private var mVerificationId: String? = null
     private lateinit var mAuth: FirebaseAuth
 
@@ -34,23 +36,23 @@ class OtpVerifyActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_otp_verify)
 
-
-        val number = intent.getStringExtra("mobileNumber")!!.toString()
-//        val userType=intent.getStringExtra("studentOrTeacher")!!.toString()
-
+        val teacherNumber=intent.getStringExtra("mobileNumber")
 
         btnVerify=findViewById(R.id.btnVerify)
         txtNumber=findViewById(R.id.txtNumber)
         txtResend=findViewById(R.id.txtResend)
         etOtp=findViewById(R.id.etOtp)
-        txtNumber.text = "+91 $number"
-        txtNumber.setOnClickListener { startActivity(Intent(this, LoginActivity::class.java)) }
+        txtNumber.text = "+91 $teacherNumber"
+        txtNumber.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
 
         mAuth = FirebaseAuth.getInstance()
-        sendVerificationCode(number)
+        sendVerificationCode(teacherNumber!!)
 
-        btnVerify.setOnClickListener(){
-            val code: String = etOtp.getText().toString().trim()
+        btnVerify.setOnClickListener {
+            val code: String = etOtp.text.toString().trim()
 
             verifyVerificationCode(code)
 
@@ -93,47 +95,92 @@ class OtpVerifyActivity : AppCompatActivity() {
     }
 
     private fun verifyVerificationCode(code: String) {
-        val credential = PhoneAuthProvider.getCredential(mVerificationId!!, code)
-        signInWithPhoneAuthCredential(credential)
+
+            val credential = PhoneAuthProvider.getCredential(mVerificationId!!, code)
+            signInWithPhoneAuthCredential(credential)
+
     }
+
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
-//        val userType=intent.getStringExtra("studentOrTeacher")!!.toString()
+        val progressDialog = ProgressDialog(this)
+        progressDialog.setTitle("VIDYAYAN")
+        progressDialog.setMessage("We are processing, please wait")
+        progressDialog.show()
+        progressDialog.setCancelable(false)
         val number = intent.getStringExtra("mobileNumber")!!.toString()
         mAuth.signInWithCredential(credential)
             .addOnCompleteListener(this@OtpVerifyActivity) { task ->
                 if (task.isSuccessful) {
                     val isNewUser = task.result.additionalUserInfo!!.isNewUser
-                    if (isNewUser) {
-                              val intent=Intent(this,TeacherStudentActivity::class.java)
-                        intent.putExtra("mobileNumber",number)
-                        startActivity(intent)
-                        finish()
-                    } else {
-                        val intent = Intent(this@OtpVerifyActivity, HomeActivity::class.java)
-                        intent.flags =
-                            Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                        startActivity(intent)
-                        finish()
+                    if (!isNewUser){
+                       status(progressDialog)
                     }
+                    else{
+                        progressDialog.hide()
+                     val intent=Intent(this,TeacherStudentActivity::class.java)
+                        intent.putExtra("mobileNumber",number)
+                     startActivity(intent)
+                     finish()
+                    }
+
                 }
                 else {
-                    var message = "Something is wrong, we will fix it soon..."
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
-                        message = "Invalid code entered..."
+                        progressDialog.hide()
+                        val message = "Invalid code entered..."
+                        Toast.makeText(this,message,Toast.LENGTH_SHORT).show()
                     }
                 }
             }
     }
 
-    override fun onStart() {
-        super.onStart()
-        val user = FirebaseAuth.getInstance().currentUser
-        if (user != null) {
-            startActivity( Intent(this, HomeActivity::class.java).apply {
-                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                finish()
-            })
-        }
+    private fun status(progress:ProgressDialog) {
+//        val progressDialog = ProgressDialog(this)
+//        progressDialog.setTitle("VIDYAYAN")
+//        progressDialog.setMessage("We are processing, please wait")
+//        progressDialog.show()
+//        progressDialog.setCancelable(false)
+        val number = intent.getStringExtra("mobileNumber")!!.toString()
+            val uid = FirebaseAuth.getInstance().currentUser!!.uid
+            val rootRef = FirebaseDatabase.getInstance().reference
+            val uidRef = rootRef.child("USERS").child(uid)
+            val eventListener: ValueEventListener = object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        when (dataSnapshot.child("userType").value.toString()) {
+                            "Student" -> {
+                                progress.hide()
+                                val intent = Intent(this@OtpVerifyActivity, HomeActivity::class.java)
+                                startActivity(intent)
+                                finish()
+                            }
+                            "Teacher" -> {
+                                progress.hide()
+                                val intent =
+                                    Intent(this@OtpVerifyActivity, HomeTeacher::class.java)
+                                startActivity(intent)
+                                finish()
+                            }
+                            else -> {
+                               progress.hide()
+                                Toast.makeText(this@OtpVerifyActivity,"Some error occurred try again later",Toast.LENGTH_SHORT).show()
+                            }
+                        }
+
+                    } else {
+                        progress.hide()
+                        val intent =
+                            Intent(this@OtpVerifyActivity, TeacherStudentActivity::class.java)
+                        intent.putExtra("mobileNumber",number)
+                        startActivity(intent)
+                        finish()
+                    }
+                }
+
+                override fun onCancelled(databaseError: DatabaseError) {}
+            }
+
+            uidRef.addListenerForSingleValueEvent(eventListener)
     }
 
 }

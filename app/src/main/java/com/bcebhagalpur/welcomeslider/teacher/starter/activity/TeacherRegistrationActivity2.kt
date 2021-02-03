@@ -33,20 +33,23 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
 
     private lateinit var et_teacher_name:TextInputEditText
     private lateinit var et_teacher_email:TextInputEditText
-    private lateinit var et_teacher_gender:TextInputEditText
+    private lateinit var et_teacher_gender:AutoCompleteTextView
     private lateinit var et_teacher_dob:TextInputEditText
     private lateinit var et_teacher_address:TextInputEditText
+//    private lateinit var et_teacher_number:TextInputEditText
     private lateinit var txtSelectCity:TextView
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val mobileNumber=intent.getStringExtra("mobileNumber")
         setContentView(R.layout.activity_teacher_registration2)
+
         et_teacher_name=findViewById(R.id.et_teacher_name)
         et_teacher_email=findViewById(R.id.et_teacher_email)
         et_teacher_dob=findViewById(R.id.et_teacher_dob)
+        et_teacher_gender=findViewById(R.id.acTxtGender)
         et_teacher_address=findViewById(R.id.et_teacher_address)
+//        et_teacher_number=findViewById(R.id.et_teacher_number)
         txtSelectCity=findViewById(R.id.txtSelectCity)
 
 //        val teacherName= et_teacher_name.text.toString()
@@ -76,7 +79,7 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
 
         val genderItems = listOf("Male", "Female", "Neutral")
         val genderAdapter = ArrayAdapter(this, R.layout.list_item, genderItems)
-        acTxtGender.setAdapter(genderAdapter)
+        val gender=acTxtGender.setAdapter(genderAdapter)
 
 
        et_teacher_dob.setOnClickListener {
@@ -116,7 +119,6 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
                 }
             }
         }
-
         if (ActivityCompat.checkSelfPermission(
                 this,
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -125,13 +127,6 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
                 Manifest.permission.ACCESS_COARSE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-
             ActivityCompat.requestPermissions(
                 this,
                 arrayOf(
@@ -145,29 +140,18 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
         fusedLocationProviderClient.requestLocationUpdates(locationRequest,locationCallback, Looper.getMainLooper())
 
         imgBtnTeacherNext.setOnClickListener {
-           /* if (et_teacher_name.text!!.isNotEmpty()&&et_teacher_email.text!!.isNotEmpty() && et_teacher_address.text!!.isNotEmpty() && et_teacher_dob.text!!.isNotEmpty() && et_teacher_gender.text!!.isNotEmpty()){
-                val intent1=Intent(this,TeacherRegistrationActivity3::class.java)
-                intent1.putExtra("teacherName",et_teacher_name.text.toString())
-                intent1.putExtra("mobileNumber",mobileNumber)
-                intent1.putExtra("teacherEmail",et_teacher_email.text.toString())
-                intent1.putExtra("teacherDob",et_teacher_dob.text.toString())
-                intent1.putExtra("teacherGender",et_teacher_gender.text.toString())
-                intent1.putExtra("teacherAddress",et_teacher_address.text.toString())
-                intent1.putExtra("city",txtSelectCity.text.toString())
-                startActivity(intent1)
-            }else{
-                Toast.makeText(this,"please fill everything!! all fields are required",Toast.LENGTH_SHORT).show()
-            }*/
+            val userType=intent.getStringExtra("userType")
+            val number=intent.getStringExtra("mobileNumber")
             val intent1=Intent(this,TeacherRegistrationActivity3::class.java)
             intent1.putExtra("teacherName",et_teacher_name.text.toString())
-            intent1.putExtra("mobileNumber",mobileNumber)
             intent1.putExtra("teacherEmail",et_teacher_email.text.toString())
             intent1.putExtra("teacherDob",et_teacher_dob.text.toString())
-            intent1.putExtra("teacherGender",et_teacher_gender.text.toString())
+            intent1.putExtra("teacherGender",gender.toString())
             intent1.putExtra("teacherAddress",et_teacher_address.text.toString())
             intent1.putExtra("city",txtSelectCity.text.toString())
+            intent1.putExtra("mobileNumber",number)
+            intent1.putExtra("userType",userType)
             startActivity(intent1)
-
         }
     }
 

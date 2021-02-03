@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import com.bcebhagalpur.welcomeslider.R
 import com.bcebhagalpur.welcomeslider.student.starter.activity.ChooseClassActivity
 import com.bcebhagalpur.welcomeslider.student.starter.activity.RegistrationActivity
-import kotlinx.android.synthetic.main.activity_otp_verify.view.*
 import kotlinx.android.synthetic.main.fragment_class13th.*
 import kotlinx.android.synthetic.main.fragment_class13th.view.*
 
@@ -41,12 +40,11 @@ class Class13thFragment : Fragment() {
         }
         var studentClass= (activity as ChooseClassActivity?)?.getResult()
 
-        view.btnStartLearning.setOnClickListener(){
+        view.btnStartLearning.setOnClickListener {
             val intent = Intent(activity, RegistrationActivity::class.java)
             intent.putExtra("targetExam", targetExam)
             intent.putExtra("studentClass", studentClass)
             startActivity(intent)
-
         }
 
         return view

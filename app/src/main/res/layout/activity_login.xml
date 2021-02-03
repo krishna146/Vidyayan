@@ -30,15 +30,14 @@
             android:layout_marginTop="15dp"
             android:weightSum="5.0">
 
-            <com.hbb20.CountryCodePicker
+            <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="3dp"
-                android:layout_weight="1.7"
+                android:layout_weight="1"
                 android:gravity="center"
-                app:ccp_autoDetectCountry="true"
-                app:ccp_showNameCode="true"
-                app:ccp_textSize="15sp" />
+                android:text="+91"
+                android:textSize="15sp"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/etMobileNumber"
