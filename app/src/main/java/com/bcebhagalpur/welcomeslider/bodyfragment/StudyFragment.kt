@@ -20,7 +20,9 @@ import com.bcebhagalpur.welcomeslider.model.Syllabus
 
 
 class StudyFragment : Fragment() {
+/*
     lateinit var recyclerView_one: RecyclerView
+*/
     private lateinit var studentSubjectAdapter:StudentSubjectAdapter
     private val subject_list= arrayListOf<StudentSubject>()
 
@@ -34,9 +36,11 @@ class StudyFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view=inflater.inflate(R.layout.fragment_study, container, false)
+/*
         recyclerView_one=view.findViewById(R.id.study_recyclerView_one)
+*/
 
-        val subject_object1= StudentSubject(R.drawable.tp,"Mathematics")
+       /* val subject_object1= StudentSubject(R.drawable.tp,"Mathematics")
         val subject_object2= StudentSubject(R.drawable.tp,"Mathematics")
         val subject_object3= StudentSubject(R.drawable.tp,"Mathematics")
         val subject_object4= StudentSubject(R.drawable.tp,"Mathematics")
@@ -51,14 +55,14 @@ class StudyFragment : Fragment() {
         studentSubjectAdapter= StudentSubjectAdapter(activity as Context,subject_list)
         recyclerView_one.adapter=studentSubjectAdapter
         recyclerView_one.layoutManager= LinearLayoutManager(activity as Context, LinearLayoutManager.HORIZONTAL,false)
-
+*/
         recyclerView_two=view.findViewById(R.id.study_recyclerView_two)
-        val course_object1=MyCourse(R.drawable.tp,"DSA","Ashutosh kumar")
-        val course_object2=MyCourse(R.drawable.tp,"DSA","Ashutosh kumar")
-        val course_object3=MyCourse(R.drawable.tp,"DSA","Ashutosh kumar")
-        val course_object4=MyCourse(R.drawable.tp,"DSA","Ashutosh kumar")
-        val course_object5=MyCourse(R.drawable.tp,"DSA","Ashutosh kumar")
-        val course_object6=MyCourse(R.drawable.tp,"DSA","Ashutosh kumar")
+        val course_object1=MyCourse(R.drawable.teacher_logo,"DSA","Ashutosh kumar")
+        val course_object2=MyCourse(R.drawable.teacher_logo,"DSA","Ashutosh kumar")
+        val course_object3=MyCourse(R.drawable.teacher_logo,"DSA","Ashutosh kumar")
+        val course_object4=MyCourse(R.drawable.teacher_logo,"DSA","Ashutosh kumar")
+        val course_object5=MyCourse(R.drawable.teacher_logo,"DSA","Ashutosh kumar")
+        val course_object6=MyCourse(R.drawable.teacher_logo,"DSA","Ashutosh kumar")
         course_list.add(course_object1)
         course_list.add(course_object2)
         course_list.add(course_object3)

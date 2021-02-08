@@ -443,6 +443,8 @@ class TeacherRegistrationActivity3 : AppCompatActivity() {
         }
 
             btnSubmit.setOnClickListener {
+
+
                 val teacherName=intent.getStringExtra("teacherName")
                 val mobileNumber=intent.getStringExtra("mobileNumber")
                 val teacherEmail=intent.getStringExtra("teacherEmail")
@@ -458,6 +460,7 @@ class TeacherRegistrationActivity3 : AppCompatActivity() {
                 val currentUserDb = mDatabaseReference.child(city!!)
                 mAuth= FirebaseAuth.getInstance()
                 val userId= mAuth.currentUser!!.uid
+
 
                 currentUserDb.addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {

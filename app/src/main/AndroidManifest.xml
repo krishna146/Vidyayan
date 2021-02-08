@@ -13,7 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.ViewFullImageActivity"></activity>
+        <activity android:name=".student.dashboard.activity.StudentTutorDetailActivity">
+
+        </activity>
+        <activity android:name=".activity.ViewFullImageActivity" />
         <activity android:name=".student.navigationDrawer.activity.BookmarkActivity" />
         <activity android:name=".student.dashboard.activity.TeacherDemoVideoActivity" />
         <activity android:name=".activity.BlankActivity2" />
@@ -27,10 +30,12 @@
         <activity android:name=".student.navigationDrawer.activity.MyCoursesActivity" />
         <activity android:name=".student.navigationDrawer.activity.MyTutorActivity" />
         <activity android:name=".teacher.dashboard.activity.HomeTeacher" />
-        <activity android:name=".teacher.starter.activity.TeacherRegistrationActivity2"></activity>
-        <activity android:name=".student.dashboard.activity.HomeActivity" />
-        <activity android:name=".student.starter.activity.RegistrationActivity"></activity>
-        <activity android:name=".teacher.starter.activity.TeacherRegistrationActivity3"></activity>
+        <activity android:name=".teacher.starter.activity.TeacherRegistrationActivity2" />
+        <activity android:name=".student.dashboard.activity.HomeActivity">
+
+        </activity>
+        <activity android:name=".student.starter.activity.RegistrationActivity" />
+        <activity android:name=".teacher.starter.activity.TeacherRegistrationActivity3" />
         <activity android:name=".activity.TeacherStudentActivity" />
         <activity android:name=".student.navigationDrawer.activity.StudentProfileActivity" />
         <activity android:name=".student.starter.activity.ChooseClassActivity" />

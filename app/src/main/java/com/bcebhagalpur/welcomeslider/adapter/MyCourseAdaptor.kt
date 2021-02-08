@@ -36,7 +36,7 @@ class MyCourseAdaptor(private val context: Context, private val itemList: ArrayL
     class MyCourseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val course_name: TextView = view.findViewById(R.id.course_name)
         val course_teacher_name: TextView = view.findViewById(R.id.course_teacher)
-        val course_pic: ImageView = view.findViewById(R.id.course_image)
+        val course_pic: ImageView = view.findViewById(R.id.teacher_image)
 
     }
 }
