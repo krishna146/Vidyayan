@@ -33,26 +33,24 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var locationRequest: LocationRequest
     private lateinit var locationCallback: LocationCallback
-
+    private lateinit var acTextGender: AutoCompleteTextView
     private lateinit var et_teacher_name:TextInputEditText
     private lateinit var et_teacher_email:TextInputEditText
     private lateinit var et_teacher_gender:AutoCompleteTextView
     private lateinit var et_teacher_dob:TextInputEditText
     private lateinit var et_teacher_address:TextInputEditText
-//    private lateinit var et_teacher_number:TextInputEditText
     private lateinit var txtSelectCity:TextView
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_teacher_registration2)
-
+        acTextGender = findViewById(R.id.acTxtGender)
         et_teacher_name=findViewById(R.id.et_teacher_name)
         et_teacher_email=findViewById(R.id.et_teacher_email)
         et_teacher_dob=findViewById(R.id.et_teacher_dob)
         et_teacher_gender=findViewById(R.id.acTxtGender)
         et_teacher_address=findViewById(R.id.et_teacher_address)
-//        et_teacher_number=findViewById(R.id.et_teacher_number)
         txtSelectCity=findViewById(R.id.txtSelectCity)
         emailValidator()
         requestPermission()
@@ -148,12 +146,12 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
         imgBtnTeacherNext.setOnClickListener {
 
 
-            if(et_teacher_name.text.toString().isEmpty() || et_teacher_number.text.toString().isEmpty() || et_teacher_email.text.toString().toString().isEmpty() || et_teacher_dob.text.toString().isEmpty() || et_teacher_gender.text.toString().isEmpty() || txtSelectCity.text== "Select City" || et_teacher_address.text.toString().isEmpty()){
+            if(et_teacher_name.text.toString().isEmpty() || et_teacher_email.text.toString().toString().isEmpty() || et_teacher_dob.text.toString().isEmpty() || acTextGender.text.toString().isEmpty() || txtSelectCity.text== "Select City" || et_teacher_address.text.toString().isEmpty()){
 
                 Toast.makeText(this, "All fields are required", Toast.LENGTH_SHORT).show()
             }
 
-                if(et_teacher_name.text.toString().isNotEmpty() && et_teacher_number.text.toString().isNotEmpty() && et_teacher_email.text.toString().toString().isNotEmpty() && et_teacher_dob.text.toString().isNotEmpty() && et_teacher_gender.text.toString().isNotEmpty() && txtSelectCity.text!= "Select City" && et_teacher_address.text.toString().isNotEmpty()){
+                if(et_teacher_name.text.toString().isNotEmpty()  && et_teacher_email.text.toString().toString().isNotEmpty() && et_teacher_dob.text.toString().isNotEmpty() && et_teacher_gender.text.toString().isNotEmpty() && txtSelectCity.text!= "Select City" && et_teacher_address.text.toString().isNotEmpty()){
 
                 val userType=intent.getStringExtra("userType")
                 val number=intent.getStringExtra("mobileNumber")
@@ -161,7 +159,7 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
                 intent1.putExtra("teacherName",et_teacher_name.text.toString())
                 intent1.putExtra("teacherEmail",et_teacher_email.text.toString())
                 intent1.putExtra("teacherDob",et_teacher_dob.text.toString())
-                intent1.putExtra("teacherGender",gender.toString())
+                intent1.putExtra("teacherGender",acTextGender.text.toString())
                 intent1.putExtra("teacherAddress",et_teacher_address.text.toString())
                 intent1.putExtra("city",txtSelectCity.text.toString())
                 intent1.putExtra("mobileNumber",number)
