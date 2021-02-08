@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:layout_margin="20dp"
+    android:padding="20dp"
+    android:layout_height="wrap_content">
+
+    <CheckBox
+        android:id="@+id/mathematics"
+        android:layout_marginEnd="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mathematics"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_green_dark"/>
+
+    <CheckBox
+        android:id="@+id/physics"
+        android:layout_marginEnd="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Physics"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_green_dark"/>
+
+    <CheckBox
+        android:id="@+id/chemistry"
+        android:layout_marginEnd="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chemistry"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_green_dark"/>
+
+    <CheckBox
+        android:id="@+id/biology"
+        android:layout_marginEnd="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Biology"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_green_dark"/>
+
+
+</LinearLayout>

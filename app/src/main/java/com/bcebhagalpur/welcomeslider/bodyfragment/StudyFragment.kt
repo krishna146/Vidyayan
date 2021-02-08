@@ -56,13 +56,14 @@ class StudyFragment : Fragment() {
         recyclerView_one.adapter=studentSubjectAdapter
         recyclerView_one.layoutManager= LinearLayoutManager(activity as Context, LinearLayoutManager.HORIZONTAL,false)
 */
+
         recyclerView_two=view.findViewById(R.id.study_recyclerView_two)
-        val course_object1=MyCourse(R.drawable.teacher_logo,"DSA","Ashutosh kumar")
-        val course_object2=MyCourse(R.drawable.teacher_logo,"DSA","Ashutosh kumar")
-        val course_object3=MyCourse(R.drawable.teacher_logo,"DSA","Ashutosh kumar")
-        val course_object4=MyCourse(R.drawable.teacher_logo,"DSA","Ashutosh kumar")
-        val course_object5=MyCourse(R.drawable.teacher_logo,"DSA","Ashutosh kumar")
-        val course_object6=MyCourse(R.drawable.teacher_logo,"DSA","Ashutosh kumar")
+        val course_object1=MyCourse(R.drawable.ic_action_teacher,"DSA","Ashutosh kumar")
+        val course_object2=MyCourse(R.drawable.ic_action_teacher,"DSA","Ashutosh kumar")
+        val course_object3=MyCourse(R.drawable.ic_action_teacher,"DSA","Ashutosh kumar")
+        val course_object4=MyCourse(R.drawable.ic_action_teacher,"DSA","Ashutosh kumar")
+        val course_object5=MyCourse(R.drawable.ic_action_teacher,"DSA","Ashutosh kumar")
+        val course_object6=MyCourse(R.drawable.ic_action_teacher,"DSA","Ashutosh kumar")
         course_list.add(course_object1)
         course_list.add(course_object2)
         course_list.add(course_object3)

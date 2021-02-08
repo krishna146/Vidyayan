@@ -135,11 +135,6 @@ class OtpVerifyActivity : AppCompatActivity() {
     }
 
     private fun status(progress:ProgressDialog) {
-//        val progressDialog = ProgressDialog(this)
-//        progressDialog.setTitle("VIDYAYAN")
-//        progressDialog.setMessage("We are processing, please wait")
-//        progressDialog.show()
-//        progressDialog.setCancelable(false)
         val number = intent.getStringExtra("mobileNumber")!!.toString()
             val uid = FirebaseAuth.getInstance().currentUser!!.uid
             val rootRef = FirebaseDatabase.getInstance().reference

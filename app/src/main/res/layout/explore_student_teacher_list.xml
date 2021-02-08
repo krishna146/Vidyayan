@@ -3,16 +3,16 @@
 <androidx.cardview.widget.CardView
  xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="560dp"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardBackgroundColor="@android:color/darker_gray"
+    app:cardBackgroundColor="@android:color/white"
    android:layout_margin="5dp"
     app:cardCornerRadius="8dp"
     android:elevation="10dp">
 
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="560dp"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:id="@+id/llt">
 
@@ -38,107 +38,101 @@
         <LinearLayout
             android:layout_marginStart="20dp"
             android:layout_toEndOf="@+id/teacher_profile"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
            android:layout_centerVertical="true"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
             <TextView
-                android:id="@+id/txtTeacherName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ashutosh Kumar"
+                android:text="Grade"
+                android:textSize="18sp"
                 android:textColor="#15151B"
                 android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/txtTeacherClass"
+                    android:textSize="18sp"
+                    android:layout_marginStart="10dp"
+                    android:id="@+id/txtTeacherGrade"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="class 10"
+                    android:text="Grade"
+                    android:textColor="#15151B"/>
+
+            </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txtTeacherTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Timing"
                     android:layout_marginTop="5dp"
                     android:textColor="#E1AC23"
-                    android:textSize="12sp"/>
-                <TextView
-                    android:id="@+id/txtTeacherAddress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="BCE,Sabour,Bhagalpur"
-                    android:layout_marginTop="5dp"
-                    android:textColor="#F28511"
-                    android:textSize="12sp"/>
+                    android:textSize="18sp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/design_try"
+                android:layout_height="10dp"/>
+
         </LinearLayout>
 
     </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/design_try"
-        android:layout_height="10dp"/>
-
     <RelativeLayout
+        android:layout_marginTop="8dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        >
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/txtMode"
+            android:id="@+id/txtTeacherName"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
-            android:text="Mode of teaching"
+            android:text="Teacher Name"
             android:layout_centerHorizontal="true"
-            android:textSize="15sp"
+            android:textSize="18sp"
             android:layout_marginTop="10dp"
             android:textAlignment="center"
-            android:textColor="#0B0A0A"
-            app:drawableStartCompat="@drawable/ic_baseline_star_24" />
+            android:textColor="#0B0A0A"/>
         <TextView
-            android:id="@+id/txtSubject"
+            android:id="@+id/txtTeacherSubject"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:text="Subject"
             android:layout_centerHorizontal="true"
-            android:textSize="15sp"
+            android:textSize="18sp"
             android:layout_marginTop="10dp"
             android:textAlignment="center"
             android:textColor="#0B0A0A"
-            android:layout_below="@id/txtMode"
-            app:drawableStartCompat="@drawable/ic_baseline_star_24" />
+            android:layout_below="@id/txtTeacherName"/>
         <TextView
-            android:id="@+id/txtTiming"
+            android:id="@+id/txtQualification"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
-            android:text="Timing of teaching"
+            android:text="Highest qualification"
             android:layout_centerHorizontal="true"
             android:textSize="15sp"
             android:layout_marginTop="10dp"
             android:textAlignment="center"
             android:textColor="#0B0A0A"
-            android:layout_below="@id/txtSubject"
-            app:drawableStartCompat="@drawable/ic_baseline_star_24" />
-        <TextView
-            android:id="@+id/txtPriceRange"
-            android:layout_width="260dp"
-            android:layout_height="wrap_content"
-            android:text="Price range"
-            android:layout_centerHorizontal="true"
-            android:textSize="15sp"
-            android:layout_marginTop="10dp"
-            android:textAlignment="center"
-            android:textColor="#0B0A0A"
-            android:layout_below="@id/txtTiming"
-            app:drawableStartCompat="@drawable/ic_baseline_star_24" />
+            android:layout_below="@id/txtTeacherSubject"/>
 
     </RelativeLayout>
 
     <RatingBar
+        android:scaleY="0.5"
+        android:scaleX="0.5"
         android:id="@+id/rating"
         android:layout_width="wrap_content"
+        android:isIndicator="true"
         android:layout_gravity="bottom|center_horizontal"
         android:layout_height="wrap_content"/>
 
@@ -149,16 +143,29 @@
         android:layout_height="match_parent">
 <Button
     android:layout_margin="5dp"
-    android:layout_weight="2"
+    android:layout_weight="1"
     android:text="Send Request"
     android:textAllCaps="false"
     android:textSize="18sp"
     android:textStyle="bold"
     android:textColor="@color/kathai"
-     android:background="@drawable/buttonresorcefile"
+    android:background="@android:color/holo_orange_light"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     />
+
+        <Button
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:text="Send Request"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/kathai"
+            android:background="@android:color/holo_orange_light"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
       <!--  <Button
             android:layout_margin="5dp"
             android:layout_weight="1"

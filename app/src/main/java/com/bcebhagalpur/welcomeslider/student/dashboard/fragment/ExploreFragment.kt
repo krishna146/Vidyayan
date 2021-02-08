@@ -83,16 +83,15 @@ class ExploreFragment : Fragment() {
         //teacher
         val schedule_object1 = ExploreTeacherListModel(
             R.drawable.tp, "Ashutosh Kumar",
-            "10A.M-12A.M", "Online",
-            "BCE,Sabour,Bhagalpur", "Mathematics, English", "10:00 AM-12:00AM",
-            "2000-4000 in ruppess", "", 3f
+            "B.tech", "Mathematics",
+            "10:00 AM to 6:00 PM", "11th to 13th", 4f
         )
         val schedule_object2 = ExploreTeacherListModel(
             R.drawable.tp, "Ashutosh Kumar",
-            "10A.M-12A.M", "Online",
-            "BCE,Sabour,Bhagalpur", "Mathematics, English", "10:00 AM-12:00AM",
-            "2000-4000 in ruppess", "", 4f
+            "B.tech", "Mathematics",
+            "10:00 AM to 6:00 PM", "11th to 13th", 4f
         )
+
         exploreTeacherListModel.add(schedule_object1)
         exploreTeacherListModel.add(schedule_object1)
         exploreTeacherListModel.add(schedule_object2)

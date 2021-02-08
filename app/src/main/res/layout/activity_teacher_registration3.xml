@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/AppTheme1"
-    tools:context=".teacher.starter.activity.TeacherRegistrationActivity3">
+    tools:context=".teacher.starter.activity.TeacherRegistrationActivity3"
+    android:layout_marginBottom="20dp">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:theme="@style/AppTheme1">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/menuHighestQualification"
@@ -13,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
+        app:boxBackgroundColor="#ffffff"
         android:layout_marginTop="30dp"
         android:hint="Highest Qualification">
 
@@ -32,6 +40,7 @@
         android:layout_below="@+id/menuHighestQualification"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="10dp"
+        app:boxBackgroundColor="#ffffff"
         android:hint="Status">
 
         <AutoCompleteTextView
@@ -50,6 +59,7 @@
         android:layout_below="@+id/menuStatus"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="10dp"
+        app:boxBackgroundColor="#ffffff"
         android:hint="College/University">
 
         <AutoCompleteTextView
@@ -68,6 +78,7 @@
         android:layout_below="@+id/menuCollege"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="10dp"
+        app:boxBackgroundColor="#ffffff"
         android:hint="Language">
 
         <AutoCompleteTextView
@@ -97,45 +108,90 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/menuTiming"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/menuMode"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:hint="Timing"
+        app:boxBackgroundColor="#ffffff">
+
+        <AutoCompleteTextView
+            android:id="@+id/actxtTiming"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/menuPrice"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/menuTiming"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:hint="Price range"
+        app:boxBackgroundColor="#ffffff">
+
+        <AutoCompleteTextView
+            android:id="@+id/actxtPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
     <TextView
         android:id="@+id/txtSelectClass"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@+id/menuMode"
+        android:layout_below="@+id/menuPrice"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="10dp"
         android:background="@android:drawable/editbox_background"
         android:drawablePadding="20dp"
         android:gravity="center"
         android:padding="10dp"
-        android:text="Select Classes"
+        android:text="Select Classe"
         android:textColor="#000000"
-        android:textSize="20sp"
-        app:drawableEndCompat="@android:drawable/arrow_down_float" />
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/txtSelectSubject"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_below="@id/txtSelectClass"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="10dp"
         android:background="@android:drawable/editbox_background"
         android:drawablePadding="20dp"
-        android:gravity=""
+        android:gravity="center"
+        android:visibility="gone"
         android:padding="10dp"
+        android:text="Select Subject"
         android:textColor="#000000"
-        android:textSize="20sp"
-        android:visibility="gone"/>
+        android:textSize="20sp"/>
 
     <Button
         android:id="@+id/btnSubmit"
         android:layout_width="match_parent"
         android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_corners_imagebutton"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:background="@android:color/holo_orange_light"
         android:layout_marginHorizontal="20dp"
         android:layout_height="wrap_content"
         android:text="Submit"
         android:layout_below="@+id/txtSelectSubject"/>
 
 </RelativeLayout>
+</ScrollView>

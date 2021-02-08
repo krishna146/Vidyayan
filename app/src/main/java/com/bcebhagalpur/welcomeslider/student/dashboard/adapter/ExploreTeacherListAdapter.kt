@@ -38,11 +38,9 @@ class ExploreTeacherListAdapter(private val context: Context, private val itemLi
        holder.teacherImage.setImageResource(subject.teacherImage)
      holder.teacherName.text=subject.teacherName
         holder.teacherQualification.text=subject.teacherQualification
-        holder.teacherAddress.text=subject.teacherAddress
-        holder.teacherMode.text=subject.teacherModeTeaching
         holder.teacherSubject.text=subject.teacherSubject
         holder.teacherTiming.text=subject.teacherTiming
-        holder.teacherPrice.text=subject.teacherPriceRange
+        holder.teacherGrade.text=subject.teacherGrade
         holder.rating.numStars=5
         holder.rating.rating=subject.teacherRating
         holder.linearLayout.setOnClickListener {
@@ -54,12 +52,10 @@ class ExploreTeacherListAdapter(private val context: Context, private val itemLi
     class StatusViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val teacherImage: ImageView = view.findViewById(R.id.imgTeacher)
         val teacherName: TextView= view.findViewById(R.id.txtTeacherName)
-        val teacherQualification: TextView = view.findViewById(R.id.txtTeacherClass)
-        val teacherAddress: TextView= view.findViewById(R.id.txtTeacherAddress)
-        val teacherMode: TextView = view.findViewById(R.id.txtMode)
-        val teacherSubject: TextView= view.findViewById(R.id.txtSubject)
-        val teacherTiming: TextView = view.findViewById(R.id.txtTiming)
-        val teacherPrice: TextView= view.findViewById(R.id.txtPriceRange)
+        val teacherGrade:TextView=view.findViewById(R.id.txtTeacherGrade)
+        val teacherTiming:TextView=view.findViewById(R.id.txtTeacherTime)
+        val teacherQualification: TextView = view.findViewById(R.id.txtQualification)
+        val teacherSubject: TextView= view.findViewById(R.id.txtTeacherSubject)
         val rating: RatingBar = view.findViewById(R.id.rating)
         val linearLayout: LinearLayout = view.findViewById(R.id.llt)
     }

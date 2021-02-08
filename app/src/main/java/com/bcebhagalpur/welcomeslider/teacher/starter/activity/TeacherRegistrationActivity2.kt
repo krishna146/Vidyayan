@@ -6,7 +6,6 @@ import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Typeface.BOLD
 import android.location.Address
 import android.location.Geocoder
 import android.os.Build
@@ -18,10 +17,11 @@ import android.text.TextWatcher
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.bcebhagalpur.welcomeslider.R
 import com.google.android.gms.location.*
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.activity_registration.*
 import kotlinx.android.synthetic.main.activity_student_profile.*
 import kotlinx.android.synthetic.main.activity_teacher_registration2.*
@@ -33,7 +33,7 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var locationRequest: LocationRequest
     private lateinit var locationCallback: LocationCallback
-    private lateinit var acTextGender: AutoCompleteTextView
+//    private lateinit var acTextGender: AutoCompleteTextView
     private lateinit var et_teacher_name:TextInputEditText
     private lateinit var et_teacher_email:TextInputEditText
     private lateinit var et_teacher_gender:AutoCompleteTextView
@@ -45,7 +45,10 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_teacher_registration2)
-        acTextGender = findViewById(R.id.acTxtGender)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.statusBarColor = ContextCompat.getColor(applicationContext, R.color.white)
+        }
+//        acTextGender = findViewById(R.id.acTxtGender)
         et_teacher_name=findViewById(R.id.et_teacher_name)
         et_teacher_email=findViewById(R.id.et_teacher_email)
         et_teacher_dob=findViewById(R.id.et_teacher_dob)
@@ -145,12 +148,6 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
 
         imgBtnTeacherNext.setOnClickListener {
 
-
-            if(et_teacher_name.text.toString().isEmpty() || et_teacher_email.text.toString().toString().isEmpty() || et_teacher_dob.text.toString().isEmpty() || acTextGender.text.toString().isEmpty() || txtSelectCity.text== "Select City" || et_teacher_address.text.toString().isEmpty()){
-
-                Toast.makeText(this, "All fields are required", Toast.LENGTH_SHORT).show()
-            }
-
                 if(et_teacher_name.text.toString().isNotEmpty()  && et_teacher_email.text.toString().toString().isNotEmpty() && et_teacher_dob.text.toString().isNotEmpty() && et_teacher_gender.text.toString().isNotEmpty() && txtSelectCity.text!= "Select City" && et_teacher_address.text.toString().isNotEmpty()){
 
                 val userType=intent.getStringExtra("userType")
@@ -159,13 +156,15 @@ class TeacherRegistrationActivity2 : AppCompatActivity() {
                 intent1.putExtra("teacherName",et_teacher_name.text.toString())
                 intent1.putExtra("teacherEmail",et_teacher_email.text.toString())
                 intent1.putExtra("teacherDob",et_teacher_dob.text.toString())
-                intent1.putExtra("teacherGender",acTextGender.text.toString())
+                intent1.putExtra("teacherGender",et_teacher_gender.text.toString())
                 intent1.putExtra("teacherAddress",et_teacher_address.text.toString())
                 intent1.putExtra("city",txtSelectCity.text.toString())
                 intent1.putExtra("mobileNumber",number)
                 intent1.putExtra("userType",userType)
                 startActivity(intent1)
-            }
+            }else{
+               Snackbar.make(scrv,"Please fill all fields",Snackbar.LENGTH_LONG).show()
+                }
 
         }
     }

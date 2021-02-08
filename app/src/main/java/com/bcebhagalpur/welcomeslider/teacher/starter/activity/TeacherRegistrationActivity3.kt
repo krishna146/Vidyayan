@@ -1,46 +1,46 @@
+@file:Suppress("DEPRECATION")
 package com.bcebhagalpur.welcomeslider.teacher.starter.activity
 
 import android.annotation.SuppressLint
 import android.app.ProgressDialog
 import android.content.Intent
-import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.TypedValue
-import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.View
-import android.view.textclassifier.TextLanguage
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import com.bcebhagalpur.welcomeslider.R
-import com.bcebhagalpur.welcomeslider.activity.OtpVerifyActivity
 import com.bcebhagalpur.welcomeslider.teacher.dashboard.activity.HomeTeacher
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_teacher_registration3.*
 import java.util.*
 
+@Suppress("DEPRECATION")
 class TeacherRegistrationActivity3 : AppCompatActivity() {
 
-    private lateinit var menuHighestQualification:TextInputLayout
-    private lateinit var menuStatus:TextInputLayout
-    private lateinit var menuCollege:TextInputLayout
+    private lateinit var menuHighestQualification: TextInputLayout
+    private lateinit var menuStatus: TextInputLayout
+    private lateinit var menuCollege: TextInputLayout
     private lateinit var menuLanguage: TextInputLayout
-    private lateinit var menuMode:TextInputLayout
-    private lateinit var txtSelectClass:TextView
-    private lateinit var txtSelectSubject:TextView
+    private lateinit var menuMode: TextInputLayout
+    private lateinit var menuTiming: TextInputLayout
+    private lateinit var menuPrice: TextInputLayout
+    private lateinit var txtSelectClass: TextView
+    private lateinit var txtSelectSubject: TextView
 
-    private lateinit var actxtQualification:AutoCompleteTextView
-    private lateinit var actxtStatus:AutoCompleteTextView
-    private lateinit var actxtCollege:AutoCompleteTextView
-    private lateinit var actxtLanguage:AutoCompleteTextView
-    private lateinit var actxtMode:AutoCompleteTextView
+    private lateinit var actxtQualification: AutoCompleteTextView
+    private lateinit var actxtStatus: AutoCompleteTextView
+    private lateinit var actxtCollege: AutoCompleteTextView
+    private lateinit var actxtLanguage: AutoCompleteTextView
+    private lateinit var actxtMode: AutoCompleteTextView
+    private lateinit var actxtTiming: AutoCompleteTextView
+    private lateinit var actxtPrice: AutoCompleteTextView
 
     private lateinit var mAuth: FirebaseAuth
     private lateinit var mDatabaseReference: DatabaseReference
@@ -51,471 +51,243 @@ class TeacherRegistrationActivity3 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_teacher_registration3)
 
-        menuHighestQualification=findViewById(R.id.menuHighestQualification)
-        menuStatus=findViewById(R.id.menuStatus)
-        menuCollege=findViewById(R.id.menuCollege)
-        menuLanguage=findViewById(R.id.menuLanguage)
-        menuMode=findViewById(R.id.menuMode)
-        txtSelectClass=findViewById(R.id.txtSelectClass)
-        txtSelectSubject=findViewById(R.id.txtSelectSubject)
+        menuHighestQualification = findViewById(R.id.menuHighestQualification)
+        menuStatus = findViewById(R.id.menuStatus)
+        menuCollege = findViewById(R.id.menuCollege)
+        menuLanguage = findViewById(R.id.menuLanguage)
+        menuMode = findViewById(R.id.menuMode)
+        menuPrice = findViewById(R.id.menuPrice)
+        menuTiming = findViewById(R.id.menuTiming)
+        txtSelectClass = findViewById(R.id.txtSelectClass)
+        txtSelectSubject = findViewById(R.id.txtSelectSubject)
 
-        actxtQualification=findViewById(R.id.actxtQualification)
-        actxtStatus=findViewById(R.id.actxtStatus)
-        actxtCollege=findViewById(R.id.actxtCollege)
-        actxtLanguage=findViewById(R.id.actxtLanguage)
-        actxtMode=findViewById(R.id.actxtMode)
+        actxtQualification = findViewById(R.id.actxtQualification)
+        actxtStatus = findViewById(R.id.actxtStatus)
+        actxtCollege = findViewById(R.id.actxtCollege)
+        actxtLanguage = findViewById(R.id.actxtLanguage)
+        actxtMode = findViewById(R.id.actxtMode)
+        actxtPrice = findViewById(R.id.actxtPrice)
+        actxtTiming = findViewById(R.id.actxtTiming)
 
-
-        var b = 1
+        changeColor()
 
         val qualificationItems = listOf("B.tech ", "M.tech", "B.sc", "B.A(English)")
         val qualificationAdapter = ArrayAdapter(this, R.layout.list_item, qualificationItems)
-       val qualification= actxtQualification.setAdapter(qualificationAdapter)
+        actxtQualification.setAdapter(qualificationAdapter)
 
         val statusItems = listOf("Completed", "Pursuing")
         val statusAdapter = ArrayAdapter(this, R.layout.list_item, statusItems)
-       val status= actxtStatus.setAdapter(statusAdapter)
+        actxtStatus.setAdapter(statusAdapter)
 
         val collegeItems =
             listOf("BCE Bhagalpur", "Aryabhatta Knowledge university", "S.M. College")
         val collegeAdapter = ArrayAdapter(this, R.layout.list_item, collegeItems)
-        val college=actxtCollege.setAdapter(collegeAdapter)
+        actxtCollege.setAdapter(collegeAdapter)
 
         val modeItems = listOf("online", "offline", "both")
         val modeAdapter = ArrayAdapter(this, R.layout.list_item, modeItems)
-       val mode= actxtMode.setAdapter(modeAdapter)
+        actxtMode.setAdapter(modeAdapter)
 
-        val languageItems = listOf("English", "Hindi", "Both")
+        val languageItems = listOf(
+            "English",
+            "Hindi",
+            "Both"
+        )
         val languageAdapter = ArrayAdapter(this, R.layout.list_item, languageItems)
-        val language=actxtLanguage.setAdapter(languageAdapter)
+        actxtLanguage.setAdapter(languageAdapter)
 
-        var a = 0
-        val classArray = arrayOf(
-            "13th",
-            "12th",
-            "11th",
-            "6-10th",
-            "1-5th"
+        val priceItems = listOf(
+            "500-1000",
+            "1000-1200",
+            "1200-1500",
+            "1500-1800",
+            "1800-2000",
+            "2000-2500",
+            "2500-3000",
+            "3000-4000",
+            "4000-5000",
+            "5000-10,000"
         )
-        val classList = Arrays.asList(*classArray)
+        val priceAdapter = ArrayAdapter(this, R.layout.list_item, priceItems)
+        actxtPrice.setAdapter(priceAdapter)
 
-        // Boolean array for initial selected items
-        val checkedClassArray = booleanArrayOf(
-            false,
-            false,
-            false,
-            false,
-            false
-
+        val timeItems = listOf(
+            "6:00 AM to 8:00 AM",
+            "8:00 AM to 10:00 AM",
+            "10:00 AM to 12:00 AM",
+            "12:00 AM to 2:00 PM",
+            "2:00 PM to 4:00 PM",
+            "4:00 PM to 6:00 PM",
+            "6:00 PM to 8:00 PM",
+            "8:00 AM to 10:00 PM"
         )
-        val checkedSubArray13th = booleanArrayOf(
-            false,
-            false,
-            false,
-            false,
-            false,
-            false
-        )
-        val checkedSubArray12th = booleanArrayOf(
-            false,
-            false,
-            false,
-            false,
-            false,
-            false
-        )
-        var checkedSubArray11th = booleanArrayOf(
-            false,
-            false,
-            false,
-            false
+        val timeAdapter = ArrayAdapter(this, R.layout.list_item, timeItems)
+        actxtTiming.setAdapter(timeAdapter)
 
-        )
-        var checkedSubArray6To10th = booleanArrayOf(
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false
-
-        )
-        var checkedSubArray1To5th = booleanArrayOf(
-            false,
-            false,
-            false,
-            false,
-            false,
-            false,
-            false
-
-        )
-
-        txtSelectClass.setOnClickListener() {
-
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("Select Classes")
-
-            builder.setMultiChoiceItems(classArray, checkedClassArray) { _, which, isChecked ->
-
-                // Update the current focused item's checked status
-                checkedClassArray[which] = isChecked
-
-                if(isChecked && a ==1 ){
-                    txtSelectSubject.visibility = View.VISIBLE
-                    txtSelectSubject.text = ""
-                    a = 1
-                }
-                if(which == 0 && isChecked){
-
-                    val subArray = arrayOf("JEE (PHYSICS)",
-                    "JEE (CHEMISTRY)",
-                    "JEE (MATHEMATICS)",
-                    "NEET (PHYSICS)",
-                    "NEET (CHEMISTRY)",
-                    "NEET (BIOLOGY)"
-                    )
-                    val subList = Arrays.asList(*subArray)
-
-                    val builder = AlertDialog.Builder(this)
-                    builder.setTitle("Select 13th Subjects")
-                    builder.setMultiChoiceItems(subArray, checkedSubArray13th) { _, which, isChecked ->
-
-                        // Update the current focused item's checked status
-                        checkedSubArray13th[which] = isChecked
-
-                    }
-
-                    builder.setPositiveButton("OK") { _, _ ->
-
-                        txtSelectSubject.text = ""
-                        for (i in checkedSubArray13th.indices) {
-
-                            val checked = checkedSubArray13th[i]
-                            //checkedSubArray13th.set(i, checked)
-
-                            if (checked) {
-
-                                txtSelectSubject.visibility = View.VISIBLE
-                                txtSelectSubject.text =
-                                    txtSelectSubject.text.toString() + subList[i] + "  "
-                                txtSelectSubject.gravity = Gravity.START
-                                txtSelectSubject.setTextSize(TypedValue.COMPLEX_UNIT_PT,5F);
-
-                            }
-
+        txtSelectClass.setOnClickListener {
+            val subject = arrayOf(
+                "1 to 5th",
+                "1 to 8th",
+                "1 to 10th",
+                "1 to 12th",
+                "6th to 8th",
+                "6th to 10th",
+                "6th to 12th",
+                "9th to 10th",
+                "9th to 12th",
+                "11th to 12th"
+            )
+            val mAlertDialogBuilder =
+                android.app.AlertDialog.Builder(this@TeacherRegistrationActivity3)
+            mAlertDialogBuilder.setTitle("Select class")
+            mAlertDialogBuilder.setItems(subject) { _, which ->
+                when (which) {
+                    which -> {
+                        txtSelectClass.text = subject[which]
+                        if (txtSelectClass.text == "1 to 12th" || txtSelectClass.text == "6th to 12th" || txtSelectClass.text == "9th to 12th" || txtSelectClass.text == "11th to 12th") {
+                            txtSelectSubject.visibility = View.VISIBLE
+                        } else {
+                            txtSelectSubject.visibility = View.GONE
                         }
                     }
-
-                    builder.setNeutralButton("Cancel") { _, which ->
-
-                    }
-                    val dialog = builder.create()
-                    dialog.show()
-
-
                 }
-                if(which == 1 && isChecked){
-                    val builder = AlertDialog.Builder(this)
-                    builder.setTitle("Select Subjects")
-
-                    val classList = arrayOf(
-                        "12th Physics",
-                        "12h Chemistry",
-                        "12th Mathematics",
-                        "12th Biology"
-                    )
-                    val subList = Arrays.asList(*classList)
-
-                    builder.setMultiChoiceItems(classList, checkedSubArray12th) { _, which, isChecked ->
-
-                        checkedSubArray12th[which] = isChecked
-
-                    }
-
-                    builder.setPositiveButton("OK") { _, _ ->
-
-                        for (i in checkedSubArray12th.indices) {
-
-                            val checked = checkedSubArray12th[i]
-                            if (checked) {
-                                txtSelectSubject.visibility = View.VISIBLE
-                                txtSelectSubject.text =
-                                    txtSelectSubject.text.toString() + subList[i] + "  "
-                                txtSelectSubject.gravity = Gravity.START
-                                txtSelectSubject.setTextSize(TypedValue.COMPLEX_UNIT_PT,5F);
-                            }
-                        }
-                    }
-
-
-                    builder.setNeutralButton("Cancel") { _, _ ->
-
-                    }
-
-                    val dialog1 = builder.create()
-                    dialog1.show()
-                }
-                if(which == 2 && isChecked){
-
-                    val builder = AlertDialog.Builder(this)
-                    builder.setTitle("Select Subjects")
-
-                    val subArray = arrayOf(
-                        "11th Physics",
-                        "11h Chemistry",
-                        "11th Mathematics",
-                        "11th Biology"
-                    )
-                    val subList = Arrays.asList(*subArray)
-
-                    builder.setMultiChoiceItems(subArray, checkedSubArray11th) { _, which, isChecked ->
-
-                        // Update the current focused item's checked status
-                        checkedSubArray11th[which] = isChecked
-
-                    }
-
-
-                    builder.setPositiveButton("OK") { _, _ ->
-
-                        for (i in checkedSubArray11th.indices) {
-
-                            val checked = checkedSubArray11th[i]
-                            //checkedSubArray13th.set(i, checked)
-
-                            if (checked) {
-
-                                txtSelectSubject.text =
-                                    txtSelectSubject.text.toString() + subList[i] + "  "
-                                txtSelectSubject.gravity = Gravity.START
-                                txtSelectSubject.setTextSize(TypedValue.COMPLEX_UNIT_PT,5F);
-
-                            }
-                        }
-                    }
-
-
-                    builder.setNeutralButton("Cancel") { _, _ ->
-
-                    }
-                    val dialog = builder.create()
-                    // Display the alert dialog on interface
-                    dialog.show()
-                }
-                if(which == 3 && isChecked){
-                    val subArray = arrayOf(
-                        "6-10th Science",
-                        "6-10th Social Science",
-                        "6-10th Mathematics",
-                        "6-10th English",
-                        "6-10th Hindi",
-                        "6-10th Sanskrit",
-                        "6-10th Computer "
-                    )
-                    val subList = Arrays.asList(*subArray)
-
-                    val builder = AlertDialog.Builder(this)
-                    builder.setTitle("Select Subjects")
-
-                    builder.setMultiChoiceItems(subArray, checkedSubArray6To10th) { _, which, isChecked ->
-
-                        // Update the current focused item's checked status
-                        checkedSubArray6To10th[which] = isChecked
-
-                    }
-
-                    builder.setPositiveButton("OK") { _, _ ->
-
-                        for (i in checkedSubArray6To10th.indices) {
-
-                            val checked = checkedSubArray6To10th[i]
-                            if (checked) {
-
-                                txtSelectSubject.text =
-                                    txtSelectSubject.text.toString() + subList[i] + "  "
-                                txtSelectSubject.gravity = Gravity.START
-                                txtSelectSubject.setTextSize(TypedValue.COMPLEX_UNIT_PT,5F)
-
-                            }
-                        }
-                    }
-
-                    builder.setNeutralButton("Cancel") { _, _ ->
-
-                    }
-
-                    val dialog = builder.create()
-                    dialog.show()
-                }
-                if(which == 4 && isChecked){
-                    val subArray = arrayOf(
-                        "1-5th Science",
-                        "1-5th Social Science",
-                        "1-5th Mathematics",
-                        "1-5th English",
-                        "1-5th Hindi",
-                        "1-5th Sanskrit",
-                        "1-5th Computer"
-                    )
-                    val subList = Arrays.asList(*subArray)
-
-                    val builder = AlertDialog.Builder(this)
-                    builder.setTitle("Select Subjects")
-
-                    builder.setMultiChoiceItems(subArray, checkedSubArray1To5th) { _, which, isChecked ->
-
-                        // Update the current focused item's checked status
-                        checkedSubArray1To5th[which] = isChecked
-
-                    }
-
-                    builder.setPositiveButton("OK") { _, _ ->
-
-                        for (i in checkedSubArray6To10th.indices) {
-
-                            val checked = checkedSubArray1To5th[i]
-                            if (checked) {
-
-                                txtSelectSubject.text =
-                                    txtSelectSubject.text.toString() + subList[i] + "  "
-                                txtSelectSubject.gravity = Gravity.START
-                                txtSelectSubject.setTextSize(TypedValue.COMPLEX_UNIT_PT,5F)
-
-                            }
-                        }
-                    }
-
-                    builder.setNeutralButton("Cancel") { _, _ ->
-
-                    }
-
-                    val dialog = builder.create()
-                    dialog.show()
-
-                }
-
             }
-
-            builder.setPositiveButton("OK") { _, which ->
-
-
-                for (i in checkedClassArray.indices) {
-
-                    val checked = checkedClassArray[i]
-                    // checkedClassArray[i] = checked
-                    if (checked) {
-                        if(b == 1){
-                            txtSelectClass.text = ""
-
-                        }
-                        txtSelectClass.setTextSize(TypedValue.COMPLEX_UNIT_PT,10F)
-                        txtSelectClass.visibility = View.VISIBLE
-                        txtSelectClass.gravity = Gravity.START
-                        txtSelectClass.text = txtSelectClass.text.toString() + " " + classList[i]
-
-                        b = 2
-                    }
-
-                }
-
-                if (!checkedClassArray[0] && !checkedClassArray[1] && !checkedClassArray[2] && !checkedClassArray[3] && !checkedClassArray[4]) {
-
-                    txtSelectClass.text = "Select Classes"
-                    txtSelectSubject.visibility = View.GONE
-                    txtSelectSubject.text = "Select Classes"
-                    txtSelectSubject.gravity = Gravity.CENTER
-                    txtSelectSubject.setTextSize(TypedValue.COMPLEX_UNIT_PT,20F)
-
-
-                }
-
-            }
-
-            builder.setNeutralButton("Cancel") { _, which ->
-
-            }
-
-            val dialog = builder.create()
-            dialog.show()
-
+            val mAlertDialog = mAlertDialogBuilder.create()
+            mAlertDialog.show()
         }
 
-            btnSubmit.setOnClickListener {
+//        txtSelectSubject.setOnClickListener {
+//            val subject1 = arrayOf("Mathematics", "Physics", "Biology", "Chemistry")
+//            val checked = booleanArrayOf(false, false, false, false)
+//            val mAlertDialogBuilder = AlertDialog.Builder(this@TeacherRegistrationActivity3)
+//            mAlertDialogBuilder.setTitle("Select Subject for upper 10th class")
+//            mAlertDialogBuilder.setItems(subject1) { _, which ->
+//
+//            }
+//            mAlertDialogBuilder.setPositiveButton("Ok") { _, _ ->
+//            }
+//            val mAlertDialog = mAlertDialogBuilder.create()
+//            mAlertDialog.show()
+//        }
+        txtSelectSubject.setOnClickListener {
+            val inflateView = LayoutInflater.from(this).inflate(R.layout.check_subject_item, null)
 
+            val mathematics = inflateView.findViewById<CheckBox>(R.id.mathematics)
+            val physics = inflateView.findViewById<CheckBox>(R.id.physics)
+            val chemistry = inflateView.findViewById<CheckBox>(R.id.chemistry)
+            val biology = inflateView.findViewById<CheckBox>(R.id.biology)
+            val subject = arrayOf(mathematics, physics, biology, chemistry)
+            val subject1 = arrayOf("Mathematics", "Physics", "Biology", "Chemistry")
+            var txt1 = ""
+            var txt2 = ""
+            var txt3 = ""
+            var txt4 = ""
 
-                val teacherName=intent.getStringExtra("teacherName")
-                val mobileNumber=intent.getStringExtra("mobileNumber")
-                val teacherEmail=intent.getStringExtra("teacherEmail")
-                val teacherDob=intent.getStringExtra("teacherDob")
-                val teacherGender=intent.getStringExtra("teacherGender")
-                val teacherAddress=intent.getStringExtra("teacherAddress")
-                val teacherNumber=intent.getStringExtra("mobileNumber")
-                val userType=intent.getStringExtra("userType")
-                val city=intent.getStringExtra("city")
+            val alertDialog = AlertDialog.Builder(this)
+            alertDialog.setTitle("select subject")
+            alertDialog.setView(inflateView)
+            alertDialog.setCancelable(false)
+            alertDialog.setPositiveButton("Ok") { _, _ ->
+                if (subject[0].isChecked) {
+                    txt1 = subject1[0]
+                }
+                if (subject[1].isChecked) {
+                    txt2 = subject1[1]
+                }
+                if (subject[2].isChecked) {
+                    txt3 = subject1[2]
+                }
+                if (subject[3].isChecked) {
+                    txt4 = subject1[3]
+                }
+
+                txtSelectSubject.text = txt1+"" + txt2+"" + txt3+"" + txt4
+            }
+            val dialog = alertDialog.create()
+            dialog.show()
+        }
+
+        btnSubmit.setOnClickListener {
+            val teacherName = intent.getStringExtra("teacherName")
+//                val mobileNumber = intent.getStringExtra("mobileNumber")
+            val teacherEmail = intent.getStringExtra("teacherEmail")
+            val teacherDob = intent.getStringExtra("teacherDob")
+            val teacherGender = intent.getStringExtra("teacherGender")
+            val teacherAddress = intent.getStringExtra("teacherAddress")
+//                val teacherNumber = intent.getStringExtra("mobileNumber")
+//                val userType = intent.getStringExtra("userType")
+            val city = intent.getStringExtra("city")
+
+            if (actxtQualification.text.isNotEmpty() && actxtStatus.text.isNotEmpty() && actxtCollege.text.isNotEmpty() && actxtLanguage.text.isNotEmpty()
+                && actxtMode.text.isNotEmpty() && actxtPrice.text.isNotEmpty() && actxtTiming.text.isNotEmpty()
+                && txtSelectClass.text != "Select Class"
+            ) {
+                val progressDialog = ProgressDialog(this)
+                progressDialog.setTitle("VIDYAYAN")
+                progressDialog.setMessage("We are processing, please wait")
+                progressDialog.show()
+                progressDialog.setCancelable(false)
 
                 mDatabase = FirebaseDatabase.getInstance()
                 mDatabaseReference = mDatabase.reference.child("TEACHERS")
                 val currentUserDb = mDatabaseReference.child(city!!)
-                mAuth= FirebaseAuth.getInstance()
-                val userId= mAuth.currentUser!!.uid
+                val currentUserDb2 = currentUserDb.child(txtSelectClass.text.toString())
+                mAuth = FirebaseAuth.getInstance()
+                val userId = mAuth.currentUser!!.uid
+                val userNumber = mAuth.currentUser!!.phoneNumber
 
-
-                currentUserDb.addListenerForSingleValueEvent(object : ValueEventListener {
+                currentUserDb2.addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
-                        val anotherChild = currentUserDb.child(userId)
+                        val anotherChild = currentUserDb2.child(userId)
                         anotherChild.child("userId").setValue(userId)
-                        anotherChild.child("mobileNumber").setValue(teacherNumber!!.toString())
+                        anotherChild.child("mobileNumber").setValue(userNumber.toString())
                         anotherChild.child("teacherName").setValue(teacherName!!.toString())
                         anotherChild.child("teacherEmail").setValue(teacherEmail!!.toString())
                         anotherChild.child("teacherDob").setValue(teacherDob!!.toString())
                         anotherChild.child("teacherCity").setValue(city.toString())
                         anotherChild.child("teacherGender").setValue(teacherGender!!.toString())
-                        anotherChild.child("teacherAddress").setValue(teacherAddress!!.toString())
-                        anotherChild.child("qualification").setValue(qualification.toString())
-                        anotherChild.child("status").setValue(status.toString())
-                        anotherChild.child("language").setValue(language.toString())
-                        anotherChild.child("college").setValue(college.toString())
-                        anotherChild.child("mode").setValue(mode.toString())
-//                        anotherChild.child("class").setValue(selectClass.toString())
-//                        anotherChild.child("subject").setValue(subject.toString())
+                        anotherChild.child("teacherAddress")
+                            .setValue(teacherAddress!!.toString())
+                        anotherChild.child("qualification")
+                            .setValue(actxtQualification.text.toString())
+                        anotherChild.child("status").setValue(actxtStatus.text.toString())
+                        anotherChild.child("language").setValue(actxtLanguage.text.toString())
+                        anotherChild.child("college").setValue(actxtCollege.text.toString())
+                        anotherChild.child("mode").setValue(actxtMode.text.toString())
+                        anotherChild.child("class").setValue(txtSelectClass.text.toString())
+                        anotherChild.child("subject").setValue(txtSelectSubject.text.toString())
+                        anotherChild.child("timing").setValue(actxtTiming.text.toString())
+                        anotherChild.child("price").setValue(actxtPrice.text.toString())
+                        progressDialog.hide()
                     }
 
                     override fun onCancelled(error: DatabaseError) {
                     }
                 })
 
-                mDatabase = FirebaseDatabase.getInstance()
-                val users:DatabaseReference = mDatabase.reference.child("USERS")
-               users.addListenerForSingleValueEvent(object :ValueEventListener{
-                   override fun onDataChange(snapshot: DataSnapshot) {
-                       val anotherChild1=users.child(userId)
-                       anotherChild1.child("userType").setValue("Teacher")
-                   }
+                val users = FirebaseDatabase.getInstance().reference.child("USERS")
+                users.addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        val anotherChild1 = users.child(userId)
+                        anotherChild1.child("userType").setValue("Teacher")
+                    }
 
-                   override fun onCancelled(error: DatabaseError) {
-                   }
-               })
-                val intent=Intent(this@TeacherRegistrationActivity3, HomeTeacher::class.java)
+                    override fun onCancelled(error: DatabaseError) {
+                    }
+                })
+
+                val intent = Intent(this@TeacherRegistrationActivity3, HomeTeacher::class.java)
                 startActivity(intent)
                 finish()
-//                intent.putExtra("teacherName",teacherName)
-//                intent.putExtra("mobileNumber",mobileNumber)
-//                intent.putExtra("teacherEmail",teacherEmail)
-//                intent.putExtra("teacherDob",teacherDob)
-//                intent.putExtra("teacherGender",teacherGender)
-//                intent.putExtra("teacherAddress",teacherAddress)
-//                intent.putExtra("teacherNumber",teacherNumber)
-//                intent.putExtra("userType",userType)
-//                intent.putExtra("city",city)
-//                intent.putExtra("college",college.toString())
-//                intent.putExtra("qualification",qualification.toString())
-//                intent.putExtra("status",status.toString())
-//                intent.putExtra("mode",mode.toString())
-//                intent.putExtra("langauge",language.toString())
-//                intent.putExtra("class",txtSelectClass.text.toString())
-//                intent.putExtra("subject",txtSelectSubject.text.toString())
+            } else {
+                Toast.makeText(this, "please enter fill all fields", Toast.LENGTH_SHORT).show()
             }
         }
     }
+
+    private fun changeColor() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.statusBarColor = ContextCompat.getColor(applicationContext, R.color.white)
+        }
+    }
+}
