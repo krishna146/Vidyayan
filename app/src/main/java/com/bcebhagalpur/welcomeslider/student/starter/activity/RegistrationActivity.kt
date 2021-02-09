@@ -2,30 +2,24 @@ package com.bcebhagalpur.welcomeslider.student.starter.activity
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.app.AlertDialog
 import android.app.DatePickerDialog
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Typeface
 import android.location.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Looper
-import android.view.Window
-import android.view.WindowManager
 import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.bcebhagalpur.welcomeslider.R
 import com.bcebhagalpur.welcomeslider.student.dashboard.activity.HomeActivity
-import com.bcebhagalpur.welcomeslider.teacher.dashboard.activity.HomeTeacher
 import com.google.android.gms.location.*
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_otp_verify.*
 import kotlinx.android.synthetic.main.activity_otp_verify.view.*
@@ -36,10 +30,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class RegistrationActivity : AppCompatActivity() {
-    /* private var lm: LocationManager? = null
-    private var loc: Location? = null
-    lateinit var sharedPreferences: SharedPreferences
-    var location:String?=" "*/
 
     private lateinit var mDatabaseReference: DatabaseReference
     private lateinit var mDatabase: FirebaseDatabase
@@ -51,6 +41,7 @@ class RegistrationActivity : AppCompatActivity() {
     private lateinit var etStudentCity:TextInputLayout
     private lateinit var etStudentAddress:TextInputLayout
     private lateinit var imgBtnRegister:ImageButton
+    private lateinit var actxtGender:AutoCompleteTextView
     private lateinit var imgBtnDob:ImageButton
 
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
@@ -58,12 +49,6 @@ class RegistrationActivity : AppCompatActivity() {
     private lateinit var locationCallback: LocationCallback
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        window.requestFeature(Window.FEATURE_NO_TITLE)
-//        window.setFlags(
-//            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-//            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-//        )
-        // sharedPreferences=getSharedPreferences(getString(R.string.preference_file_name), Context.MODE_PRIVATE)
         setContentView(R.layout.activity_registration)
 
         etStudentName=findViewById(R.id.etStudentName)
@@ -73,6 +58,9 @@ class RegistrationActivity : AppCompatActivity() {
         etStudentAddress=findViewById(R.id.etStudentAddress)
         imgBtnRegister=findViewById(R.id.imgBtnRegister)
         imgBtnDob=findViewById(R.id.btnDob)
+        actxtGender=findViewById(R.id.actxtGender)
+
+        requestPermission()
 
         imgBtnDob.setOnClickListener {
             val formate = SimpleDateFormat("dd,mm,yyyy", Locale.US)
@@ -93,40 +81,44 @@ class RegistrationActivity : AppCompatActivity() {
         val studentStream = intent.getStringExtra("studentStream")
         val studentBoard = intent.getStringExtra("studentBoard")
         val targetExam = intent.getStringExtra("targetExam")
+
         val genderItems = listOf("Male", "Female", "Neutral")
-
         val genderAdapter = ArrayAdapter(this, R.layout.list_item, genderItems)
-       val gender= actxtGender.setAdapter(genderAdapter)
+      actxtGender.setAdapter(genderAdapter)
 
-        val name= etStudentName.editText!!.text.toString().trim()
-        val email= etStudentEmail.editText!!.text.toString().trim()
-        val dob= etStudentDob.editText!!.text.toString().trim()
-        val city= etStudentCity.editText!!.text.toString().trim()
-        val address= etStudentAddress.editText!!.text.toString().trim()
 
         imgBtnRegister.setOnClickListener {
 
+            val name= etStudentName.editText!!.text.toString().trim()
+            val email= etStudentEmail.editText!!.text.toString().trim()
+            val dob= etStudentDob.editText!!.text.toString().trim()
+            val city= etStudentCity.editText!!.text.toString().trim()
+            val address= etStudentAddress.editText!!.text.toString().trim()
+
             mDatabase = FirebaseDatabase.getInstance()
             mDatabaseReference = mDatabase.reference.child("STUDENT")
-            val currentUserDb = mDatabaseReference.child(city)
             mAuth= FirebaseAuth.getInstance()
             val userId= mAuth.currentUser!!.uid
+            val userNumber=mAuth.currentUser!!.phoneNumber
 
-            if (name!==""&& email!==""&&dob!==""&& city!==""&& address!=="") {
-                currentUserDb.addListenerForSingleValueEvent(object : ValueEventListener {
+            if (name.isNotEmpty()&& email.isNotEmpty()&&dob.isNotEmpty()&& city.isNotEmpty()&& address.isNotEmpty()
+                && actxtGender.text.isNotEmpty()) {
+                mDatabaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
-                        val anotherChild = currentUserDb.child(userId)
+                        val anotherChild = mDatabaseReference.child(userId)
                         anotherChild.child("userId").setValue(userId)
-                        anotherChild.child("mobileNumber").setValue(name)
-                        anotherChild.child("studentName").setValue(email)
-                        anotherChild.child("teacherEmail").setValue(dob)
-                        anotherChild.child("teacherDob").setValue(address)
-                        anotherChild.child("teacherCity").setValue(city)
-                        anotherChild.child("teacherGender").setValue(studentClass)
-                        anotherChild.child("teacherAddress").setValue(studentBoard)
-//                        anotherChild.child("teacherAddress").setValue(gender.toString())
-                        anotherChild.child("qualification").setValue(studentStream)
-                        anotherChild.child("status").setValue(targetExam)
+                        anotherChild.child("mobileNumber").setValue(userNumber)
+                        anotherChild.child("studentName").setValue(name)
+                        anotherChild.child("studentEmail").setValue(email)
+                        anotherChild.child("studentDob").setValue(dob)
+                        anotherChild.child("studentCity").setValue(city)
+                        anotherChild.child("studentAddress").setValue(address)
+                        anotherChild.child("studentGender").setValue(actxtGender.text.toString())
+                        anotherChild.child("studentStream").setValue(studentStream)
+                        anotherChild.child("studentClass").setValue(studentClass)
+                        anotherChild.child("studentBoard").setValue(studentBoard)
+                        anotherChild.child("targetExam").setValue(targetExam)
+
                     }
 
                     override fun onCancelled(error: DatabaseError) {
@@ -148,18 +140,18 @@ class RegistrationActivity : AppCompatActivity() {
                 startActivity(Intent(this@RegistrationActivity, HomeActivity::class.java))
                 finish()
             }else{
-                Toast.makeText(this,"Some error occurred",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"All fields are required",Toast.LENGTH_SHORT).show()
             }
         }
-            requestPermission()
+
     }
 
-    fun requestPermission() {
+    private fun requestPermission() {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
         locationRequest = LocationRequest()
-        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-        locationRequest.setFastestInterval(2000)
-        locationRequest.setInterval(4000)
+        locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+        locationRequest.fastestInterval = 2000
+        locationRequest.interval = 4000
         locationCallback = object : LocationCallback() {
             @SuppressLint("SetTextI18n")
             override fun onLocationResult(p0: LocationResult?) {
@@ -168,15 +160,15 @@ class RegistrationActivity : AppCompatActivity() {
                     .removeLocationUpdates(this)
                 if (p0 != null && p0.locations.size > 0) {
                     val latestLocationIndex = p0.locations.size - 1
-                    val latitude = p0.locations.get(latestLocationIndex).latitude
-                    var longitude = p0.locations.get(latestLocationIndex).longitude
+                    val latitude = p0.locations[latestLocationIndex].latitude
+                    val longitude = p0.locations[latestLocationIndex].longitude
                     val gc = Geocoder(this@RegistrationActivity, Locale.getDefault())
                     val addresses: List<Address> = gc.getFromLocation(
                         latitude,
                         longitude, 1
                     )
                     val address: Address = addresses[0]
-                    etStudentAddress.txt("${address.getAddressLine(0)},${address.locality}")
+                    etStudentAddress.editText!!.setText("${address.getAddressLine(0)},${address.locality}")
                 }
             }
         }
@@ -189,11 +181,7 @@ class RegistrationActivity : AppCompatActivity() {
                 Manifest.permission.ACCESS_COARSE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
+
             ActivityCompat.requestPermissions(
                 this,
                 arrayOf(
@@ -271,6 +259,4 @@ class RegistrationActivity : AppCompatActivity() {
     }
 }
 
-private fun TextInputLayout.txt(s: String) {
 
-    }

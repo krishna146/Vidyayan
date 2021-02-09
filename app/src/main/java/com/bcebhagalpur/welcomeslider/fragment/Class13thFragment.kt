@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bcebhagalpur.welcomeslider.R
 import com.bcebhagalpur.welcomeslider.student.starter.activity.ChooseClassActivity
@@ -20,6 +21,7 @@ private const val ARG_PARAM2 = "param2"
 class Class13thFragment : Fragment() {
     var chooseClassActivity = ChooseClassActivity()
     lateinit var targetExam:String
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,13 +40,17 @@ class Class13thFragment : Fragment() {
             txtJEE.setBackgroundResource(R.drawable.rounded_corners_imagebutton)
 
         }
-        var studentClass= (activity as ChooseClassActivity?)?.getResult()
+        val studentClass= (activity as ChooseClassActivity?)?.getResult()
 
         view.btnStartLearning.setOnClickListener {
-            val intent = Intent(activity, RegistrationActivity::class.java)
-            intent.putExtra("targetExam", targetExam)
-            intent.putExtra("studentClass", studentClass)
-            startActivity(intent)
+            try {
+                val intent = Intent(activity, RegistrationActivity::class.java)
+                intent.putExtra("targetExam", targetExam)
+                intent.putExtra("studentClass", studentClass)
+                startActivity(intent)
+            }catch (e:UninitializedPropertyAccessException){
+                Toast.makeText(context,"please select target exam",Toast.LENGTH_SHORT).show()
+            }
         }
 
         return view

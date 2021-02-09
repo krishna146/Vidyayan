@@ -12,7 +12,6 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
-import androidx.core.view.isVisible
 import com.bcebhagalpur.welcomeslider.R
 import com.bcebhagalpur.welcomeslider.teacher.dashboard.activity.HomeTeacher
 import com.google.android.material.textfield.TextInputLayout
@@ -220,8 +219,7 @@ class TeacherRegistrationActivity3 : AppCompatActivity() {
 
             if (actxtQualification.text.isNotEmpty() && actxtStatus.text.isNotEmpty() && actxtCollege.text.isNotEmpty() && actxtLanguage.text.isNotEmpty()
                 && actxtMode.text.isNotEmpty() && actxtPrice.text.isNotEmpty() && actxtTiming.text.isNotEmpty()
-                && txtSelectClass.text != "Select Class"
-            ) {
+                && txtSelectClass.text != "Select Class") {
                 val progressDialog = ProgressDialog(this)
                 progressDialog.setTitle("VIDYAYAN")
                 progressDialog.setMessage("We are processing, please wait")
@@ -237,6 +235,36 @@ class TeacherRegistrationActivity3 : AppCompatActivity() {
                 val userNumber = mAuth.currentUser!!.phoneNumber
 
                 currentUserDb2.addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        val anotherChild = currentUserDb2.child(userId)
+                        anotherChild.child("userId").setValue(userId)
+                        anotherChild.child("mobileNumber").setValue(userNumber.toString())
+                        anotherChild.child("teacherName").setValue(teacherName!!.toString())
+                        anotherChild.child("teacherEmail").setValue(teacherEmail!!.toString())
+                        anotherChild.child("teacherDob").setValue(teacherDob!!.toString())
+                        anotherChild.child("teacherCity").setValue(city.toString())
+                        anotherChild.child("teacherGender").setValue(teacherGender!!.toString())
+                        anotherChild.child("teacherAddress")
+                            .setValue(teacherAddress!!.toString())
+                        anotherChild.child("qualification")
+                            .setValue(actxtQualification.text.toString())
+                        anotherChild.child("status").setValue(actxtStatus.text.toString())
+                        anotherChild.child("language").setValue(actxtLanguage.text.toString())
+                        anotherChild.child("college").setValue(actxtCollege.text.toString())
+                        anotherChild.child("mode").setValue(actxtMode.text.toString())
+                        anotherChild.child("class").setValue(txtSelectClass.text.toString())
+                        anotherChild.child("subject").setValue(txtSelectSubject.text.toString())
+                        anotherChild.child("timing").setValue(actxtTiming.text.toString())
+                        anotherChild.child("price").setValue(actxtPrice.text.toString())
+                        progressDialog.hide()
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                    }
+                })
+
+                val users1 = FirebaseDatabase.getInstance().reference.child("USERS")
+               users1.addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         val anotherChild = currentUserDb2.child(userId)
                         anotherChild.child("userId").setValue(userId)

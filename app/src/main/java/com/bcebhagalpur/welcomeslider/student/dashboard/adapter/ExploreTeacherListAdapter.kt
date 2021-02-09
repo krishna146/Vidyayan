@@ -17,6 +17,7 @@ import com.bcebhagalpur.welcomeslider.R
 import com.bcebhagalpur.welcomeslider.student.dashboard.activity.TeacherDemoVideoActivity
 import com.bcebhagalpur.welcomeslider.student.dashboard.activity.TeacherDetailActivity
 import com.bcebhagalpur.welcomeslider.student.dashboard.model.ExploreTeacherListModel
+import com.squareup.picasso.Picasso
 
 class ExploreTeacherListAdapter(private val context: Context, private val itemList: ArrayList<ExploreTeacherListModel>) : RecyclerView.Adapter<ExploreTeacherListAdapter.StatusViewHolder>() {
 
@@ -35,15 +36,32 @@ class ExploreTeacherListAdapter(private val context: Context, private val itemLi
     override fun onBindViewHolder(holder: StatusViewHolder, position: Int) {
 
         val subject = itemList[position]
-       holder.teacherImage.setImageResource(subject.teacherImage)
+       Picasso.get().load(subject.teacherImage).into(holder.teacherImage)
      holder.teacherName.text=subject.teacherName
-        holder.teacherQualification.text=subject.teacherQualification
-        holder.teacherSubject.text=subject.teacherSubject
-        holder.teacherTiming.text=subject.teacherTiming
-        holder.teacherGrade.text=subject.teacherGrade
+        holder.teacherQualification.text=subject.qualification
+        holder.teacherSubject.text=subject.subject
+        holder.teacherTiming.text=subject.timing
+        holder.teacherGrade.text=subject.teacherClass
         holder.rating.numStars=5
-        holder.rating.rating=subject.teacherRating
         holder.linearLayout.setOnClickListener {
+            val intent=Intent(context,TeacherDetailActivity::class.java)
+            intent.putExtra("teacherClass",subject.teacherClass)
+            intent.putExtra("college",subject.college)
+            intent.putExtra("language",subject.language)
+            intent.putExtra("mobileNumber",subject.mobileNumber)
+            intent.putExtra("mode",subject.mode)
+            intent.putExtra("price",subject.price)
+            intent.putExtra("qualification",subject.qualification)
+            intent.putExtra("status",subject.status)
+            intent.putExtra("subject",subject.subject)
+            intent.putExtra("teacherAddress",subject.teacherAddress)
+            intent.putExtra("teacherCity",subject.teacherCity)
+            intent.putExtra("teacherDob",subject.teacherDob)
+            intent.putExtra("teacherEmail",subject.teacherEmail)
+            intent.putExtra("teacherGender",subject.teacherGender)
+            intent.putExtra("teacherName",subject.teacherName)
+            intent.putExtra("timing",subject.timing)
+            intent.putExtra("userId",subject.userId)
            context.startActivity(Intent(context, TeacherDetailActivity::class.java))
         }
 
