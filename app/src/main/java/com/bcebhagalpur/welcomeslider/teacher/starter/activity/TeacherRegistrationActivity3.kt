@@ -252,7 +252,7 @@ class TeacherRegistrationActivity3 : AppCompatActivity() {
                         anotherChild.child("language").setValue(actxtLanguage.text.toString())
                         anotherChild.child("college").setValue(actxtCollege.text.toString())
                         anotherChild.child("mode").setValue(actxtMode.text.toString())
-                        anotherChild.child("class").setValue(txtSelectClass.text.toString())
+                        anotherChild.child("teacherClass").setValue(txtSelectClass.text.toString())
                         anotherChild.child("subject").setValue(txtSelectSubject.text.toString())
                         anotherChild.child("timing").setValue(actxtTiming.text.toString())
                         anotherChild.child("price").setValue(actxtPrice.text.toString())

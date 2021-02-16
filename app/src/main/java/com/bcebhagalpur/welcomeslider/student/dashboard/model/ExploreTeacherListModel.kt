@@ -1,23 +1,23 @@
 package com.bcebhagalpur.welcomeslider.student.dashboard.model
 
-data class ExploreTeacherListModel(
-    val teacherClass:String,
-    val college:String,
-    val language:String,
-    val mobileNumber:String,
-    val mode:String,
-    val price:String,
-    val qualification:String,
-    val status:String,
-    val subject:String,
-    val teacherAddress:String,
-    val teacherCity:String,
-    val teacherDob:String,
-    val teacherEmail:String,
-    val teacherGender:String,
-    val teacherName:String,
-    val teacherImage:String,
-    val timing:String,
-    val userId:String
-
-    )
+class ExploreTeacherListModel {
+    val college: String?=null
+    val language: String?=null
+    val mobileNumber: String?=null
+    val mode: String?=null
+    val price: String?=null
+    val qualification: String?=null
+    val status: String?=null
+    val subject: String?=null
+    val teacherAddress: String?=null
+    val teacherCity: String?=null
+    val teacherClass: String?=null
+    val teacherDob: String?=null
+    val teacherEmail: String?=null
+    val teacherGender: String?=null
+    val teacherImage: String?=null
+    val teacherName: String?=null
+    val teacherDemoVideo: String?=null
+    val timing: String?=null
+    val userId: String?=null
+}

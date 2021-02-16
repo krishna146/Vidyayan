@@ -20,7 +20,6 @@ import com.google.firebase.auth.PhoneAuthProvider.ForceResendingToken
 import com.google.firebase.auth.PhoneAuthProvider.OnVerificationStateChangedCallbacks
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_otp_verify.*
-import java.lang.NullPointerException
 import java.util.concurrent.TimeUnit
 
 class OtpVerifyActivity : AppCompatActivity() {
