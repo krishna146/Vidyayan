@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.bcebhagalpur.welcomeslider.student.dashboard.adapter
 
 import android.app.ProgressDialog
@@ -19,7 +21,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_teacher_registration2.*
 
 @Suppress("DEPRECATION")
 class ExploreTeacherListAdapter(private val context: Context, private val itemList: ArrayList<ExploreTeacherListModel>) : RecyclerView.Adapter<ExploreTeacherListAdapter.StatusViewHolder>() {
@@ -54,6 +55,7 @@ class ExploreTeacherListAdapter(private val context: Context, private val itemLi
             intent.putExtra("teacherClass",subject.teacherClass)
             intent.putExtra("college",subject.college)
             intent.putExtra("language",subject.language)
+            intent.putExtra("teacherImage",subject.teacherImage)
             intent.putExtra("mobileNumber",subject.mobileNumber)
             intent.putExtra("mode",subject.mode)
             intent.putExtra("price",subject.price)
@@ -68,7 +70,7 @@ class ExploreTeacherListAdapter(private val context: Context, private val itemLi
             intent.putExtra("teacherName",subject.teacherName)
             intent.putExtra("timing",subject.timing)
             intent.putExtra("userId",subject.userId)
-           context.startActivity(Intent(context, TeacherDetailActivity::class.java))
+           context.startActivity(intent)
         }
         holder.btnDemoVideo.setOnClickListener {
             if (subject.teacherDemoVideo!=null){

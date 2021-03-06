@@ -5,6 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
+    android:id="@+id/scrollTop"
         android:layout_height="match_parent">
 
     <LinearLayout
@@ -242,10 +243,37 @@
 
     </RelativeLayout>
 
-        <TextView
+        <androidx.cardview.widget.CardView
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""/>
+            android:layout_height="match_parent">
+
+
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="5"-->
+<!--                android:drawableEnd="@drawable/ic_baseline_star_24"/>-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="review"/>-->
+
+<!--            </LinearLayout>-->
+        </androidx.cardview.widget.CardView>
+
+
     </LinearLayout>
     
 </ScrollView>

@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -41,6 +40,13 @@ class ExploreFragment : Fragment() {
 
         exploreTeacherListAdapter = ExploreTeacherListAdapter(activity as Context, exploreTeacherListModel)
 
+        initRecyclerTeacher()
+
+        return view
+    }
+
+    private fun initRecyclerTeacher() {
+
         val layoutManager1 = LinearLayoutManager(activity as Context)
         layoutManager1.reverseLayout
         layoutManager1.stackFromEnd
@@ -50,40 +56,10 @@ class ExploreFragment : Fragment() {
         })
 
         val layoutManager2 = LinearLayoutManager(activity as Context)
-        layoutManager2.reverseLayout
-        layoutManager2.stackFromEnd
         recyclerTeacher2.layoutManager = layoutManager2
         recyclerTeacher2.adapter = exploreTeacherListAdapter
         recyclerTeacher2.addOnScrollListener(object : RecyclerView.OnScrollListener() {
         })
-
-        val layoutManager3 = LinearLayoutManager(activity as Context)
-        layoutManager3.reverseLayout
-        layoutManager3.stackFromEnd
-        recyclerTeacher3.layoutManager = layoutManager3
-        recyclerTeacher3.adapter = exploreTeacherListAdapter
-        recyclerTeacher3.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-        })
-
-        val layoutManager4 = LinearLayoutManager(activity as Context)
-        layoutManager4.reverseLayout
-        layoutManager4.stackFromEnd
-        recyclerTeacher4.layoutManager = layoutManager4
-        recyclerTeacher4.adapter = exploreTeacherListAdapter
-        recyclerTeacher4.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-        })
-
-
-        initRecyclerTeacher()
-        initRecyclerTeacher()
-        initRecyclerTeacher()
-        initRecyclerTeacher()
-
-        return view
-
-    }
-
-    private fun initRecyclerTeacher() {
 
         val userId= FirebaseAuth.getInstance().currentUser!!.uid
         val student=FirebaseDatabase.getInstance().reference.child("STUDENT")
@@ -95,10 +71,8 @@ class ExploreFragment : Fragment() {
                       val studentClass=snapshot.child("studentClass").value.toString()
                       if(studentClass=="1st" || studentClass=="2nd" || studentClass=="3rd" || studentClass=="4th" || studentClass=="5th")
                       {
-                          getUser(studentCity,"1 to 5th",recyclerTeacher1)
                           getUser(studentCity,"1 to 8th",recyclerTeacher2)
-                          getUser(studentCity,"1 to 10th",recyclerTeacher3)
-                          getUser(studentCity,"1 to 12th",recyclerTeacher4)
+                          getUser(studentCity,"1 to 5th",recyclerTeacher1)
                       }
                   }
             }
