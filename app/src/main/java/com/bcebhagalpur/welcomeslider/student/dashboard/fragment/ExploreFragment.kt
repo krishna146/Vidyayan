@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,11 +23,10 @@ import kotlin.collections.ArrayList
 class ExploreFragment : Fragment() {
 
     private lateinit var recyclerTeacher1: RecyclerView
-    private lateinit var recyclerTeacher2: RecyclerView
-    private lateinit var recyclerTeacher3: RecyclerView
-    private lateinit var recyclerTeacher4: RecyclerView
     private lateinit var exploreTeacherListAdapter: ExploreTeacherListAdapter
     private val exploreTeacherListModel = ArrayList<ExploreTeacherListModel>()
+    private lateinit var progressBar:ProgressBar
+    private lateinit var txtSearch:TextView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
 
@@ -34,11 +35,12 @@ class ExploreFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_explore, container, false)
 
         recyclerTeacher1 = view.findViewById(R.id.recyclerTeacher1)
-        recyclerTeacher2 = view.findViewById(R.id.recyclerTeacher2)
-        recyclerTeacher3 = view.findViewById(R.id.recyclerTeacher3)
-        recyclerTeacher4 = view.findViewById(R.id.recyclerTeacher4)
-
+        progressBar=view.findViewById(R.id.progressBar)
+        txtSearch=view.findViewById(R.id.txtSearch)
         exploreTeacherListAdapter = ExploreTeacherListAdapter(activity as Context, exploreTeacherListModel)
+
+        progressBar.visibility=View.VISIBLE
+        txtSearch.visibility=View.VISIBLE
 
         initRecyclerTeacher()
 
@@ -49,17 +51,10 @@ class ExploreFragment : Fragment() {
 
         val layoutManager1 = LinearLayoutManager(activity as Context)
         layoutManager1.reverseLayout
-        layoutManager1.stackFromEnd
-        recyclerTeacher1.layoutManager = layoutManager1
-        recyclerTeacher1.adapter = exploreTeacherListAdapter
-        recyclerTeacher1.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-        })
-
-        val layoutManager2 = LinearLayoutManager(activity as Context)
-        recyclerTeacher2.layoutManager = layoutManager2
-        recyclerTeacher2.adapter = exploreTeacherListAdapter
-        recyclerTeacher2.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-        })
+       layoutManager1.stackFromEnd
+        recyclerTeacher1.layoutManager=layoutManager1
+                              recyclerTeacher1.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                              })
 
         val userId= FirebaseAuth.getInstance().currentUser!!.uid
         val student=FirebaseDatabase.getInstance().reference.child("STUDENT")
@@ -71,18 +66,26 @@ class ExploreFragment : Fragment() {
                       val studentClass=snapshot.child("studentClass").value.toString()
                       if(studentClass=="1st" || studentClass=="2nd" || studentClass=="3rd" || studentClass=="4th" || studentClass=="5th")
                       {
-                          getUser(studentCity,"1 to 8th",recyclerTeacher2)
-                          getUser(studentCity,"1 to 5th",recyclerTeacher1)
+                          getUser(studentCity,"1 to 5th class")
+                      }
+                      else if(studentClass=="6th" || studentClass=="7th" || studentClass=="8th")
+                      {
+                          getUser(studentCity,"6 to 8th class")
+                      }
+                      else if(studentClass=="9th" || studentClass=="10th")
+                      {
+                          getUser(studentCity,"9 to 10th class")
+                      }
+                      else if(studentClass=="11th" || studentClass=="12th")
+                      {
+                          getUser(studentCity,"11 to 12th class")
                       }
                   }
             }
            override fun onCancelled(error: DatabaseError) {} })
     }
 
-
-
-
-    private fun getUser(studentCity: String, studentClass: String,recyclerTeacher:RecyclerView) {
+    private fun getUser(studentCity: String, studentClass: String) {
         val child = FirebaseDatabase.getInstance().reference.child("TEACHERS").child(studentCity).child(studentClass)
         child.addListenerForSingleValueEvent(object : ValueEventListener
         {
@@ -93,6 +96,8 @@ class ExploreFragment : Fragment() {
             {
                 val userList = ArrayList<ExploreTeacherListModel>()
                 if (snapshot.exists()) {
+                    progressBar.visibility=View.GONE
+                    txtSearch.visibility=View.GONE
                     for (p0 in snapshot.children) {
                         val p1 = p0.getValue(ExploreTeacherListModel::class.java)
                         userList.add(0, p1!!)
@@ -104,7 +109,7 @@ class ExploreFragment : Fragment() {
                             val maxInt = maxId.toInt()
                             for (i in 0..maxInt) {
                                 exploreTeacherListAdapter.notifyItemInserted(i)
-                                recyclerTeacher.smoothScrollToPosition(i)
+                                recyclerTeacher1.smoothScrollToPosition(i)
                             }
 
                         }
@@ -112,7 +117,7 @@ class ExploreFragment : Fragment() {
                     }catch (e:NullPointerException){
                         e.printStackTrace()
                     }
-                    recyclerTeacher.adapter = exploreTeacherListAdapter
+                    recyclerTeacher1.adapter = exploreTeacherListAdapter
 
                 }
 //                                      else {
@@ -122,6 +127,7 @@ class ExploreFragment : Fragment() {
         }
         )
     }
+
 }
 
 

@@ -1,27 +1,22 @@
 package com.bcebhagalpur.welcomeslider.activity
 
-import android.app.ProgressDialog
-import android.content.ContentValues
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.location.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.ProgressBar
 import android.widget.Toast
 import com.bcebhagalpur.welcomeslider.R
-import com.bcebhagalpur.welcomeslider.model.MyFirebaseInstanceIDService
 import com.bcebhagalpur.welcomeslider.student.dashboard.activity.HomeActivity
 import com.bcebhagalpur.welcomeslider.teacher.dashboard.activity.HomeTeacher
 import com.google.android.gms.location.*
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -77,12 +72,15 @@ class SplashActivity : AppCompatActivity() {
 //     }
         progressBar=findViewById(R.id.progress_bar)
         progressBar.visibility=View.GONE
+
+     status()
     }
 
     override fun onStart() {
         status()
         super.onStart()
     }
+
     private fun status() {
         val user = FirebaseAuth.getInstance().currentUser
         if (user != null) {
@@ -90,11 +88,11 @@ class SplashActivity : AppCompatActivity() {
             val uid = FirebaseAuth.getInstance().currentUser!!.uid
             val rootRef = FirebaseDatabase.getInstance().reference
             val uidRef = rootRef.child("USERS").child(uid)
-            val eventListener: ValueEventListener = object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    if (dataSnapshot.exists()) {
+            uidRef.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
                         progressBar.visibility=View.GONE
-                          val userType=dataSnapshot.child("userType").value.toString()
+                        val userType=snapshot.child("userType").value.toString()
                         if (userType=="Student"){
                             val intent = Intent(this@SplashActivity, HomeActivity::class.java)
                             startActivity(intent)
@@ -115,11 +113,41 @@ class SplashActivity : AppCompatActivity() {
                         finish()
                     }
                 }
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
 
-                override fun onCancelled(databaseError: DatabaseError) {}
-            }
-
-            uidRef.addListenerForSingleValueEvent(eventListener)
+//            val eventListener: ValueEventListener = object : ValueEventListener {
+//                override fun onDataChange(dataSnapshot: DataSnapshot) {
+//                    if (dataSnapshot.exists()) {
+//                        progressBar.visibility=View.GONE
+//                          val userType=dataSnapshot.child("userType").value.toString()
+//                        if (userType=="Student"){
+//                            val intent = Intent(this@SplashActivity, HomeActivity::class.java)
+//                            startActivity(intent)
+//                            finish()
+//                        }else if (userType=="Teacher"){
+//                            val intent =
+//                                Intent(this@SplashActivity, HomeTeacher::class.java)
+//                            startActivity(intent)
+//                            finish()
+//                        }else{
+//                            Toast.makeText(this@SplashActivity,"Some error occurred try again later",Toast.LENGTH_SHORT).show()
+//                        }
+//
+//                    } else {
+//                        val intent =
+//                            Intent(this@SplashActivity, TeacherStudentActivity::class.java)
+//                        startActivity(intent)
+//                        finish()
+//                    }
+//                }
+//
+//                override fun onCancelled(databaseError: DatabaseError) {}
+//            }
+//
+//            uidRef.addListenerForSingleValueEvent(eventListener)
         }else{
             Handler().postDelayed({
                 startActivity(
@@ -136,5 +164,4 @@ class SplashActivity : AppCompatActivity() {
         finish()
         super.onPause()
     }
-
 }

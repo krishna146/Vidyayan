@@ -70,6 +70,14 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         window.requestFeature(Window.FEATURE_NO_TITLE)
         setContentView(R.layout.activity_home)
         changeColor()
+        val intent=Intent()
+        val extras=intent.getStringExtra("NotificationKey")
+        if (extras!=null && extras == "Notification"){
+            supportFragmentManager.beginTransaction().replace(
+                R.id.frameLayout,
+                NotificationFragment())
+        }
+
         drawerLayout = findViewById(R.id.drawer_layout)
         navigationView = findViewById(R.id.navigation_view)
         menuIcon = findViewById(R.id.menu_icon)
@@ -91,7 +99,9 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         floatingActionButton3.setOnClickListener {
             startActivity(Intent(this, ChatExploreActivity::class.java))
         }
+
         exploreFragment()
+
     }
 
     private fun bottom(){

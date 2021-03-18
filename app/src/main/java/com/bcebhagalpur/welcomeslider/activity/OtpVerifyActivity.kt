@@ -77,11 +77,6 @@ class OtpVerifyActivity : AppCompatActivity() {
             }
         }
 
-
-
-
-
-
     private fun sendVerificationCode(mobile: String) {
         @Suppress("DEPRECATION")
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
@@ -92,12 +87,9 @@ class OtpVerifyActivity : AppCompatActivity() {
             mCallbacks
         )
     }
-
     private fun verifyVerificationCode(code: String) {
-
             val credential = PhoneAuthProvider.getCredential(mVerificationId!!, code)
             signInWithPhoneAuthCredential(credential)
-
     }
 
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {

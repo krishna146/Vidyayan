@@ -50,43 +50,6 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/rl_one"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/new_background"
-            android:layout_marginHorizontal="5dp"
-            android:padding="2dp"
-            android:layout_marginTop="10dp"
-            >
-            <ImageView
-                android:id="@+id/live_tv"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/ic_baseline_live_tv_24"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="40dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/live_class"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/live_tv"
-                android:layout_marginStart="25dp"
-                android:textSize="15sp"
-                android:textStyle="bold"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_navigate_next_24"
-                android:layout_centerVertical="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="15dp"/>
-        </RelativeLayout>
-
-
-        <RelativeLayout
             android:id="@+id/rl_two"
             android:layout_width="match_parent"
             android:layout_height="70dp"
@@ -144,7 +107,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="My Course"
+                android:text="Study Material"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@id/my_course"
                 android:layout_marginLeft="25dp"
@@ -206,14 +169,14 @@
                 android:layout_height="30dp"
                 android:src="@drawable/ic_my_tutor"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="40dp"/>
+                android:layout_marginStart="40dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="My Tutor"
+                android:text="Coding"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/my_tutor"
-                android:layout_marginLeft="25dp"
+                android:layout_toEndOf="@id/my_tutor"
+                android:layout_marginStart="25dp"
                 android:textSize="15sp"
                 android:textStyle="bold"/>
             <ImageView
@@ -222,7 +185,41 @@
                 android:src="@drawable/ic_baseline_navigate_next_24"
                 android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginRight="15dp"/>
+                android:layout_marginEnd="15dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_one"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/new_background"
+            android:layout_marginHorizontal="5dp"
+            android:padding="2dp"
+            android:layout_marginTop="10dp"
+            >
+            <ImageView
+                android:id="@+id/my_library"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_my_tutor"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="40dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Library"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@id/my_library"
+                android:layout_marginStart="25dp"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_navigate_next_24"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="15dp"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -240,14 +237,14 @@
                 android:layout_height="30dp"
                 android:src="@drawable/ic_baseline_share_24"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="40dp"/>
+                android:layout_marginStart="40dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Share"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/share"
-                android:layout_marginLeft="25dp"
+                android:layout_toEndOf="@id/share"
+                android:layout_marginStart="25dp"
                 android:textSize="15sp"
                 android:textStyle="bold"/>
             <ImageView
@@ -256,7 +253,7 @@
                 android:src="@drawable/ic_baseline_navigate_next_24"
                 android:layout_centerVertical="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginRight="15dp"/>
+                android:layout_marginEnd="15dp"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -274,14 +271,14 @@
                 android:layout_height="30dp"
                 android:src="@drawable/ic_baseline_add_box_24"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="40dp"/>
+                android:layout_marginStart="40dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Suggestoins"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/suggestion"
-                android:layout_marginLeft="25dp"
+                android:layout_toEndOf="@id/suggestion"
+                android:layout_marginStart="25dp"
                 android:textSize="15sp"
                 android:textStyle="bold"/>
             <ImageView

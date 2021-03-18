@@ -14,9 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".student.dashboard.activity.StudentTutorDetailActivity">
-
-        </activity>
+        <activity android:name=".student.dashboard.activity.TestActivity"></activity>
         <activity android:name=".activity.ViewFullImageActivity" />
         <activity android:name=".student.navigationDrawer.activity.BookmarkActivity" />
         <activity android:name=".student.dashboard.activity.TeacherDemoVideoActivity" />
@@ -32,9 +30,7 @@
         <activity android:name=".student.navigationDrawer.activity.MyTutorActivity" />
         <activity android:name=".teacher.dashboard.activity.HomeTeacher" />
         <activity android:name=".teacher.starter.activity.TeacherRegistrationActivity2" />
-        <activity android:name=".student.dashboard.activity.HomeActivity">
-
-        </activity>
+        <activity android:name=".student.dashboard.activity.HomeActivity" />
         <activity android:name=".student.starter.activity.RegistrationActivity" />
         <activity android:name=".teacher.starter.activity.TeacherRegistrationActivity3" />
         <activity android:name=".activity.TeacherStudentActivity" />
@@ -47,11 +43,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service
-            android:name=".model.MyFirebaseInstanceIDService"
-            tools:ignore="Instantiatable">
+
+        <service android:name=".MyFirebaseInstanceIdService">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".MyFirebaseMessagingService"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
         </service>
     </application>

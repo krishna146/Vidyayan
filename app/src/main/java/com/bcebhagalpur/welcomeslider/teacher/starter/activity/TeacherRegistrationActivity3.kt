@@ -207,115 +207,164 @@ class TeacherRegistrationActivity3 : AppCompatActivity() {
         }
 
         btnSubmit.setOnClickListener {
-            val teacherName = intent.getStringExtra("teacherName")
-//                val mobileNumber = intent.getStringExtra("mobileNumber")
-            val teacherEmail = intent.getStringExtra("teacherEmail")
-            val teacherDob = intent.getStringExtra("teacherDob")
-            val teacherGender = intent.getStringExtra("teacherGender")
-            val teacherAddress = intent.getStringExtra("teacherAddress")
-//                val teacherNumber = intent.getStringExtra("mobileNumber")
-//                val userType = intent.getStringExtra("userType")
-            val city = intent.getStringExtra("city")
+            when {
+                txtSelectClass.text.toString()=="1 to 5th" -> {
+                    addTeacher("1 to 5th class")
+                }
+                txtSelectClass.text.toString()=="1 to 8th" -> {
+                    addTeacher("1 to 5th class")
+                    addTeacher("6 to 8th class")
+                }
+                txtSelectClass.text.toString()=="1 to 10th" -> {
+                    addTeacher("1 to 5th class")
+                    addTeacher("6 to 8th class")
+                    addTeacher("9 to 10th class")
+                }
+                txtSelectClass.text.toString()=="1 to 12th" -> {
+                    addTeacher("1 to 5th class")
+                    addTeacher("6 to 8th class")
+                    addTeacher("9 to 10th class")
+                    addTeacher("11 to 12th class")
+                }
+                txtSelectClass.text.toString()=="6th to 8th" -> { addTeacher("6 to 8th class") }
 
-            if (actxtQualification.text.isNotEmpty() && actxtStatus.text.isNotEmpty() && actxtCollege.text.isNotEmpty() && actxtLanguage.text.isNotEmpty()
-                && actxtMode.text.isNotEmpty() && actxtPrice.text.isNotEmpty() && actxtTiming.text.isNotEmpty()
-                && txtSelectClass.text != "Select Class") {
-                val progressDialog = ProgressDialog(this)
-                progressDialog.setTitle("VIDYAYAN")
-                progressDialog.setMessage("We are processing, please wait")
-                progressDialog.show()
-                progressDialog.setCancelable(false)
-
-                mDatabase = FirebaseDatabase.getInstance()
-                mDatabaseReference = mDatabase.reference.child("TEACHERS")
-                val currentUserDb = mDatabaseReference.child(city!!)
-                val currentUserDb2 = currentUserDb.child(txtSelectClass.text.toString())
-                mAuth = FirebaseAuth.getInstance()
-                val userId = mAuth.currentUser!!.uid
-                val userNumber = mAuth.currentUser!!.phoneNumber
-
-                currentUserDb2.addListenerForSingleValueEvent(object : ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        val anotherChild = currentUserDb2.child(userId)
-                        anotherChild.child("userId").setValue(userId)
-                        anotherChild.child("mobileNumber").setValue(userNumber.toString())
-                        anotherChild.child("teacherName").setValue(teacherName!!.toString())
-                        anotherChild.child("teacherEmail").setValue(teacherEmail!!.toString())
-                        anotherChild.child("teacherDob").setValue(teacherDob!!.toString())
-                        anotherChild.child("teacherCity").setValue(city.toString())
-                        anotherChild.child("teacherGender").setValue(teacherGender!!.toString())
-                        anotherChild.child("teacherAddress")
-                            .setValue(teacherAddress!!.toString())
-                        anotherChild.child("qualification")
-                            .setValue(actxtQualification.text.toString())
-                        anotherChild.child("status").setValue(actxtStatus.text.toString())
-                        anotherChild.child("language").setValue(actxtLanguage.text.toString())
-                        anotherChild.child("college").setValue(actxtCollege.text.toString())
-                        anotherChild.child("mode").setValue(actxtMode.text.toString())
-                        anotherChild.child("teacherClass").setValue(txtSelectClass.text.toString())
-                        anotherChild.child("subject").setValue(txtSelectSubject.text.toString())
-                        anotherChild.child("timing").setValue(actxtTiming.text.toString())
-                        anotherChild.child("price").setValue(actxtPrice.text.toString())
-                        progressDialog.hide()
-                    }
-
-                    override fun onCancelled(error: DatabaseError) {
-                    }
-                })
-
-                val users1 = FirebaseDatabase.getInstance().reference.child("USERS")
-               users1.addListenerForSingleValueEvent(object : ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        val anotherChild = currentUserDb2.child(userId)
-                        anotherChild.child("userId").setValue(userId)
-                        anotherChild.child("mobileNumber").setValue(userNumber.toString())
-                        anotherChild.child("teacherName").setValue(teacherName!!.toString())
-                        anotherChild.child("teacherEmail").setValue(teacherEmail!!.toString())
-                        anotherChild.child("teacherDob").setValue(teacherDob!!.toString())
-                        anotherChild.child("teacherCity").setValue(city.toString())
-                        anotherChild.child("teacherGender").setValue(teacherGender!!.toString())
-                        anotherChild.child("teacherAddress")
-                            .setValue(teacherAddress!!.toString())
-                        anotherChild.child("qualification")
-                            .setValue(actxtQualification.text.toString())
-                        anotherChild.child("status").setValue(actxtStatus.text.toString())
-                        anotherChild.child("language").setValue(actxtLanguage.text.toString())
-                        anotherChild.child("college").setValue(actxtCollege.text.toString())
-                        anotherChild.child("mode").setValue(actxtMode.text.toString())
-                        anotherChild.child("class").setValue(txtSelectClass.text.toString())
-                        anotherChild.child("subject").setValue(txtSelectSubject.text.toString())
-                        anotherChild.child("timing").setValue(actxtTiming.text.toString())
-                        anotherChild.child("price").setValue(actxtPrice.text.toString())
-                        progressDialog.hide()
-                    }
-
-                    override fun onCancelled(error: DatabaseError) {
-                    }
-                })
-
-                val users = FirebaseDatabase.getInstance().reference.child("USERS")
-                users.addListenerForSingleValueEvent(object : ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        val anotherChild1 = users.child(userId)
-                        anotherChild1.child("userType").setValue("Teacher")
-                    }
-
-                    override fun onCancelled(error: DatabaseError) {
-                    }
-                })
-
-                val intent = Intent(this@TeacherRegistrationActivity3, HomeTeacher::class.java)
-                startActivity(intent)
-                finish()
-            } else {
-                Toast.makeText(this, "please enter fill all fields", Toast.LENGTH_SHORT).show()
+                txtSelectClass.text.toString()=="6th to 10th" -> {
+                    addTeacher("6 to 8th class")
+                    addTeacher("9 to 10th")
+                }
+                txtSelectClass.text.toString()=="6th to 12th" -> {
+                    addTeacher("6 to 8th class")
+                    addTeacher("9 to 10th class")
+                    addTeacher("11 to 12th class")
+                }
+//                "9th to 10th",
+//                "9th to 12th",
+//                "11th to 12th"
+                        txtSelectClass.text.toString()=="9th to 10th" -> {
+                    addTeacher("9 to 10th class")
+                }
+                txtSelectClass.text.toString()=="9th to 12th" -> {
+                    addTeacher("9 to 10th class")
+                    addTeacher("11 to 12th class")
+                }
+                txtSelectClass.text.toString()=="11th to 12th" -> {
+                    addTeacher("11 to 12th class")
+                }
             }
+
         }
     }
 
     private fun changeColor() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.statusBarColor = ContextCompat.getColor(applicationContext, R.color.white)
+        }
+    }
+
+    private fun addTeacher(teacherClass:String){
+        val teacherName = intent.getStringExtra("teacherName")
+//                val mobileNumber = intent.getStringExtra("mobileNumber")
+        val teacherEmail = intent.getStringExtra("teacherEmail")
+        val teacherDob = intent.getStringExtra("teacherDob")
+        val teacherGender = intent.getStringExtra("teacherGender")
+        val teacherAddress = intent.getStringExtra("teacherAddress")
+//                val teacherNumber = intent.getStringExtra("mobileNumber")
+//                val userType = intent.getStringExtra("userType")
+        val city = intent.getStringExtra("city")
+
+        if (actxtQualification.text.isNotEmpty() && actxtStatus.text.isNotEmpty() && actxtCollege.text.isNotEmpty() && actxtLanguage.text.isNotEmpty()
+            && actxtMode.text.isNotEmpty() && actxtPrice.text.isNotEmpty() && actxtTiming.text.isNotEmpty()
+            && txtSelectClass.text != "Select Class") {
+            val progressDialog = ProgressDialog(this)
+            progressDialog.setTitle("VIDYAYAN")
+            progressDialog.setMessage("We are processing, please wait")
+            progressDialog.show()
+            progressDialog.setCancelable(false)
+
+            mDatabase = FirebaseDatabase.getInstance()
+            mDatabaseReference = mDatabase.reference.child("TEACHERS")
+            val currentUserDb = mDatabaseReference.child(city!!)
+            val classFilter=currentUserDb.child(teacherClass)
+//            val currentUserDb2 = classFilter.child(txtSelectClass.text.toString())
+            mAuth = FirebaseAuth.getInstance()
+            val userId = mAuth.currentUser!!.uid
+            val userNumber = mAuth.currentUser!!.phoneNumber
+
+            classFilter.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val anotherChild = classFilter.child(userId)
+                    anotherChild.child("userId").setValue(userId)
+                    anotherChild.child("mobileNumber").setValue(userNumber.toString())
+                    anotherChild.child("teacherName").setValue(teacherName!!.toString())
+                    anotherChild.child("teacherEmail").setValue(teacherEmail!!.toString())
+                    anotherChild.child("teacherDob").setValue(teacherDob!!.toString())
+                    anotherChild.child("teacherCity").setValue(city.toString())
+                    anotherChild.child("teacherGender").setValue(teacherGender!!.toString())
+                    anotherChild.child("teacherAddress")
+                        .setValue(teacherAddress!!.toString())
+                    anotherChild.child("qualification")
+                        .setValue(actxtQualification.text.toString())
+                    anotherChild.child("status").setValue(actxtStatus.text.toString())
+                    anotherChild.child("language").setValue(actxtLanguage.text.toString())
+                    anotherChild.child("college").setValue(actxtCollege.text.toString())
+                    anotherChild.child("mode").setValue(actxtMode.text.toString())
+                    anotherChild.child("teacherClass").setValue(txtSelectClass.text.toString())
+                    anotherChild.child("subject").setValue(txtSelectSubject.text.toString())
+                    anotherChild.child("timing").setValue(actxtTiming.text.toString())
+                    anotherChild.child("price").setValue(actxtPrice.text.toString())
+                    progressDialog.hide()
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                }
+            })
+
+            val users1 = FirebaseDatabase.getInstance().reference.child("USERS")
+            users1.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val anotherChild = classFilter.child(userId)
+                    anotherChild.child("userId").setValue(userId)
+                    anotherChild.child("mobileNumber").setValue(userNumber.toString())
+                    anotherChild.child("teacherName").setValue(teacherName!!.toString())
+                    anotherChild.child("teacherEmail").setValue(teacherEmail!!.toString())
+                    anotherChild.child("teacherDob").setValue(teacherDob!!.toString())
+                    anotherChild.child("teacherCity").setValue(city.toString())
+                    anotherChild.child("teacherGender").setValue(teacherGender!!.toString())
+                    anotherChild.child("teacherAddress")
+                        .setValue(teacherAddress!!.toString())
+                    anotherChild.child("qualification")
+                        .setValue(actxtQualification.text.toString())
+                    anotherChild.child("status").setValue(actxtStatus.text.toString())
+                    anotherChild.child("language").setValue(actxtLanguage.text.toString())
+                    anotherChild.child("college").setValue(actxtCollege.text.toString())
+                    anotherChild.child("mode").setValue(actxtMode.text.toString())
+                    anotherChild.child("class").setValue(txtSelectClass.text.toString())
+                    anotherChild.child("subject").setValue(txtSelectSubject.text.toString())
+                    anotherChild.child("timing").setValue(actxtTiming.text.toString())
+                    anotherChild.child("price").setValue(actxtPrice.text.toString())
+                    progressDialog.hide()
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                }
+            })
+
+            val users = FirebaseDatabase.getInstance().reference.child("USERS")
+            users.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val anotherChild1 = users.child(userId)
+                    anotherChild1.child("userType").setValue("Teacher")
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                }
+            })
+
+            val intent = Intent(this@TeacherRegistrationActivity3, HomeTeacher::class.java)
+            startActivity(intent)
+            finish()
+        } else {
+            Toast.makeText(this, "please enter fill all fields", Toast.LENGTH_SHORT).show()
         }
     }
 }

@@ -36,8 +36,10 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="match_parent"
             android:layout_below="@+id/LLTeacher"
+            app:cardElevation="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginHorizontal="10dp"
             android:background="#ffffff">
 
@@ -51,7 +53,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:text="Select topic to play"
+                    android:text="Test yourself"
                     android:textColor="#000000"
                     android:textStyle="bold" />
 
@@ -64,39 +66,173 @@
                     android:background="@color/colorAccent" />
 
                 <LinearLayout
+                    android:id="@+id/le1"
+                    android:layout_marginBottom="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/view"
                     android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
                     android:weightSum="3.0">
 
                     <LinearLayout
+                        android:elevation="10dp"
                         android:layout_width="0dp"
-                        android:layout_weight="1.0"
+                        android:layout_weight="1.5"
                         android:orientation="vertical"
+                        android:layout_margin="5dp"
                         android:layout_height="wrap_content">
 
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1.0"
-                            app:cardCornerRadius="10dp">
-
-<!--                            <ImageView-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_weight="1.0"-->
-<!--                                android:src="@drawable/maths" />-->
-                        </androidx.cardview.widget.CardView>
-                        <TextView
+                        <Button
+                            android:id="@+id/mathematics"
+                            android:layout_margin="5dp"
+                            android:text="Mathematics"
+                            android:textAllCaps="false"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/kathai"
+                            android:background="@android:color/holo_orange_light"
                             android:layout_width="match_parent"
-                            android:gravity="center"
-                            android:textColor="#000000"
-                            android:layout_height="wrap_content"
-                            android:text="Maths"/>
+                            android:layout_height="match_parent"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1.5"
+                        android:orientation="vertical"
+                        android:layout_margin="5dp"
+                        android:layout_height="wrap_content">
+                        <Button
+                            android:id="@+id/science"
+                            android:layout_margin="5dp"
+                            android:text="Science"
+                            android:textAllCaps="false"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/kathai"
+                            android:background="@android:color/holo_orange_light"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            />
+
                     </LinearLayout>
 
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/le2"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/le1"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3.0">
+
+                    <LinearLayout
+                        android:elevation="10dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.5"
+                        android:orientation="vertical"
+                        android:layout_margin="5dp"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:id="@+id/socialScience"
+                            android:layout_margin="5dp"
+                            android:text="Social Science"
+                            android:textAllCaps="false"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/kathai"
+                            android:background="@android:color/holo_orange_light"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1.5"
+                        android:orientation="vertical"
+                        android:layout_margin="5dp"
+                        android:layout_height="wrap_content">
+                        <Button
+                            android:id="@+id/computerScience"
+                            android:layout_margin="5dp"
+                            android:text="Computer Science"
+                            android:textAllCaps="false"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/kathai"
+                            android:background="@android:color/holo_orange_light"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/le3"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/le2"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3.0">
+
+                    <LinearLayout
+                        android:elevation="10dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.5"
+                        android:orientation="vertical"
+                        android:layout_margin="5dp"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:id="@+id/hindi"
+                            android:layout_margin="5dp"
+                            android:text="Hindi"
+                            android:textAllCaps="false"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/kathai"
+                            android:background="@android:color/holo_orange_light"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1.5"
+                        android:orientation="vertical"
+                        android:layout_margin="5dp"
+                        android:layout_height="wrap_content">
+                        <Button
+                            android:id="@+id/english"
+                            android:layout_margin="5dp"
+                            android:text="English"
+                            android:textAllCaps="false"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/kathai"
+                            android:background="@android:color/holo_orange_light"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
 
 
             </RelativeLayout>
