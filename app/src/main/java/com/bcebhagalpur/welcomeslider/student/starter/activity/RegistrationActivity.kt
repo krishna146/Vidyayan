@@ -3,12 +3,14 @@ package com.bcebhagalpur.welcomeslider.student.starter.activity
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Looper
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.ImageButton
@@ -20,6 +22,7 @@ import com.google.android.gms.location.*
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.iid.FirebaseInstanceId
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_otp_verify.*
 import kotlinx.android.synthetic.main.activity_otp_verify.view.*
@@ -34,7 +37,7 @@ class RegistrationActivity : AppCompatActivity() {
     private lateinit var mDatabaseReference: DatabaseReference
     private lateinit var mDatabase: FirebaseDatabase
     private lateinit var mAuth: FirebaseAuth
-
+    var token="null"
     private lateinit var etStudentName:TextInputLayout
     private lateinit var etStudentEmail:TextInputLayout
     private lateinit var etStudentDob:TextInputLayout
@@ -100,6 +103,43 @@ class RegistrationActivity : AppCompatActivity() {
             mAuth= FirebaseAuth.getInstance()
             val userId= mAuth.currentUser!!.uid
             val userNumber=mAuth.currentUser!!.phoneNumber
+            val user = FirebaseAuth.getInstance().currentUser
+            if (user != null) {
+                FirebaseInstanceId.getInstance().instanceId.addOnCompleteListener { Task ->
+                    if (Task.isSuccessful) {
+                         token = Task.result.token
+                       // val userId = FirebaseAuth.getInstance().currentUser!!.uid
+                       // val ref = FirebaseDatabase.getInstance().reference.child("Tokens").child(userId)
+                        //val tokenHashMap = HashMap<String, Any>()
+                        //tokenHashMap["uid"] = userId
+                        //tokenHashMap["token"] = token
+                      //  ref.setValue(tokenHashMap).addOnCompleteListener { Task ->
+                       //     if (Task.isSuccessful) {
+                           //     Log.d(ContentValues.TAG, "Refreshed token: $token ");
+                            //} else {
+                         //       Log.d(ContentValues.TAG, "Refreshed token: ");
+                          //  }
+
+                       // }
+                    } else {
+                        Toast.makeText(this,"cant get token",Toast.LENGTH_SHORT).show()
+                     /*  val token = " "
+                        val userId = FirebaseAuth.getInstance().currentUser!!.uid
+                        val ref = FirebaseDatabase.getInstance().reference.child("Tokens")
+                        val tokenHashMap = HashMap<String, Any>()
+                        tokenHashMap["uid"] = userId
+                        tokenHashMap["token"] = token
+                        ref.setValue(tokenHashMap).addOnCompleteListener { Task ->
+                            if (Task.isSuccessful) {
+                                Log.d(ContentValues.TAG, "Refreshed token: $token ");
+                            } else {
+                                Log.d(ContentValues.TAG, "Refreshed token: ");
+                            }
+
+                        }*/
+                    }
+                }
+            }
 
             if (name.isNotEmpty()&& email.isNotEmpty()&&dob.isNotEmpty()&& city.isNotEmpty()&& address.isNotEmpty()
                 && actxtGender.text.isNotEmpty()) {
@@ -112,12 +152,14 @@ class RegistrationActivity : AppCompatActivity() {
                         anotherChild.child("studentEmail").setValue(email)
                         anotherChild.child("studentDob").setValue(dob)
                         anotherChild.child("studentCity").setValue(city)
+                        anotherChild.child("student pic").setValue("https://firebasestorage.googleapis.com/v0/b/welcomeslider-f1285.appspot.com/o/james-thompson-seFNNqB3w8k-unsplash.jpg?alt=media&token=ae2f475b-68ca-4e5c-a0e3-42a524440c17")
                         anotherChild.child("studentAddress").setValue(address)
                         anotherChild.child("studentGender").setValue(actxtGender.text.toString())
                         anotherChild.child("studentStream").setValue(studentStream)
                         anotherChild.child("studentClass").setValue(studentClass)
                         anotherChild.child("studentBoard").setValue(studentBoard)
                         anotherChild.child("targetExam").setValue(targetExam)
+                        anotherChild.child("token").setValue(token)
 
                     }
 
