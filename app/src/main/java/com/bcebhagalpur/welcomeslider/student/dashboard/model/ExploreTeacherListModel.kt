@@ -1,5 +1,4 @@
 package com.bcebhagalpur.welcomeslider.student.dashboard.model
-
 class ExploreTeacherListModel {
     val college: String?=null
     val language: String?=null
@@ -19,5 +18,6 @@ class ExploreTeacherListModel {
     val teacherName: String?=null
     val teacherDemoVideo: String?=null
     val timing: String?=null
+    val teacherToken:String?=null
     val userId: String?=null
 }
