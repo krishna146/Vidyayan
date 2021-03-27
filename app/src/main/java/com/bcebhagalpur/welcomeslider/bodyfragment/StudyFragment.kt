@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bcebhagalpur.welcomeslider.R
@@ -64,8 +65,10 @@ class StudyFragment : Fragment() {
                         for (i in subjectList){
                             i.setOnClickListener {
                                 val intent=Intent(context,TestActivity::class.java)
-                                intent.putExtra(i.text.toString(),i.text.toString())
+                                intent.putExtra("studentSubject",i.text.toString())
+                                intent.putExtra("studentClass",studentClass.toString())
                                 startActivity(intent)
+                                Toast.makeText(context,studentClass,Toast.LENGTH_SHORT).show()
                             }
                         }
                     }
@@ -79,6 +82,7 @@ class StudyFragment : Fragment() {
                                 val intent=Intent(context,TestActivity::class.java)
                                 intent.putExtra(i.text.toString(),i.text.toString())
                                 startActivity(intent)
+                                Toast.makeText(context,studentClass,Toast.LENGTH_SHORT).show()
                             }
                         }
                     }

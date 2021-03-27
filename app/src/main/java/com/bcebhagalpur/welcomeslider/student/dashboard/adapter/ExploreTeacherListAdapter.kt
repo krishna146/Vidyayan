@@ -1,3 +1,4 @@
+
 @file:Suppress("DEPRECATION")
 
 package com.bcebhagalpur.welcomeslider.student.dashboard.adapter
@@ -174,97 +175,12 @@ class ExploreTeacherListAdapter(
                                                             subject.teacherCity
                                                         )
 
-//                                                        val builder = NotificationCompat.Builder(
-//                                                            context,
-//                                                            channelId
-//                                                        )
-//                                                        builder.setSmallIcon(R.drawable.logo_transparant)
-//                                                            .setContentTitle("Vidyayan Edventure")
-//                                                            .setAutoCancel(true)
-//                                                            .setStyle(
-//                                                                NotificationCompat.BigTextStyle()
-//                                                                    .bigText(
-//                                                                        "$studentName send you request"
-//                                                                    )
-//                                                            )
-//                                                            .setDefaults(NotificationCompat.DEFAULT_ALL)
-//
-//                                                        val intent = Intent()
-//                                                        intent.putExtra(
-//                                                            "NotificationKey",
-//                                                            "Notification"
-//                                                        )
-//                                                        val notificationIntent = Intent(
-//                                                            context,
-//                                                            HomeActivity::class.java
-//                                                        )
-//                                                        val pendingIntent =
-//                                                            PendingIntent.getActivity(
-//                                                                context,
-//                                                                0,
-//                                                                notificationIntent,
-//                                                                PendingIntent.FLAG_UPDATE_CURRENT
-//                                                            )
-//
-//                                                        builder.setContentIntent(pendingIntent)
-//
-//                                                        val manager = context.getSystemService(
-//                                                            Context.NOTIFICATION_SERVICE
-//                                                        ) as NotificationManager
-//
-//                                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                                                            val channel = NotificationChannel(
-//                                                                channelId, "Title",
-//                                                                NotificationManager.IMPORTANCE_DEFAULT
-//                                                            )
-//                                                            manager.createNotificationChannel(
-//                                                                channel
-//                                                            )
-//                                                            builder.setChannelId(channelId)
-//                                                        }
-//                                                        manager.notify(
-//                                                            notificationId,
-//                                                            builder.build()
-//                                                        )
-//                                                        Toast.makeText(
-//                                                            context,
-//                                                            "Notification",
-//                                                            Toast.LENGTH_SHORT
-//                                                        ).show()
                                                         Snackbar.make(
                                                             holder.linearLayout,
                                                             "Request sent successfully...",
                                                             Snackbar.LENGTH_LONG
                                                         ).show()
 
-
-                                                        topic =
-                                                            "/topics/userABC" //topic must match with what the receiver subscribed to
-
-                                                        notificationTitle = "Request"
-                                                        notificationMessage =
-                                                            "$studentName sent you request"
-
-                                                        val notification = JSONObject()
-                                                        val notificationBody = JSONObject()
-                                                        try {
-                                                            notificationBody.put(
-                                                                "title",
-                                                                notificationTitle
-                                                            )
-                                                            notificationBody.put(
-                                                                "message",
-                                                                notificationMessage
-                                                            )
-                                                            notification.put("to", topic)
-                                                            notification.put(
-                                                                "data",
-                                                                notificationBody
-                                                            )
-                                                        } catch (e: JSONException) {
-                                                            Log.e(tag, "onCreate: " + e.message)
-                                                        }
-                                                        sendNotification(notification)
                                                     }
 
                                                     override fun onCancelled(error: DatabaseError) {
@@ -307,59 +223,4 @@ class ExploreTeacherListAdapter(
         val rating: RatingBar = view.findViewById(R.id.rating)
         val linearLayout: LinearLayout = view.findViewById(R.id.llt)
     }
-
-    private fun sendNotification(notification: JSONObject) {
-        val jsonObjectRequest: JsonObjectRequest = object : JsonObjectRequest(fcmApi, notification,
-            Response.Listener { response ->
-                Log.i(tag, "onResponse: $response")
-
-            },
-            Response.ErrorListener {
-                Toast.makeText(context, "Request error", Toast.LENGTH_LONG).show()
-                Log.i(tag, "onErrorResponse: Didn't work")
-            }) {
-            @Throws(AuthFailureError::class)
-            override fun getHeaders(): Map<String, String> {
-                val params: MutableMap<String, String> = HashMap()
-                params["Authorization"] = serverKey
-                params["Content-Type"] = contentType
-                return params
-            }
-        }
-        MySingleton.getInstance(context)?.addToRequestQueue(jsonObjectRequest)
-    }
-
-    class MySingleton private constructor(private val ctx: Context) {
-        private var requestQueue: RequestQueue?
-        private fun getRequestQueue(): RequestQueue? {
-            if (requestQueue == null) {
-                // getApplicationContext() is key, it keeps you from leaking the
-                // Activity or BroadcastReceiver if someone passes one in.
-                requestQueue = Volley.newRequestQueue(ctx.applicationContext)
-            }
-            return requestQueue
-        }
-
-        fun <T> addToRequestQueue(req: Request<T>?) {
-            getRequestQueue()!!.add(req)
-        }
-
-        companion object {
-            @SuppressLint("StaticFieldLeak")
-            private var instance: MySingleton? = null
-            @Synchronized
-            fun getInstance(context: Context): MySingleton? {
-                if (instance == null) {
-                    instance = MySingleton(context)
-                }
-                return instance
-            }
-        }
-
-        init {
-            requestQueue = getRequestQueue()
-        }
-    }
-
-
 }

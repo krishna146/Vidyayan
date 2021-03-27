@@ -281,6 +281,8 @@ class TeacherRegistrationActivity3 : AppCompatActivity() {
             progressDialog.show()
             progressDialog.setCancelable(false)
 
+
+
             mDatabase = FirebaseDatabase.getInstance()
             mDatabaseReference = mDatabase.reference.child("TEACHERS")
             val currentUserDb = mDatabaseReference.child(city!!)

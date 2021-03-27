@@ -36,40 +36,40 @@ class SplashActivity : AppCompatActivity() {
         )
         setContentView(R.layout.activity_splash)
      //  fcm= MyFirebaseInstanceIDService()
-//     FirebaseInstanceId.getInstance().instanceId.addOnCompleteListener {
-//         Task->
-//         if (Task.isSuccessful){
-//             val token=Task.result.token
-//             val userId = FirebaseAuth.getInstance().currentUser!!.uid
-//             val ref = FirebaseDatabase.getInstance().reference.child("Tokens").child(userId)
-//             val tokenHashMap = HashMap<String, Any>()
-//             tokenHashMap["uid"] = userId
-//             tokenHashMap["token"] = token
-//             ref.setValue(tokenHashMap).addOnCompleteListener { Task ->
-//                 if (Task.isSuccessful) {
-//                     Log.d(ContentValues.TAG, "Refreshed token: $token ");
-//                 } else {
-//                     Log.d(ContentValues.TAG, "Refreshed token: ");
-//                 }
-//
-//             }
-//         }else{
-//             val token=" "
-//             val userId = FirebaseAuth.getInstance().currentUser!!.uid
-//             val ref = FirebaseDatabase.getInstance().reference.child("Tokens")
-//             val tokenHashMap = HashMap<String, Any>()
-//             tokenHashMap["uid"] = userId
-//             tokenHashMap["token"] = token
-//             ref.setValue(tokenHashMap).addOnCompleteListener { Task ->
-//                 if (Task.isSuccessful) {
-//                     Log.d(ContentValues.TAG, "Refreshed token: $token ");
-//                 } else {
-//                     Log.d(ContentValues.TAG, "Refreshed token: ");
-//                 }
-//
-//             }
-//         }
-//     }
+  /*   FirebaseInstanceId.getInstance().instanceId.addOnCompleteListener {
+         Task->
+         if (Task.isSuccessful){
+             val token=Task.result.token
+             val userId = FirebaseAuth.getInstance().currentUser!!.uid
+             val ref = FirebaseDatabase.getInstance().reference.child("Tokens").child(userId)
+             val tokenHashMap = HashMap<String, Any>()
+             tokenHashMap["uid"] = userId
+             tokenHashMap["token"] = token
+             ref.setValue(tokenHashMap).addOnCompleteListener { Task ->
+                 if (Task.isSuccessful) {
+                     Log.d(ContentValues.TAG, "Refreshed token: $token ");
+                 } else {
+                     Log.d(ContentValues.TAG, "Refreshed token: ");
+                 }
+
+             }
+         }else{
+             val token=" "
+             val userId = FirebaseAuth.getInstance().currentUser!!.uid
+             val ref = FirebaseDatabase.getInstance().reference.child("Tokens")
+             val tokenHashMap = HashMap<String, Any>()
+             tokenHashMap["uid"] = userId
+             tokenHashMap["token"] = token
+             ref.setValue(tokenHashMap).addOnCompleteListener { Task ->
+                 if (Task.isSuccessful) {
+                     Log.d(ContentValues.TAG, "Refreshed token: $token ");
+                 } else {
+                     Log.d(ContentValues.TAG, "Refreshed token: ");
+                 }
+
+             }
+         }
+     }*/
         progressBar=findViewById(R.id.progress_bar)
         progressBar.visibility=View.GONE
 

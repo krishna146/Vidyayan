@@ -1,9 +1,10 @@
 package com.bcebhagalpur.welcomeslider.student.dashboard.activity
 
 import android.annotation.SuppressLint
-import android.content.Intent
+import android.content.*
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -17,6 +18,7 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.drawerlayout.widget.DrawerLayout.SimpleDrawerListener
 import androidx.fragment.app.FragmentTransaction
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.bcebhagalpur.welcomeslider.R
 import com.bcebhagalpur.welcomeslider.activity.ChatExploreActivity
 import com.bcebhagalpur.welcomeslider.activity.LoginActivity
@@ -31,7 +33,15 @@ import com.bcebhagalpur.welcomeslider.student.navigationDrawer.activity.StudentP
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.iid.FirebaseInstanceId
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_home.*
+import java.util.HashMap
+
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -87,6 +97,42 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
          navigationDrawer()
          drawerHeaderItemHandle()
+      /*  val user = FirebaseAuth.getInstance().currentUser
+        if (user != null) {
+            FirebaseInstanceId.getInstance().instanceId.addOnCompleteListener { Task ->
+                if (Task.isSuccessful) {
+                    val token = Task.result.token
+                    val userId = FirebaseAuth.getInstance().currentUser!!.uid
+                    val ref = FirebaseDatabase.getInstance().reference.child("Tokens").child(userId)
+                    val tokenHashMap = HashMap<String, Any>()
+                    tokenHashMap["uid"] = userId
+                    tokenHashMap["token"] = token
+                    ref.setValue(tokenHashMap).addOnCompleteListener { Task ->
+                        if (Task.isSuccessful) {
+                            Log.d(ContentValues.TAG, "Refreshed token: $token ");
+                        } else {
+                            Log.d(ContentValues.TAG, "Refreshed token: ");
+                        }
+
+                    }
+                } else {
+                    val token = " "
+                    val userId = FirebaseAuth.getInstance().currentUser!!.uid
+                    val ref = FirebaseDatabase.getInstance().reference.child("Tokens")
+                    val tokenHashMap = HashMap<String, Any>()
+                    tokenHashMap["uid"] = userId
+                    tokenHashMap["token"] = token
+                    ref.setValue(tokenHashMap).addOnCompleteListener { Task ->
+                        if (Task.isSuccessful) {
+                            Log.d(ContentValues.TAG, "Refreshed token: $token ");
+                        } else {
+                            Log.d(ContentValues.TAG, "Refreshed token: ");
+                        }
+
+                    }
+                }
+            }
+        }*/
         bottomNavigationView=findViewById(R.id.bottomNavigationView)
         exploreFragment()
         bottom()
@@ -118,7 +164,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             when(it.itemId){
                 R.id.explore -> {
                     exploreFragment()
-                    supportActionBar!!.title="Explore Teachers"
+                    supportActionBar!!.title = "Explore Teachers"
 
                 }
                 R.id.study -> {
@@ -133,7 +179,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 }
 
                 R.id.notification -> {
-                    notificationFragment=NotificationFragment()
+                    notificationFragment = NotificationFragment()
                     supportFragmentManager.beginTransaction().replace(
                         R.id.frameLayout,
                         notificationFragment
@@ -223,6 +269,8 @@ private fun onAddButtonClicked()
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+
+
         return true
     }
 
@@ -265,6 +313,8 @@ private fun onAddButtonClicked()
     private fun drawerHeaderItemHandle(){
         val headerView=navigationView.getHeaderView(0)
         val rl= headerView.findViewById<RelativeLayout>(R.id.rl_)
+        val r= rl.findViewById<ImageView>(R.id.imgProfileHeader)
+        val rname=rl.findViewById<TextView>(R.id.txt_studentname)
         val rl1=headerView.findViewById<RelativeLayout>(R.id.rl_one)
         val rl2=headerView.findViewById<RelativeLayout>(R.id.rl_two)
         val rl3=headerView.findViewById<RelativeLayout>(R.id.rl_three)
@@ -273,7 +323,29 @@ private fun onAddButtonClicked()
         val rl6=headerView.findViewById<RelativeLayout>(R.id.rl_six)
         val rl7=headerView.findViewById<RelativeLayout>(R.id.rl_seven)
         val logOut=headerView.findViewById<TextView>(R.id.log_out)
+       val userId=FirebaseAuth.getInstance().currentUser
+       val userReference=FirebaseDatabase.getInstance().reference.child("STUDENT").child(userId!!.uid)
+        userReference!!.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                if (p0.exists()){
+                    val pic=p0.child("student pic").value.toString()
+                    val name=p0.child("studentName").value.toString()
+                    Picasso.get().load(pic).placeholder(R.drawable.logo_transparant).into(r)
+                    rname.setText(name)
+                    
+
+                }
+
+            }
+
+        })
+
         rl.setOnClickListener {
+
             startActivity(Intent(this, StudentProfileActivity::class.java))
         }
         rl3.setOnClickListener {
@@ -287,7 +359,7 @@ private fun onAddButtonClicked()
         }
         logOut.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
-            startActivity(Intent(this,LoginActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
     }
@@ -305,5 +377,47 @@ private fun onAddButtonClicked()
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+    }
+    override fun onStart() {
+        super.onStart()
+        LocalBroadcastManager.getInstance(this).registerReceiver(
+            mMessageReceiver,
+            IntentFilter("MyData")
+        )
+    }
+
+    override fun onStop() {
+        super.onStop()
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReceiver)
+    }
+
+    private val mMessageReceiver: BroadcastReceiver = object : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent) {
+
+            val title:String?=intent.extras!!.getString("title")//setting values to the TextViews
+            val msg=intent.extras!!.getDouble("msg")
+            val  mDatabase = FirebaseDatabase.getInstance()
+            val mDatabaseReference = mDatabase.reference.child("Notification")
+            val mAuth= FirebaseAuth.getInstance()
+            val userId= mAuth.currentUser!!.uid
+
+            val currentUserDb = mDatabaseReference.child(userId!!)
+
+            currentUserDb.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val anotherChild = currentUserDb.child(userId)
+                    anotherChild.child("userId").setValue(userId)
+                    //    anotherChild.child("value1").setValue(value1!!.toString())
+                    //   anotherChild.child("value2").setValue(value2!!.toString())
+                    anotherChild.child("title").setValue(title!!.toString())
+                    anotherChild.child("msg").setValue(msg!!.toString())
+
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                }
+            })
+
+        }
     }
 }
