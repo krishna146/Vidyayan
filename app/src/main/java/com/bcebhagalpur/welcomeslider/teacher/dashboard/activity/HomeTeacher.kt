@@ -28,6 +28,7 @@ import com.bcebhagalpur.welcomeslider.student.navigationDrawer.activity.Bookmark
 import com.bcebhagalpur.welcomeslider.student.navigationDrawer.activity.MyCoursesActivity
 import com.bcebhagalpur.welcomeslider.student.navigationDrawer.activity.MyTutorActivity
 import com.bcebhagalpur.welcomeslider.student.navigationDrawer.activity.StudentProfileActivity
+import com.bcebhagalpur.welcomeslider.teacher.otherActivity.TeacherProfileActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -264,7 +265,7 @@ class HomeTeacher : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         val rl7=headerView.findViewById<RelativeLayout>(R.id.rl_seven)
         val logOut=headerView.findViewById<TextView>(R.id.log_out)
         rl.setOnClickListener {
-            startActivity(Intent(this, StudentProfileActivity::class.java))
+            startActivity(Intent(this, TeacherProfileActivity::class.java))
         }
         rl3.setOnClickListener {
             startActivity(Intent(this, MyCoursesActivity::class.java))

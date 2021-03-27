@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/AppTheme1"
+    tools:context=".teacher.otherActivity.TeacherProfileActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="5.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5">
+
+            <RelativeLayout
+                android:id="@+id/RL"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/profile_Student_pic"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    app:cardCornerRadius="300dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:background="@drawable/ic_profile" />
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/profile_Student_pic"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:text="Krishna Kumar"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3.5">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3.5">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/etName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginHorizontal="20dp"
+                        android:ems="10"
+                        android:hint="Name"
+                        android:text="Krishna Kumar" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/etMobileNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/etName"
+                    android:layout_marginTop="10dp">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginHorizontal="20dp"
+                        android:editable="false"
+                        android:ems="10"
+                        android:hint="Mobile Number"
+                        android:text="7488054892" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/etEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/etMobileNumber"
+                    android:layout_marginTop="10dp">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginHorizontal="20dp"
+                        android:editable="false"
+                        android:ems="10"
+                        android:hint="Email"
+                        android:text="krishnakumarjms12@gmail.com" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/etAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/etEmail"
+                    android:layout_marginTop="10dp">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginHorizontal="20dp"
+                        android:editable="false"
+                        android:ems="10"
+                        android:hint="Address"
+                        android:maxLines="1"
+                        android:text="Jairampur, Ward No.5 , Murliganj" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <androidx.coordinatorlayout.widget.CoordinatorLayout
+                    android:id="@+id/CL"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/etAddress">
+
+                    <FrameLayout
+                        android:id="@+id/frame1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+                </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+                <LinearLayout
+                    android:id="@+id/KYC"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/CL"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:weightSum="3.0">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/menuMode"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight="2.0"
+                        android:hint="SELECT KYC TYPE"
+                        app:boxBackgroundColor="#ffffff">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/actxtKycDocuments"
+                            android:layout_width="match_parent"
+                            android:editable="false"
+                            android:layout_height="wrap_content"
+                            android:inputType="none" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/btnuploadKYC"
+                        android:layout_width="0dp"
+                        android:text="Select File"
+                        android:layout_marginEnd="10dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.0" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnUpdateProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/KYC"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/startlearningbackground"
+                    android:text="UPDATE PROFILE"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</RelativeLayout>

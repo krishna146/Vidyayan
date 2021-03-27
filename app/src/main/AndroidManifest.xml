@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".student.dashboard.activity.TestActivity"></activity>
+        <activity android:name=".teacher.otherActivity.TeacherProfileActivity"></activity>
+        <activity android:name=".student.dashboard.activity.TestActivity" />
         <activity android:name=".activity.ViewFullImageActivity" />
         <activity android:name=".student.navigationDrawer.activity.BookmarkActivity" />
         <activity android:name=".student.dashboard.activity.TeacherDemoVideoActivity" />
